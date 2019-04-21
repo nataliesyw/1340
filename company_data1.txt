@@ -1,4 +1,5 @@
 Natalie Wong Seung Yee, 1001, 18, Director, 13000
 Scarlett So Yuk Sze, 1002, 19, Manager, 15000
 Ingrid Chu Yee Lam, 1003, 18, Clerk, 12000
-Cathy Lee Hiu Man, 1004, 18, CLerk, 12000
+Cathy Lee Hiu Man, 1004, 18, Clerk, 12000
+Philip Choi Wang Hei, 1005, 18, Clerk, 11500
