@@ -168,7 +168,7 @@ void show(company_struct sys[], int current_num_record){
 
 //FIND command
 // return the number of records found
-void find(){
+void search(){
 
 }
 
@@ -202,14 +202,14 @@ int save_as(string filename, company_struct sys[], int n){
         cout << "Error in file opening." << endl;
         return 0;
     }
-    
+
     int i;
     fout << "Name"<< setw(25) << "ID" << setw(5) << "Age" << setw(3) << "Role" << setw(10) << "Salary" << setw(7) <<endl;
     for (i = 0; i < n; i++)
     {
       fout << sys[i].name << " " << sys[i].id << " " << sys[i].age << " " << sys[i].role << " " << sys[i].salary << endl;
     }
-    
+
     fout.close();
     return i;
 
@@ -250,7 +250,7 @@ int main(){
 
         if (command_choice == "ADD"){
             if (number_records >= system_size)
-                grow_system(company_ptr, system_size, 1); 
+                grow_system(company_ptr, system_size, 1);
             if (number_records < system_size)
                 number_records = add_record(company_ptr, number_records);
             cout << "There are now " << number_records << " record(s) in the system." << endl << endl;
@@ -266,7 +266,11 @@ int main(){
             cout << "The system is saved into "<< save_as_filename<< endl;
             cout << endl;
         }
-        
+        if (command_choice == "SEARCH"){
+          cout << "Please enter the attribute to search for employees:  ";
+          cin << search_attribute;
+
+        }
         command_choice = print_command();
   //      if (command_choice == "FIND"){
     //        find();
