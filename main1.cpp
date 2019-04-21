@@ -232,7 +232,7 @@ int main(){
                 grow_system(company_ptr, system_size, 3); // need to be confirm if its 3 !!????
             if (number_records < system_size)
                 number_records = add_record(company_ptr, number_records);
-            cout << "There are now " << number_records << " record(s) in the phonebook." << endl << endl;
+            cout << "There are now " << number_records << " record(s) in the system." << endl << endl;
         }
         if (command_choice == "SHOW"){
             show(company_ptr, number_records);
