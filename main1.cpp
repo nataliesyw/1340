@@ -230,7 +230,7 @@ int main(){
 
         if (command_choice == "ADD"){
             if (number_records >= system_size)
-                grow_system(company_ptr, system_size, 3); // need to be confirm if its 3 !!????
+                grow_system(company_ptr, system_size, 1); 
             if (number_records < system_size)
                 number_records = add_record(company_ptr, number_records);
             cout << "There are now " << number_records << " record(s) in the system." << endl << endl;
