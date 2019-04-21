@@ -25,6 +25,7 @@ struct company_struct{
     double monthly_target;
     int attendance_count = 0;
     int early_leave_count = 0;
+    int late_count = 0;
 };
 
 // print the command page of the employee system
