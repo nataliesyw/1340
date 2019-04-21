@@ -23,7 +23,7 @@ struct company_struct{
     string role;
     string salary;
     bool perfect_attendance;
-    double monthly_target;
+    double monthly_revenue;
     int attendance_count = 0;
     int early_leave_count = 0;
     int late_count = 0;
@@ -166,7 +166,7 @@ void show(company_struct sys[], int current_num_record){
 }
 
 
-//FIND command
+//SEARCH command
 // return the number of records found
 void search(){
 
@@ -174,7 +174,22 @@ void search(){
 
 
 // SORT command
-void sort(){
+// print out all records which are sorted
+// selectively print out the records *******if we have time*******
+void sort(company_struct sys[], int current_num_record){
+    cout << "Sort accroding to:" << endl;
+    cout << "Age" << endl;
+    cout << "Salary" << endl;
+    cout << "Early-leave" << endl;
+    cout << "Late" << endl;
+    cout << "Attendence" << endl;
+
+    string attribute;
+    cin >> attribute;
+
+    cout << "Would you like to "
+
+
 
 }
 
@@ -255,20 +270,24 @@ int main(){
                 number_records = add_record(company_ptr, number_records);
             cout << "There are now " << number_records << " record(s) in the system." << endl << endl;
         }
+
         if (command_choice == "SHOW"){
             show(company_ptr, number_records);
         }
+
+
+        if (command_choice == "SEARCH"){
+          cout << "Please enter the attribute to search for employees:  ";
+          cin << search_attribute;
+        }
+
         if (command_choice == "SAVE"){
             cout << "Please enter the filename to save as:  ";
             cin >> save_as_filename;
             count = save_as(save_as_filename, company_ptr, number_records);
             cout << count << " record(s) found." << endl;
             cout << "The system is saved into "<< save_as_filename<< endl;
-            cout << endl;
-        }
-        if (command_choice == "SEARCH"){
-          cout << "Please enter the attribute to search for employees:  ";
-          cin << search_attribute;
+            cout << endl;        
 
         }
         command_choice = print_command();
