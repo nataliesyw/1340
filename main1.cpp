@@ -10,6 +10,7 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -193,7 +194,24 @@ void output(){
 // SAVE command
 // save all records system into a new text file
 // return 0 if an error occurs when opening the file
-int save_as(){
+int save_as(string filename, company_struct sys[], int n){
+    ofstream fout;
+    fout.open(filename.c_str());
+    if (fout.fail())
+    {
+        cout << "Error in file opening." << endl;
+        return 0;
+    }
+    
+    int i;
+    fout << "Name"<< setw(25) << "ID" << setw(5) << "Age" << setw(3) << "Role" << setw(10) << "Salary" << setw(7) <<endl;
+    for (i = 0; i < n; i++)
+    {
+      fout << sys[i].name << " " << sys[i].id << " " << sys[i].age << " " << sys[i].role << " " << sys[i].salary << endl;
+    }
+    
+    fout.close();
+    return i;
 
 }
 
@@ -206,6 +224,8 @@ int main(){
     int number_records = 0;
     string raw_textfile;
     string command_choice;
+    string save_as_filename;
+    int count;
 
     // output text file
 //    ofstream monthly_report;
@@ -238,7 +258,15 @@ int main(){
         if (command_choice == "SHOW"){
             show(company_ptr, number_records);
         }
-
+        if (command_choice == "SAVE"){
+            cout << "Please enter the filename to save as:  ";
+            cin >> save_as_filename;
+            count = save_as(save_as_filename, company_ptr, number_records);
+            cout << count << " record(s) found." << endl;
+            cout << "The system is saved into "<< save_as_filename<< endl;
+            cout << endl;
+        }
+        
         command_choice = print_command();
   //      if (command_choice == "FIND"){
     //        find();
