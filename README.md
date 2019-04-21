@@ -18,7 +18,7 @@ We would like to add the following functions in the system:
 
 6.  Create a new employee record by adding the employee's ID, name, age, role and salary during program running time
 
-7.  Search for an employee by inputting their ID, name, age, role , arrival time and leave time
+7.  Search for an employee by inputting their ID, name, age, role.
 
 8.  Edit or delete a the record of a current employee
 
