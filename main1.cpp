@@ -1,9 +1,10 @@
 //
-//  reverse_string.cpp
-//  Module7_rev
+//  main.cpp
+//  ENGG 1340 project
+//  Staff Management System
 //
-//  Created by Natalie on 15/4/2019.
-//  Copyright © 2019 Natalie. All rights reserved.
+//  Created by Wong Seung Yee and So Yuk Sze on 20/4/2019.
+//  Copyright © 2019 Wong Seung Yee and So Yuk Sze. All rights reserved.
 //
 
 #include <iostream>
@@ -38,10 +39,11 @@ string print_command(){
     cout << "Please enter the commands according to the following format." << endl;
     cout << "\"LOAD\": Load a file that contains record of employees." << endl;
     cout << "\"ADD\": Add a new record of a new employee " << endl;
+    cout << "\"DELETE\": Fire an employee." << endl;
     cout << "\"SHOW\": Show all attribute by the employee by the name." << endl;
-    cout << "\"FIND\": Search for the employees according to that attribute." << endl;
+    cout << "\"SEARCH\": Search for the employees according to that attribute." << endl;
     cout << "\"SORT\": Sort the employess according to that attribute" << endl;
-    cout << "\"DELETE\": Delete a record of ONE employee" << endl;
+    cout << "\"CHECK\": Check the late, eary leave record and atttendance of employees." << endl;
     cout << "\"OUTPUT\": Output the monthly report" << endl;
     cout << "\"EXIT\" : Exit the system." << endl;
 
@@ -301,14 +303,9 @@ void delete_record(){
 
 // OUTPUT command
 // output the monthly report that includes attendance, early leave, monthly target and late record
-void output(){
-
-}
-
-// SAVE command
-// save all records system into a new text file
+// save all records of the system into a new text file
 // return 0 if an error occurs when opening the file
-int save_as(string filename, company_struct sys[], int n){
+int output(string filename, company_struct sys[], int n){
     ofstream fout;
     fout.open(filename.c_str());
     if (fout.fail())
@@ -326,10 +323,25 @@ int save_as(string filename, company_struct sys[], int n){
 
     fout.close();
     return i;
-
 }
 
+// CHECK command
+// multiple options
+// perfect attendence: show the employees who have perfect attendance
+// all attendance: show the percentage of attendance of each employee
+// early leave
+// late
+
+void check(){
+    
+}
+
+
+
 // calculate the late record according to clock in and clock out time
+void cal(){
+    
+}
 
 int main(){
      // attribute: the parameter that the user would like to search for
@@ -370,12 +382,26 @@ int main(){
                 number_records = add_record(company_ptr, number_records);
             cout << "There are now " << number_records << " record(s) in the system." << endl << endl;
         }
-
+        // if (command_choice == "DELETE"){
+    	//    delete_record();
+        // }
+        
         if (command_choice == "SHOW"){
             show(company_ptr, number_records);
         }
-
-        if (command_choice == "SAVE"){
+        
+        if (command_choice == "SEARCH"){
+            cout << "Please enter the attribute to search for employees:  "<< endl;
+            cout << "(Name/ Age/ ID/ Role/ Salary) ";
+            cin >> search_attribute;
+            count = search(search_attribute, company_ptr, number_records);
+            cout << endl << count << " record(s) found." << endl;
+            cout << endl;
+        }
+        // if (command_choice == "SORT"){
+        //    sort();
+        // }
+        if (command_choice == "OUTPUT"){
             cout << "Please enter the filename to save as:  ";
             cin >> save_as_filename;
             count = save_as(save_as_filename, company_ptr, number_records);
@@ -383,29 +409,17 @@ int main(){
             cout << "The system is saved into "<< save_as_filename<< endl;
             cout << endl;
         }
-        if (command_choice == "SEARCH"){
-          cout << "Please enter the attribute to search for employees:  "<< endl;
-          cout << "(Name/ Age/ ID/ Role/ Salary) ";
-          cin >> search_attribute;
-          count = search(search_attribute, company_ptr, number_records);
-          cout << endl << count << " record(s) found." << endl;
-          cout << endl;
-        }
+
 
         command_choice = print_command();
   //      if (command_choice == "FIND"){
     //        find();
 //        }
-  //      if (command_choice == "SORT"){
-    //        sort();
-      //  }
-        // if (command_choice == "DELETE"){
-//          delete_record();
-  //      }
-    //    if (command_choice == "OUTPUT"){
-      //      output();
-        // }
-    }
+        
+
+        
+        
+       
 
 
     cout << "Exit the system."<< endl;
