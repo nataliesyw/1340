@@ -173,84 +173,100 @@ void show(company_struct sys[], int current_num_record){
 // n: numbr of records found
 int search(string attribute, company_struct sys[], int n){
     int i, count = 0;
-    for (i = 0; i < n; i++){
+
       if (attribute == "Name"){
-        cout << "Please enter employees name to search:  ";
-        string name_to_search;
-        string name_in_array = sys[i].name;
-        cin >> name_to_search;
-        transform(name_in_array.begin(), name_in_array.end(), name_in_array.begin(), ::toupper);
-        transform(name_to_search.begin(), name_to_search.end(), name_to_search.begin(), ::toupper);
-        if(name_in_array.find(name_to_search) != string::npos){
-          cout << "Name:\t" << sys[i].name << endl;
-          cout << "ID:\t" << sys[i].id << endl;
-          cout << "Age:\t" << sys[i].age << endl;
-          cout << "Role:\t" << sys[i].role << endl;
-          cout << "Salary:\t" << sys[i].salary << endl;
-          count ++;
-        }
+          cout << "Please enter employees name to search:  ";
+          string name_to_search;
+          cin >> name_to_search;
+          for (i = 0; i < n; i++){
+            string name_in_array = sys[i].name;
+            transform(name_in_array.begin(), name_in_array.end(), name_in_array.begin(), ::toupper);
+            transform(name_to_search.begin(), name_to_search.end(), name_to_search.begin(), ::toupper);
+            if(name_in_array.find(name_to_search) != string::npos){
+              cout << "Name:\t" << sys[i].name << endl;
+              cout << "ID:\t" << sys[i].id << endl;
+              cout << "Age:\t" << sys[i].age << endl;
+              cout << "Role:\t" << sys[i].role << endl;
+              cout << "Salary:\t" << sys[i].salary << endl;
+              count ++;
+            }
+          }
       }
 
       if (attribute == "ID"){
-        cout << "Please enter employees ID to search:  ";
-        string id_to_search;
-        string id_in_array = sys[i].id;
-        cin >> id_to_search;
-
-        if (id_in_array.find(id_to_search) != string::npos){
-          cout << "Name:\t" << sys[i].name << endl;
-          cout << "ID:\t" << sys[i].id << endl;
-          cout << "Age:\t" << sys[i].age << endl;
-          cout << "Role:\t" << sys[i].role << endl;
-          cout << "Salary:\t" << sys[i].salary << endl;
-          count ++;
-        }
+          cout << "Please enter employees id to search:  ";
+          string id_to_search;
+          cin >> id_to_search;
+          for (i = 0; i < n; i++){
+            string id_in_array = sys[i].id;
+            transform(id_in_array.begin(), id_in_array.end(), id_in_array.begin(), ::toupper);
+            transform(id_to_search.begin(), id_to_search.end(), id_to_search.begin(), ::toupper);
+            if(id_in_array.find(id_to_search) != string::npos){
+              cout << "Name:\t" << sys[i].name << endl;
+              cout << "ID:\t" << sys[i].id << endl;
+              cout << "Age:\t" << sys[i].age << endl;
+              cout << "Role:\t" << sys[i].role << endl;
+              cout << "Salary:\t" << sys[i].salary << endl;
+              count ++;
+            }
+          }
       }
 
       if (attribute == "Age"){
-        cout << "Please enter employees age to search:  ";
-        string age_to_search;
-        string age_in_array = sys[i].age;
-        cin >> age_to_search;
-        if (age_in_array.find(age_to_search) != string::npos){
-          cout << "Name:\t" << sys[i].name << endl;
-          cout << "ID:\t" << sys[i].id << endl;
-          cout << "Age:\t" << sys[i].age << endl;
-          cout << "Role:\t" << sys[i].role << endl;
-          cout << "Salary:\t" << sys[i].salary << endl;
-          count ++;
-        }
+          cout << "Please enter employees age to search:  ";
+          string age_to_search;
+          cin >> age_to_search;
+          for (i = 0; i < n; i++){
+            string age_in_array = sys[i].age;
+            transform(age_in_array.begin(), age_in_array.end(), age_in_array.begin(), ::toupper);
+            transform(age_to_search.begin(), age_to_search.end(), age_to_search.begin(), ::toupper);
+            if(age_in_array.find(age_to_search) != string::npos){
+              cout << "Name:\t" << sys[i].name << endl;
+              cout << "ID:\t" << sys[i].id << endl;
+              cout << "Age:\t" << sys[i].age << endl;
+              cout << "Role:\t" << sys[i].role << endl;
+              cout << "Salary:\t" << sys[i].salary << endl;
+              count ++;
+            }
+          }
       }
 
       if (attribute == "Role"){
-        cout << "Please enter employees role to search:  ";
-        string role_to_search;
-        string role_in_array = sys[i].role;
-        cin >> role_to_search;
-        if (role_in_array.find(role_to_search) != string::npos){
-          cout << "Name:\t" << sys[i].name << endl;
-          cout << "ID:\t" << sys[i].id << endl;
-          cout << "Age:\t" << sys[i].age << endl;
-          cout << "Role:\t" << sys[i].role << endl;
-          cout << "Salary:\t" << sys[i].salary << endl;
-          count ++;
-        }
+          cout << "Please enter employees role to search:  ";
+          string role_to_search;
+          cin >> role_to_search;
+          for (i = 0; i < n; i++){
+            string role_in_array = sys[i].role;
+            transform(role_in_array.begin(), role_in_array.end(), role_in_array.begin(), ::toupper);
+            transform(role_to_search.begin(), role_to_search.end(), role_to_search.begin(), ::toupper);
+            if(role_in_array.find(role_to_search) != string::npos){
+              cout << "Name:\t" << sys[i].name << endl;
+              cout << "ID:\t" << sys[i].id << endl;
+              cout << "Age:\t" << sys[i].age << endl;
+              cout << "Role:\t" << sys[i].role << endl;
+              cout << "Salary:\t" << sys[i].salary << endl;
+              count ++;
+            }
+          }
       }
       if (attribute == "Salary"){
-        cout << "Please enter employees salary to search:  ";
-        string salary_to_search;
-        string salary_in_array = sys[i].salary;
-        cin >> salary_to_search;
-        if (salary_in_array.find(salary_to_search) != string::npos){
-          cout << "Name:\t" << sys[i].name << endl;
-          cout << "ID:\t" << sys[i].id << endl;
-          cout << "Age:\t" << sys[i].age << endl;
-          cout << "Role:\t" << sys[i].role << endl;
-          cout << "Salary:\t" << sys[i].salary << endl;
-          count ++;
-        }
+          cout << "Please enter employees salary to search:  ";
+          string salary_to_search;
+          cin >> salary_to_search;
+          for (i = 0; i < n; i++){
+            string salary_in_array = sys[i].salary;
+            transform(salary_in_array.begin(), salary_in_array.end(), salary_in_array.begin(), ::toupper);
+            transform(salary_to_search.begin(), salary_to_search.end(), salary_to_search.begin(), ::toupper);
+            if(salary_in_array.find(salary_to_search) != string::npos){
+              cout << "Name:\t" << sys[i].name << endl;
+              cout << "ID:\t" << sys[i].id << endl;
+              cout << "Age:\t" << sys[i].age << endl;
+              cout << "Role:\t" << sys[i].role << endl;
+              cout << "Salary:\t" << sys[i].salary << endl;
+              count ++;
+            }
+          }
       }
-    }
 
     return count;
 }
