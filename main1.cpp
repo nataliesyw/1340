@@ -270,7 +270,7 @@ void sort(company_struct sys[], int current_num_record){
     string attribute;
     cin >> attribute;
 
-    cout << "Would you like to "
+    cout << "Would you like to ";
 
 
 
