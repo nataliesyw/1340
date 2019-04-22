@@ -337,26 +337,28 @@ int output(string filename, company_struct sys[], int n){
 // early leave
 // late
 
-// void check(string filename, company_struct *& sys[]){
-//     ifstream fin;
-//      fin.open(filename.c_str());
-//      // check if the file can be opened
-//      if (raw_textfile.fail())
-//      {
-//          cout << "Error in file opening." << endl;
-//          return 0;
-//      }
-//      int i = 0;
-//      string line;
-//      while (getline(fin, line)){
-//          istringstream iss(line);
-//      }
-// }
+void check(){
+
+ }
 
 
 
 // calculate the late record according to clock in and clock out time
-void cal(){
+// void cal(string filename, company_struct *& sys[]){
+  // ifstream fin;
+  //      fin.open(filename.c_str());
+  //      // check if the file can be opened
+  //      if (raw_textfile.fail())
+  //      {
+  //          cout << "Error in file opening." << endl;
+  //          return 0;
+  //      }
+  //      int i = 0;
+  //      string line;
+  //      while (getline(fin, line)){
+  //          istringstream iss(line);
+  //      }
+
 
 }
 
