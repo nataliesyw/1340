@@ -190,6 +190,7 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Age:\t" << sys[i].age << endl;
               cout << "Role:\t" << sys[i].role << endl;
               cout << "Salary:\t" << sys[i].salary << endl;
+              cout << endl;
               count ++;
             }
           }
@@ -209,6 +210,7 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Age:\t" << sys[i].age << endl;
               cout << "Role:\t" << sys[i].role << endl;
               cout << "Salary:\t" << sys[i].salary << endl;
+              cout << endl;
               count ++;
             }
           }
@@ -228,6 +230,7 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Age:\t" << sys[i].age << endl;
               cout << "Role:\t" << sys[i].role << endl;
               cout << "Salary:\t" << sys[i].salary << endl;
+              cout << endl;
               count ++;
             }
           }
@@ -247,6 +250,7 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Age:\t" << sys[i].age << endl;
               cout << "Role:\t" << sys[i].role << endl;
               cout << "Salary:\t" << sys[i].salary << endl;
+              cout << endl;
               count ++;
             }
           }
@@ -265,6 +269,7 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Age:\t" << sys[i].age << endl;
               cout << "Role:\t" << sys[i].role << endl;
               cout << "Salary:\t" << sys[i].salary << endl;
+              cout << endl;
               count ++;
             }
           }
@@ -332,15 +337,27 @@ int output(string filename, company_struct sys[], int n){
 // early leave
 // late
 
-void check(){
-    
-}
+// void check(string filename, company_struct *& sys[]){
+//     ifstream fin;
+//      fin.open(filename.c_str());
+//      // check if the file can be opened
+//      if (raw_textfile.fail())
+//      {
+//          cout << "Error in file opening." << endl;
+//          return 0;
+//      }
+//      int i = 0;
+//      string line;
+//      while (getline(fin, line)){
+//          istringstream iss(line);
+//      }
+// }
 
 
 
 // calculate the late record according to clock in and clock out time
 void cal(){
-    
+
 }
 
 int main(){
@@ -385,11 +402,11 @@ int main(){
         // if (command_choice == "DELETE"){
     	//    delete_record();
         // }
-        
+
         if (command_choice == "SHOW"){
             show(company_ptr, number_records);
         }
-        
+
         if (command_choice == "SEARCH"){
             cout << "Please enter the attribute to search for employees:  "<< endl;
             cout << "(Name/ Age/ ID/ Role/ Salary) ";
@@ -404,7 +421,7 @@ int main(){
         if (command_choice == "OUTPUT"){
             cout << "Please enter the filename to save as:  ";
             cin >> save_as_filename;
-            count = save_as(save_as_filename, company_ptr, number_records);
+            count = output(save_as_filename, company_ptr, number_records);
             cout << count << " record(s) found." << endl;
             cout << "The system is saved into "<< save_as_filename<< endl;
             cout << endl;
@@ -412,14 +429,15 @@ int main(){
 
 
         command_choice = print_command();
+      }
   //      if (command_choice == "FIND"){
     //        find();
 //        }
-        
 
-        
-        
-       
+
+
+
+
 
 
     cout << "Exit the system."<< endl;
