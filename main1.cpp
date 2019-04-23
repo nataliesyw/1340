@@ -192,6 +192,7 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
               count ++;
+              break;
             }
           }
       }
@@ -212,6 +213,7 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
               count ++;
+              break;
             }
           }
       }
@@ -232,6 +234,7 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
               count ++;
+              break;
             }
           }
       }
@@ -252,6 +255,7 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
               count ++;
+              break;
             }
           }
       }
@@ -271,6 +275,7 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
               count ++;
+              break;
             }
           }
       }
@@ -360,7 +365,6 @@ void check(){
   //      }
 
 
-}
 
 int main(){
      // attribute: the parameter that the user would like to search for
