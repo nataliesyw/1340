@@ -192,7 +192,6 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
               count ++;
-              break;
             }
           }
       }
@@ -213,7 +212,6 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
               count ++;
-              break;
             }
           }
       }
@@ -234,7 +232,6 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
               count ++;
-              break;
             }
           }
       }
@@ -255,7 +252,6 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
               count ++;
-              break;
             }
           }
       }
@@ -275,7 +271,6 @@ int search(string attribute, company_struct sys[], int n){
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
               count ++;
-              break;
             }
           }
       }
