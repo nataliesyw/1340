@@ -93,7 +93,7 @@ int load(string raw_filename, company_struct * &sys, int & sys_size){
     while (getline(raw_textfile, line)){
 
         if (i >= sys_size)
-            grow_system(sys, sys_size, 1); // to be confirm: the number that array will grow !!!! ***********
+            grow_system(sys, sys_size, 1);
 
         // extract ONE employee record : name, id, age, role, salary
         if (i < sys_size) {
