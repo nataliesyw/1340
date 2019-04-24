@@ -342,22 +342,61 @@ void check(){
  }
 
 
-
+// not yet refined!!! 
 // calculate the late record according to clock in and clock out time
-// void cal(string filename, company_struct *& sys[]){
-  // ifstream fin;
-  //      fin.open(filename.c_str());
-  //      // check if the file can be opened
-  //      if (raw_textfile.fail())
-  //      {
-  //          cout << "Error in file opening." << endl;
-  //          return 0;
-  //      }
-  //      int i = 0;
-  //      string line;
-  //      while (getline(fin, line)){
-  //          istringstream iss(line);
-  //      }
+// filename: the clock-in and clock-out raw text file filename
+// n: system_size
+void cal(string filename, company_struct * &sys, int n){
+    ifstream fin;
+    fin.open(filename.c_str());
+    // check if the file can be opened
+    if (fin.fail()){
+        cout << "Error in file opening." << endl;
+    }
+    string line, id, start_time, end_time;
+    while(getline(fin,line)){
+      istringstream iss(line);
+
+      getline(iss, id, ',');
+      getline(iss, start_time, ',');
+      getline(iss, end_time, ',');
+
+      int new_start, new_end;
+      new_start = stoi(start_time);
+      new_end = stoi(end_time);
+      cout << "ID:" << stoi(id) << endl;
+      cout << "id in sys:" << stoi(sys[0].id)<< endl;
+      cout << "start_time: " << new_start << endl;
+      cout << "end_time: " << new_end << endl;
+      // int diff_hrs = new_int2 / 100 - new_int1 / 100;
+      // int diff_minutes = new_int2 % 100 - new_int1 % 100;
+      // cout << "diff_hrs: " << diff_hrs << endl;
+      // cout << "diff_minutes: " << diff_minutes << endl;
+      for (int i = 0; i < n; i++){
+        if (stoi(id) == stoi(sys[i].id)){
+          if (new_start == 9999 && new_end == 9999){
+            sys[i].attendance_count -= 1;
+            cout << "attendace_count +=1" << endl;
+          }
+          else{
+            if (new_start > 900){
+                sys[i].late_count += 1;
+                cout << "late_count +=1" << endl;
+            }
+            if (new_end < 1700){
+                sys[i].early_leave_count += 1;
+                cout << "early_leave_count +=1" << endl;
+            }
+          }
+        }
+      }
+    }
+    for (int i = 0; i < n; i++){
+      cout << "attendance_count:" << sys[i].attendance_count << endl;
+      cout << "late_count:" << sys[i].late_count << endl;
+      cout << "early_leave_count:" << sys[i].early_leave_count << endl;
+    }
+  }
 
 
 
@@ -370,6 +409,7 @@ int main(){
     string command_choice;
     string save_as_filename;
     string search_attribute;
+    string clock_filename;
     int count;
 
     // output text file
@@ -400,6 +440,7 @@ int main(){
                 number_records = add_record(company_ptr, number_records);
             cout << "There are now " << number_records << " record(s) in the system." << endl << endl;
         }
+
         // if (command_choice == "DELETE"){
     	//    delete_record();
         // }
@@ -416,6 +457,7 @@ int main(){
             cout << endl << count << " record(s) found." << endl;
             cout << endl;
         }
+
         // if (command_choice == "SORT"){
         //    sort();
         // }
@@ -428,13 +470,14 @@ int main(){
             cout << endl;
         }
 
+        if (command_choice == "CAL"){
+          cout << "Please enter the clock.io filename: ";
+          cin >> clock_filename;
+          cal(clock_filename, company_ptr, system_size);
+        }
 
         command_choice = print_command();
       }
-  //      if (command_choice == "FIND"){
-    //        find();
-//        }
-
 
 
 
