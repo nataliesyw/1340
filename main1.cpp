@@ -365,8 +365,6 @@ void cal(string filename, company_struct * &sys, int n){
       int new_start, new_end;
       new_start = stoi(start_time);
       new_end = stoi(end_time);
-      // int diff_hrs = new_int2 / 100 - new_int1 / 100;
-      // int diff_minutes = new_int2 % 100 - new_int1 % 100;
         cout << "ID:" << stoi(id) << endl;
         cout << "id in sys:" << stoi(sys[0].id)<< endl;
         cout << "start_time: " << new_start << endl;
