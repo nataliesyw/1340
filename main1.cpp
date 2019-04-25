@@ -41,6 +41,7 @@ string print_command(){
     cout << "\"CAL\": Calulate the the attendence of employees." << endl;
     cout << "\"ADD\": Add a new record of a new employee " << endl;
     cout << "\"DELETE\": Fire an employee." << endl;
+    cout << "\"EDIT\" : Edit the information of employee." << endl;
     cout << "\"SHOW\": Show all attribute by the employee by the name." << endl;
     cout << "\"SEARCH\": Search for the employees according to that attribute." << endl;
     cout << "\"SORT\": Sort the employess according to that attribute" << endl;
@@ -153,7 +154,10 @@ int add_record(company_struct sys[], int current_num_record){
     return current_num_record;
 }
 
+// Edit command
+void edit(company_struct sys[], int current_num_record){
 
+}
 // SHOW command
 // print out all records of the current system
 // current_num_record: number of records current stored in the system
@@ -761,6 +765,10 @@ int main(){
           cout << "Please input employee's id to delete: ";
           cin >> employee_id_delete;
     	    number_records = delete_record(employee_id_delete, company_ptr, system_size);
+         }
+
+         if (command_choice == "EDIT"){
+            edit(company_ptr, number_records);
          }
 
         if (command_choice == "SHOW"){
