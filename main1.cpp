@@ -45,6 +45,7 @@ string print_command(){
     cout << "\"SEARCH\": Search for the employees according to that attribute." << endl;
     cout << "\"SORT\": Sort the employess according to that attribute" << endl;
     cout << "\"CHECK\": Check the late, eary leave record and atttendance of employees." << endl;
+    cout << "\"SAVE\": Save the current system into a new textfile. " << endl;
     cout << "\"OUTPUT\": Output the monthly report" << endl;
     cout << "\"EXIT\" : Exit the system." << endl;
 
@@ -337,11 +338,10 @@ int delete_record(string id_to_search, company_struct sys[], int n){
     return n;
 }
 
-// OUTPUT command
-// output the monthly report that includes attendance, early leave, monthly target and late record
+// SAVE command
 // save all records of the system into a new text file
 // return 0 if an error occurs when opening the file
-int output(string filename, company_struct sys[], int n){
+int save_as(string filename, company_struct sys[], int n){
     ofstream fout;
     fout.open(filename.c_str());
     if (fout.fail())
@@ -496,10 +496,10 @@ int main(){
         // if (command_choice == "SORT"){
         //    sort();
         // }
-        if (command_choice == "OUTPUT"){
+        if (command_choice == "SAVE"){
             cout << "Please enter the filename to save as:  ";
             cin >> save_as_filename;
-            count = output(save_as_filename, company_ptr, number_records);
+            count = save_as(save_as_filename, company_ptr, number_records);
             cout << count << " record(s) found." << endl;
             cout << "The system is saved into "<< save_as_filename<< endl;
             cout << endl;
