@@ -285,7 +285,40 @@ int search(string attribute, company_struct sys[], int n){
 // print out all records which are sorted
 // selectively print out the records *******if we have time*******
 void sort_record(string attribute, company_struct sys[], int num){
-  cout << "HI" << endl;
+    int i, j ,idx;
+    string min;
+    // selection sort
+    for (i = 0; i < num - 1; i++)
+    {
+        min = sys[i].age;
+        idx = i;
+        
+        for (j = i + 1; j < num; j++)
+        {
+            if (sys[j].age < min)
+            {
+                min = sys[j].name;
+                idx = j;
+            }
+        }
+        
+        if (idx != i)
+        {
+            company_struct temp;
+            // swap pb[i] & pb[idx]
+            temp    = sys[i];
+            sys[i]   = sys[idx];
+            sys[idx] = temp;           
+        }
+        
+    for ( int k = 0; k < num; k++){
+      cout << "Name:\t" << sys[i].name << endl;
+      cout << "ID:\t" << sys[i].id << endl;
+      cout << "Age:\t" << sys[i].age << endl;
+      cout << "Role:\t" << sys[i].role << endl;
+      cout << "Salary:\t" << sys[i].salary << endl;
+      cout << endl;
+    }
 
 }
 
