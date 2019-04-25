@@ -26,7 +26,7 @@ struct company_struct{
     string salary;
     bool perfect_attendance;
     double monthly_revenue;
-    int attendance_count = 0;
+    int attendance_count = 20;
     int early_leave_count = 0;
     int late_count = 0;
 };
@@ -38,13 +38,14 @@ string print_command(){
     cout << "Welcome to the staff management system.  Here are the commands in this system." << endl;
     cout << "Please enter the commands according to the following format." << endl;
     cout << "\"LOAD\": Load a file that contains record of employees." << endl;
-    cout << "\"CAL\": Calulate the the attdence of employees." << endl;
+    cout << "\"CAL\": Calulate the the attendence of employees." << endl;
     cout << "\"ADD\": Add a new record of a new employee " << endl;
     cout << "\"DELETE\": Fire an employee." << endl;
     cout << "\"SHOW\": Show all attribute by the employee by the name." << endl;
     cout << "\"SEARCH\": Search for the employees according to that attribute." << endl;
     cout << "\"SORT\": Sort the employess according to that attribute" << endl;
     cout << "\"CHECK\": Check the late, eary leave record and atttendance of employees." << endl;
+    cout << "\"SAVE\": Save the current system into a new textfile. " << endl;
     cout << "\"OUTPUT\": Output the monthly report" << endl;
     cout << "\"EXIT\" : Exit the system." << endl;
 
@@ -180,7 +181,7 @@ int search(string attribute, company_struct sys[], int n){
       if (attribute == "Name"){
           cout << "Please enter employees name to search:  ";
           string name_to_search;
-          cin >> name_to_search;
+          getline(cin >> ws, name_to_search);          // cin >> name_to_search;
           for (i = 0; i < n; i++){
             string name_in_array = sys[i].name;
             transform(name_in_array.begin(), name_in_array.end(), name_in_array.begin(), ::toupper);
@@ -325,11 +326,10 @@ int delete_record(string id_to_search, company_struct sys[], int n){
     return n;
 }
 
-// OUTPUT command
-// output the monthly report that includes attendance, early leave, monthly target and late record
+// SAVE command
 // save all records of the system into a new text file
 // return 0 if an error occurs when opening the file
-int output(string filename, company_struct sys[], int n){
+int save_as(string filename, company_struct sys[], int n){
     ofstream fout;
     fout.open(filename.c_str());
     if (fout.fail())
@@ -339,10 +339,10 @@ int output(string filename, company_struct sys[], int n){
     }
 
     int i;
-    fout << "Name"<< setw(25) << "ID" << setw(5) << "Age" << setw(3) << "Role" << setw(10) << "Salary" << setw(7) <<endl;
+    fout << setw(25)<< "Name"<< setw(7) << "ID" << setw(6) << "Age" << setw(13) << "Role" << setw(9) << "Salary" <<endl;
     for (i = 0; i < n; i++)
     {
-      fout << sys[i].name << " " << sys[i].id << " " << sys[i].age << " " << sys[i].role << " " << sys[i].salary << endl;
+      fout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(6) << sys[i].age << setw(13) << sys[i].role << setw(9) << sys[i].salary <<endl;
     }
 
     fout.close();
@@ -387,11 +387,11 @@ void cal(string filename, company_struct * &sys, int n){
       cout << "id in sys:" << stoi(sys[0].id)<< endl;
       cout << "start_time: " << new_start << endl;
       cout << "end_time: " << new_end << endl;
-        // int diff_hrs = new_int2 / 100 - new_int1 / 100;
-        // int diff_minutes = new_int2 % 100 - new_int1 % 100;
-        // cout << "diff_hrs: " << diff_hrs << endl;
-        // cout << "diff_minutes: " << diff_minutes << endl;
-      for (int i = 0; i <= n; i++){
+      // int diff_hrs = new_int2 / 100 - new_int1 / 100;
+      // int diff_minutes = new_int2 % 100 - new_int1 % 100;
+      // cout << "diff_hrs: " << diff_hrs << endl;
+      // cout << "diff_minutes: " << diff_minutes << endl;
+      for (int i = 0; i < n; i++){
         if (stoi(id) == stoi(sys[i].id)){
           if (new_start == 9999 && new_end == 9999){
             sys[i].attendance_count -= 1;
@@ -403,8 +403,8 @@ void cal(string filename, company_struct * &sys, int n){
                 cout << "late_count +=1" << endl;
             }
             if (new_end < 1700){
-              sys[i].early_leave_count += 1;
-              cout << "early_leave_count +=1" << endl;
+                sys[i].early_leave_count += 1;
+                cout << "early_leave_count +=1" << endl;
             }
           }
         }
@@ -416,6 +416,7 @@ void cal(string filename, company_struct * &sys, int n){
       cout << "early_leave_count:" << sys[i].early_leave_count << endl;
     }
   }
+
 
 
 
@@ -503,7 +504,7 @@ int main(){
         if (command_choice == "OUTPUT"){
             cout << "Please enter the filename to save as:  ";
             cin >> save_as_filename;
-            count = output(save_as_filename, company_ptr, number_records);
+            count = save_as(save_as_filename, company_ptr, number_records);
             cout << count << " record(s) found." << endl;
             cout << "The system is saved into "<< save_as_filename<< endl;
             cout << endl;
