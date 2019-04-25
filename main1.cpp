@@ -291,7 +291,7 @@ void sort_record(string attribute, company_struct sys[], int num){
     for (i = 0; i < num - 1; i++)
     {
         min = sys[i].age;
-        cout << "min=" << min << endl;
+        cout << "mina=" << min << endl;
         idx = i;
         
         for (j = i + 1; j < num; j++)
@@ -300,6 +300,7 @@ void sort_record(string attribute, company_struct sys[], int num){
             {
                 min = sys[j].age;
                 idx = j;
+                cout << "new min=" << min << endl;
             }
         }
         
