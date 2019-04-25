@@ -181,8 +181,7 @@ int search(string attribute, company_struct sys[], int n){
       if (attribute == "Name"){
           cout << "Please enter employees name to search:  ";
           string name_to_search;
-          getline(cin >> ws, name_to_search);
-          // cin >> name_to_search;
+          getline(cin >> ws, name_to_search);          // cin >> name_to_search;
           for (i = 0; i < n; i++){
             string name_in_array = sys[i].name;
             transform(name_in_array.begin(), name_in_array.end(), name_in_array.begin(), ::toupper);
