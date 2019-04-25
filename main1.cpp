@@ -389,6 +389,9 @@ void cal(string filename, company_struct * &sys, int n){
             }
           }
         }
+        if (stoi(id) == 0000){
+          continue;
+        }
       }
     }
     for (int i = 0; i < n; i++){
