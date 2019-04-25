@@ -395,33 +395,32 @@ void cal(string filename, company_struct * &sys, int n){
       int new_start, new_end;
       new_start = stoi(start_time);
       new_end = stoi(end_time);
-        cout << "ID:" << stoi(id) << endl;
-        cout << "id in sys:" << stoi(sys[0].id)<< endl;
-        cout << "start_time: " << new_start << endl;
-        cout << "end_time: " << new_end << endl;
+      cout << "ID:" << stoi(id) << endl;
+      cout << "id in sys:" << stoi(sys[0].id)<< endl;
+      cout << "start_time: " << new_start << endl;
+      cout << "end_time: " << new_end << endl;
         // int diff_hrs = new_int2 / 100 - new_int1 / 100;
         // int diff_minutes = new_int2 % 100 - new_int1 % 100;
         // cout << "diff_hrs: " << diff_hrs << endl;
         // cout << "diff_minutes: " << diff_minutes << endl;
-        for (int i = 0; i <= n; i++){
-          if (stoi(id) == stoi(sys[i].id)){
-            if (new_start == 9999 && new_end == 9999){
-              sys[i].attendance_count -= 1;
-              cout << "attendace_count +=1" << endl;
+      for (int i = 0; i <= n; i++){
+        if (stoi(id) == stoi(sys[i].id)){
+          if (new_start == 9999 && new_end == 9999){
+            sys[i].attendance_count -= 1;
+            cout << "attendace_count +=1" << endl;
+          }
+          else{
+            if (new_start > 900){
+                sys[i].late_count += 1;
+                cout << "late_count +=1" << endl;
             }
-            else{
-              if (new_start > 900){
-                  sys[i].late_count += 1;
-                  cout << "late_count +=1" << endl;
-              }
-              if (new_end < 1700){
-                  sys[i].early_leave_count += 1;
-                  cout << "early_leave_count +=1" << endl;
-              }
+            if (new_end < 1700){
+              sys[i].early_leave_count += 1;
+              cout << "early_leave_count +=1" << endl;
             }
           }
         }
-    
+      }
     }
     for (int i = 0; i < n; i++){
       cout << "attendance_count:" << sys[i].attendance_count << endl;
