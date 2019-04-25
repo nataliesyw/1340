@@ -283,20 +283,8 @@ int search(string attribute, company_struct sys[], int n){
 // SORT command
 // print out all records which are sorted
 // selectively print out the records *******if we have time*******
-void sort(company_struct sys[], int current_num_record){
-    cout << "Sort accroding to:" << endl;
-    cout << "Age" << endl;
-    cout << "Salary" << endl;
-    cout << "Early-leave" << endl;
-    cout << "Late" << endl;
-    cout << "Attendence" << endl;
-
-    string attribute;
-    cin >> attribute;
-
-    cout << "Would you like to ";
-
-
+void sort_record(string attribute, company_struct sys[], int num){
+  cout << "HI" << endl;
 
 }
 
@@ -440,6 +428,8 @@ int main(){
     string command_choice;
     string save_as_filename;
     string search_attribute;
+    string sort_attribute;
+    string sort_order;
     string clock_filename;
     string employee_id_delete;
     int count;
@@ -492,9 +482,24 @@ int main(){
             cout << endl;
         }
 
-        // if (command_choice == "SORT"){
-        //    sort();
-        // }
+        if (command_choice == "SORT"){
+            cout << "Sort accroding to:" << endl;
+            cout << "Age" << endl;
+            cout << "Salary" << endl;
+            cout << "Early-leave" << endl;
+            cout << "Late" << endl;
+            cout << "Attendence" << endl;
+
+            cin >> sort_attribute;
+
+            cout << "Would you like to sort in ascending order or descending order? (a/d)";
+
+            cin >> sort_order;
+
+            sort_record(sort_attribute, company_ptr, number_records);
+
+        }
+
         if (command_choice == "OUTPUT"){
             cout << "Please enter the filename to save as:  ";
             cin >> save_as_filename;
