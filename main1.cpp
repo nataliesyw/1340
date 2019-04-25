@@ -351,10 +351,10 @@ int save_as(string filename, company_struct sys[], int n){
     }
 
     int i;
-    fout << "Name"<< setw(25) << "ID" << setw(5) << "Age" << setw(3) << "Role" << setw(10) << "Salary" << setw(7) <<endl;
+    fout << setw(25)<< "Name"<< setw(7) << "ID" << setw(6) << "Age" << setw(13) << "Role" << setw(9) << "Salary" <<endl;
     for (i = 0; i < n; i++)
     {
-      fout << sys[i].name << " " << sys[i].id << " " << sys[i].age << " " << sys[i].role << " " << sys[i].salary << endl;
+      fout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(6) << sys[i].age << setw(13) << sys[i].role << setw(9) << sys[i].salary <<endl;
     }
 
     fout.close();
