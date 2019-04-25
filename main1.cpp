@@ -399,11 +399,19 @@ void cal(string filename, company_struct * &sys, int n){
       cout << "id in sys:" << stoi(sys[0].id)<< endl;
       cout << "start_time: " << new_start << endl;
       cout << "end_time: " << new_end << endl;
+<<<<<<< HEAD
       // int diff_hrs = new_int2 / 100 - new_int1 / 100;
       // int diff_minutes = new_int2 % 100 - new_int1 % 100;
       // cout << "diff_hrs: " << diff_hrs << endl;
       // cout << "diff_minutes: " << diff_minutes << endl;
       for (int i = 0; i < n; i++){
+=======
+        // int diff_hrs = new_int2 / 100 - new_int1 / 100;
+        // int diff_minutes = new_int2 % 100 - new_int1 % 100;
+        // cout << "diff_hrs: " << diff_hrs << endl;
+        // cout << "diff_minutes: " << diff_minutes << endl;
+      for (int i = 0; i <= n; i++){
+>>>>>>> d8cc4e107cef50ab7d715ce3803a2ffec7e409b5
         if (stoi(id) == stoi(sys[i].id)){
           if (new_start == 9999 && new_end == 9999){
             sys[i].attendance_count -= 1;
@@ -415,8 +423,13 @@ void cal(string filename, company_struct * &sys, int n){
                 cout << "late_count +=1" << endl;
             }
             if (new_end < 1700){
+<<<<<<< HEAD
                 sys[i].early_leave_count += 1;
                 cout << "early_leave_count +=1" << endl;
+=======
+              sys[i].early_leave_count += 1;
+              cout << "early_leave_count +=1" << endl;
+>>>>>>> d8cc4e107cef50ab7d715ce3803a2ffec7e409b5
             }
           }
         }
