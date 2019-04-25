@@ -302,9 +302,39 @@ void sort(company_struct sys[], int current_num_record){
 
 
 // DELETE command
-// delete a record of ONE employee
-void delete_record(){
+// delete a record of ONE employee in the company_ptr array
+// id_to_search: id of employee to be deleted
+// return the number of record (n-1)
+int delete_record(string id_to_search, company_struct sys[], int n){
+    char ans;
 
+    for (int i = 0; i < n; i++){
+      string id_in_array = sys[i].id;
+
+      if (id_in_array.find(id_to_search) != string::npos){
+          cout << "Name:\t" << sys[i].name << endl;
+          cout << "ID:\t" << sys[i].id << endl;
+          cout << "Age:\t" << sys[i].age << endl;
+          cout << "Salary:\t" << sys[i].salary << endl;
+          cout << endl;
+          cout << "Delete from the system (y/n)? ";
+          cin >> ans;
+
+          if (ans == 'y'){
+            // skip current record and copy all rest records to sys
+            for (int j = i+1; j < n; j++){
+              sys[j-1] = sys[j];
+            }
+            n--;
+            cout << "Number of records in the management system has been changed to " << n << "."<< endl;
+            cout << "Enter the command SHOW to show all existing records in the system."<< endl;
+            cout << endl;
+            return n;
+            break;
+          }
+      }
+    }
+    return n;
 }
 
 // OUTPUT command
@@ -343,7 +373,7 @@ void check(){
  }
 
 
-// not yet refined!!! 
+// not yet refined!!!
 // calculate the late record according to clock in and clock out time
 // filename: the clock-in and clock-out raw text file filename
 // n: system_size
@@ -412,6 +442,7 @@ int main(){
     string save_as_filename;
     string search_attribute;
     string clock_filename;
+    string employee_id_delete;
     int count;
 
     // output text file
@@ -443,9 +474,11 @@ int main(){
             cout << "There are now " << number_records << " record(s) in the system." << endl << endl;
         }
 
-        // if (command_choice == "DELETE"){
-    	//    delete_record();
-        // }
+        if (command_choice == "DELETE"){
+          cout << "Please input employee's id to delete: ";
+          cin >> employee_id_delete;
+    	    number_records = delete_record(employee_id_delete, company_ptr, system_size);
+         }
 
         if (command_choice == "SHOW"){
             show(company_ptr, number_records);
