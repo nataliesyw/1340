@@ -291,13 +291,14 @@ void sort_record(string attribute, company_struct sys[], int num){
     for (i = 0; i < num - 1; i++)
     {
         min = sys[i].age;
+        cout << "min=" << min << endl;
         idx = i;
         
         for (j = i + 1; j < num; j++)
         {
             if (sys[j].age < min)
             {
-                min = sys[j].name;
+                min = sys[j].age;
                 idx = j;
             }
         }
@@ -310,15 +311,16 @@ void sort_record(string attribute, company_struct sys[], int num){
             sys[i]   = sys[idx];
             sys[idx] = temp;           
         }
-        
-    for ( int k = 0; k < num; k++){
-      cout << "Name:\t" << sys[i].name << endl;
-      cout << "ID:\t" << sys[i].id << endl;
-      cout << "Age:\t" << sys[i].age << endl;
-      cout << "Role:\t" << sys[i].role << endl;
-      cout << "Salary:\t" << sys[i].salary << endl;
-      cout << endl;
     }
+        
+   // for ( int k = 0; k < num; k++){
+   //   cout << "Name:\t" << sys[k].name << endl;
+   //   cout << "ID:\t" << sys[k].id << endl;
+   //   cout << "Age:\t" << sys[k].age << endl;
+   //   cout << "Role:\t" << sys[k].role << endl;
+   //   cout << "Salary:\t" << sys[k].salary << endl;
+   //   cout << endl;
+  //  }
 
 }
 
