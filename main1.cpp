@@ -147,7 +147,7 @@ int add_record(company_struct sys[], int current_num_record){
     cin >> ans;
     if (ans == 'y')
     {
-        cout << "1 record added." << endl;
+        cout << "***1 record added.***" << endl;
         current_num_record++;
     }
 
@@ -179,18 +179,15 @@ void show(company_struct sys[], int current_num_record){
 // return the number of records found
 // attribute: the parameter that the user input to search for
 // n: numbr of records found
-int search(string attribute, company_struct sys[], int n){
+int search(string attribute, string detail, company_struct sys[], int n){
     int i, count = 0;
 
       if (attribute == "1"){
-          cout << "Please enter employees name to search:  ";
-          string name_to_search;
-          getline(cin >> ws, name_to_search);          // cin >> name_to_search;
           for (i = 0; i < n; i++){
             string name_in_array = sys[i].name;
             transform(name_in_array.begin(), name_in_array.end(), name_in_array.begin(), ::toupper);
-            transform(name_to_search.begin(), name_to_search.end(), name_to_search.begin(), ::toupper);
-            if(name_in_array.find(name_to_search) != string::npos){
+            transform(detail.begin(), detail.end(), detail.begin(), ::toupper);
+            if(name_in_array.find(detail) != string::npos){
               cout << "Name:\t" << sys[i].name << endl;
               cout << "ID:\t" << sys[i].id << endl;
               cout << "Age:\t" << sys[i].age << endl;
@@ -573,7 +570,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
   }
-  if (attribute == "Late"){
+  if (attribute == "3" || "4" || "5"){
     for ( int k = 0; k < num; k++){
 
       if (stoi(sys[k].id) > ori_num){
@@ -668,7 +665,7 @@ int delete_record(string id_to_search, company_struct sys[], int n){
           sys[j-1] = sys[j];
         }
       n--;
-      cout << "Number of records have been changed to " << n << "." << endl;
+      cout << "***Number of records have been changed to " << n << ".***" << endl << endl;
 			return n;
 			break;
       }
@@ -709,25 +706,36 @@ int save_as(string filename, company_struct sys[], int n){
 
 void check(string attribute, company_struct sys[], int n){
 
-  if (attribute == "P"){
+  int num;
+
+  if (attribute == "1"){
     for (int i = 0; i < n; i++){
-      if (sys[i].attendance_count == 20)
-        cout << setw(25) << sys[i].name << setw(7) << sys[i].id << endl;
+      if (sys[i].attendance_count == 20){
+        num++;
+        cout << setw(25) << sys[i].name << setw(7) << sys[i].id << endl << endl;
+      }
     }
+    cout << "***There are total " << num << "employee(s) with perfect attendance.***" << endl << endl;
   }
 
-  if (attribute == "L"){
+  if (attribute == "2"){
     for (int j = 0; j < n; j++){
-      if (sys[j].late_count > 0)
-        cout << setw(25) << sys[j].name << setw(7) << sys[j].id << setw(3) << sys[j].late_count << endl;
+      if (sys[j].late_count > 0){
+        num++;
+        cout << setw(25) << sys[j].name << setw(7) << sys[j].id << setw(3) << sys[j].late_count << endl << endl;
+      }
     }
+    cout << "***There are total " << num << "employee(s) being late in this month.***" << endl << endl;
   }
 
-  if (attribute == "E"){
+  if (attribute == "3"){
     for (int k = 0; k < n; k++){
-      if (sys[k].early_leave_count > 0)
-        cout << setw(25) << sys[k].name << setw(7) << sys[k].id << setw(3) << sys[k].early_leave_count << endl;
+      if (sys[k].early_leave_count > 0){
+        num++;
+        cout << setw(25) << sys[k].name << setw(7) << sys[k].id << setw(3) << sys[k].early_leave_count << endl << endl;
+      }
     }
+    cout << "***There are total " << num << "employee(s) leaving early in this month.***" << endl << endl;
   }
 
 }
@@ -824,7 +832,9 @@ int main(){
             cout << endl;
             number_records = load(raw_textfile, company_ptr, system_size);
             ori_num = number_records + 1000;
-            cout << number_records << " number of records loaded." << endl;
+            cout << "***" << number_records << " number of records loaded.***" << endl;
+            cout << endl;
+
         }
 
         if (command_choice == "ADD"){
@@ -832,7 +842,7 @@ int main(){
                 grow_system(company_ptr, system_size, 1);
             if (number_records < system_size)
                 number_records = add_record(company_ptr, number_records);
-            cout << "There are now " << number_records << " record(s) in the system." << endl << endl;
+            cout << "***There are now " << number_records << " record(s) in the system.***" << endl << endl;
         }
 
         if (command_choice == "DELETE"){
@@ -868,6 +878,8 @@ int main(){
 
         if (command_choice == "SEARCH"){
 
+            string search_input;
+
             cout << "Please enter the attribute to search for employees:  "<< endl;
             cout << "Name-----(1)" << endl;
             cout << "ID-------(2)" << endl;
@@ -876,7 +888,28 @@ int main(){
             cout << "Salary---(5)" << endl;
 
             cin >> search_attribute;
-            count = search(search_attribute, company_ptr, number_records);
+
+            if (search_attribute == "1"){
+              cout << "Please enter employees name to search:  ";
+              getline(cin >> ws, search_input);                
+            }
+
+            if (search_attribute == "2"){
+
+            }
+
+            if (search_attribute == "3"){
+
+            }
+
+            if (search_attribute == "4"){
+
+            }
+
+            if (search_attribute == "5"){
+
+            }
+            count = search(search_attribute, search_input, company_ptr, number_records);
             cout << endl << count << " record(s) found." << endl;
             cout << endl;
         }
@@ -918,10 +951,11 @@ int main(){
 
         if (command_choice == "CHECK"){
           string check_attribute;
-          cout << "Check perfect attendence---P" << endl;
-          cout << "Check late employee---L" << endl;
-          cout << "Check early left employee---E" << endl;
-          cout << "What would you want to check?";
+
+          cout << "Please enter the attribute to be checked:";
+          cout << "Check employees with perfect ATTENDANCE---(1)" << endl;
+          cout << "Check employees who have been LATE--------(2)" << endl;
+          cout << "Check employees who have LEFT EARLY-------(3)" << endl;
 
           cin >> check_attribute;
           check(check_attribute, company_ptr, system_size);
@@ -929,12 +963,6 @@ int main(){
 
         command_choice = print_command();
       }
-
-
-
-
-
-
 
     cout << "Exit the system."<< endl;
     // delete the dynamic memeory array
