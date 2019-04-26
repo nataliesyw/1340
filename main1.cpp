@@ -168,12 +168,39 @@ void edit(string attribute, string id_to_edit, company_struct sys[], int n){
     if(id_in_array.find(id_to_edit) != string::npos){
 
       if (attribute == "1"){
+        cout << "Original name of employee " << id_to_edit << ":  " << sys[i].name << endl;
+        getline(cin, line);        
+        cout << "New name:  ";
+        getline(cin, new_info);
+        sys[i].name = new_info;
+        cout << sys[i].name << endl;
+      }
+
+      if (attribute == "2"){
         cout << "Original age of employee " << id_to_edit << ":  " << sys[i].age << endl;
         getline(cin, line);        
         cout << "New age:  ";
         getline(cin, new_info);
         sys[i].age = new_info;
         cout << sys[i].age << endl;
+      }
+
+      if (attribute == "3"){
+        cout << "Original role of employee " << id_to_edit << ":  " << sys[i].role << endl;
+        getline(cin, line);        
+        cout << "New role:  ";
+        getline(cin, new_info);
+        sys[i].role = new_info;
+        cout << sys[i].role << endl;
+      }
+
+      if (attribute == "4"){
+        cout << "Original salary of employee " << id_to_edit << ":  " << sys[i].salary << endl;
+        getline(cin, line);        
+        cout << "New salary:  ";
+        getline(cin, new_info);
+        sys[i].salary = new_info;
+        cout << sys[i].salary << endl;
       }
       //name id age role salary
       cout << endl;
@@ -867,14 +894,15 @@ int main(){
           
           string edit_id;
 
-          cout << "***ID and NAME could NOT be changed***" << endl;
+          cout << "***ID could NOT be changed***" << endl;
           cout << "Input the ID of the employee: ";
 
           cin >> edit_id;
 
-          cout << "Age------(1)" << endl;
-          cout << "Role-----(2)" << endl;
-          cout << "Salary---(3)" << endl;
+          cout << "Name-----(1)" << endl;
+          cout << "Age------(2)" << endl;
+          cout << "Role-----(3)" << endl;
+          cout << "Salary---(4)" << endl;
           cout << "Please enter the attribute to be edited (1/2/3):  ";
 
           cin >> edit_attribute;
