@@ -601,7 +601,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
       cout << "Salary:\t" << sys[k].salary << endl; 
     }
   }
-  
+
 }
 
 
@@ -730,25 +730,22 @@ void cal(string filename, company_struct * &sys, int n){
         if (stoi(id) == stoi(sys[i].id)){
           if (new_start == 9999 && new_end == 9999){
             sys[i].attendance_count -= 1;
-            cout << "attendace_count +=1" << endl;
           }
           else{
             if (new_start > 900){
                 sys[i].late_count += 1;
-                cout << "late_count +=1" << endl;
             }
             if (new_end < 1700){
                 sys[i].early_leave_count += 1;
-                cout << "early_leave_count +=1" << endl;
             }
           }
         }
       }
     }
     for (int i = 0; i < n; i++){
-      cout << "attendance_count:" << sys[i].attendance_count << endl;
-      cout << "late_count:" << sys[i].late_count << endl;
-      cout << "early_leave_count:" << sys[i].early_leave_count << endl;
+      cout << "attendance_count of" << i << ":" << sys[i].attendance_count << endl;
+      cout << "late_count of" << i << ":" << sys[i].late_count << endl;
+      cout << "early_leave_count of" << i << ":" << sys[i].early_leave_count << endl;
     }
   }
 
