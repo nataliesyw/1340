@@ -576,7 +576,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
   }
-  if (attribute == "Late" || "Early Leave" || "Attendence"){
+  if (attribute == "Late"){
     for ( int k = 0; k < num; k++){
 
       if (stoi(sys[k].id) > ori_num){
