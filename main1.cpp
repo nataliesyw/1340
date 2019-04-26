@@ -294,7 +294,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
   string min;
   string max;
   // selection sort
-
+  cout << "Num:" << num << endl;
   // sort by ascending order
   if (order == "a"){
 
@@ -610,15 +610,15 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
 void refresh(company_struct sys[], int num){
 
   int i, j ,idx;
-  int min;
+  string min;
 
   for (i = 0; i < num - 1; i++){
-    min = sys[i].attendance_count;
+    min = sys[i].id;
     idx = i;
 
     for (j = i + 1; j < num; j++){
-      if (sys[j].attendance_count < min){
-          min = sys[j].attendance_count;
+      if (sys[j].id < min){
+          min = sys[j].id;
           idx = j;
       }
     }
