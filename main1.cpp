@@ -156,7 +156,7 @@ int add_record(company_struct sys[], int current_num_record){
 }
 
 // Edit command
-void edit(company_struct sys[], int current_num_record){
+void edit(string attribute, string id, company_struct sys[], int current_num_record){
 
 }
 // SHOW command
@@ -292,9 +292,9 @@ int search(string attribute, company_struct sys[], int n){
 void sort_record(string attribute, string order, company_struct sys[], int num, int ori_num){
   int i, j ,idx;
   int min;
-  string max;
+  int max;
   // selection sort
-  cout << "Num:" << num << endl;
+
   // sort by ascending order
   if (order == "a"){
 
@@ -303,7 +303,6 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
       for (i = 0; i < num - 1; i++)
       {
           min = stoi(sys[i].age);
-          cout << "min:" << min << endl;
           idx = i;
 
           for (j = i + 1; j < num; j++)
@@ -311,7 +310,6 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
               if (stoi(sys[j].age) < min)
               {
                   min = stoi(sys[j].age);
-                  cout << "new min:" << min << endl;
                   idx = j;
               }
           }
@@ -354,19 +352,18 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
       }
     }
 
-    int min_int;          // minimum for interger
     // sort by times for being late
     if (attribute == "Late"){
       for (i = 0; i < num - 1; i++)
       {
-          min_int = sys[i].late_count;
+          min = sys[i].late_count;
           idx = i;
 
           for (j = i + 1; j < num; j++)
           {
-              if (sys[j].late_count < min_int)
+              if (sys[j].late_count < min)
               {
-                  min_int = sys[j].late_count;
+                  min = sys[j].late_count;
                   idx = j;
               }
           }
@@ -386,14 +383,14 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     if (attribute == "Early leave"){
       for (i = 0; i < num - 1; i++)
       {
-          min_int = sys[i].early_leave_count;
+          min = sys[i].early_leave_count;
           idx = i;
 
           for (j = i + 1; j < num; j++)
           {
-              if (sys[j].early_leave_count < min_int)
+              if (sys[j].early_leave_count < min)
               {
-                  min_int = sys[j].early_leave_count;
+                  min = sys[j].early_leave_count;
                   idx = j;
               }
           }
@@ -413,14 +410,14 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     if (attribute == "Attendence"){
       for (i = 0; i < num - 1; i++)
       {
-          min_int = sys[i].attendance_count;
+          min = sys[i].attendance_count;
           idx = i;
 
           for (j = i + 1; j < num; j++)
           {
-              if (sys[j].attendance_count < min_int)
+              if (sys[j].attendance_count < min)
               {
-                  min_int = sys[j].attendance_count;
+                  min = sys[j].attendance_count;
                   idx = j;
               }
           }
@@ -445,14 +442,14 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     if (attribute == "Age"){
       for (i = 0; i < num - 1; i++)
       {
-          max = sys[i].age;
+          max = stoi(sys[i].age);
           idx = i;
 
           for (j = i + 1; j < num; j++)
           {
-              if (sys[j].age > max)
+              if (stoi(sys[j].age) > max)
               {
-                  max = sys[j].age;
+                  max = stoi(sys[j].age);
                   idx = j;
               }
           }
@@ -472,14 +469,14 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     if (attribute == "Salary"){
       for (i = 0; i < num - 1; i++)
       {
-          max = sys[i].salary;
+          max = stoi(sys[i].salary);
           idx = i;
 
           for (j = i + 1; j < num; j++)
           {
-              if (sys[j].salary > max)
+              if (stoi(sys[j].salary) > max)
               {
-                  max = sys[j].salary;
+                  max = stoi(sys[j].salary);
                   idx = j;
               }
           }
@@ -495,19 +492,18 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
       }
     }
 
-    int max_int;          // minimum for interger
     // sort by times for being late
     if (attribute == "Late"){
       for (i = 0; i < num - 1; i++)
       {
-          max_int = sys[i].late_count;
+          max = sys[i].late_count;
           idx = i;
 
           for (j = i + 1; j < num; j++)
           {
-              if (sys[j].late_count > max_int)
+              if (sys[j].late_count > max)
               {
-                  max_int = sys[j].late_count;
+                  max = sys[j].late_count;
                   idx = j;
               }
           }
@@ -527,14 +523,14 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     if (attribute == "Early leave"){
       for (i = 0; i < num - 1; i++)
       {
-          max_int = sys[i].early_leave_count;
+          max = sys[i].early_leave_count;
           idx = i;
 
           for (j = i + 1; j < num; j++)
           {
-              if (sys[j].early_leave_count > max_int)
+              if (sys[j].early_leave_count > max)
               {
-                  max_int = sys[j].early_leave_count;
+                  max = sys[j].early_leave_count;
                   idx = j;
               }
           }
@@ -559,9 +555,9 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
 
           for (j = i + 1; j < num; j++)
           {
-              if (sys[j].attendance_count > max_int)
+              if (sys[j].attendance_count > max)
               {
-                  max_int = sys[j].attendance_count;
+                  max = sys[j].attendance_count;
                   idx = j;
               }
           }
@@ -847,7 +843,24 @@ int main(){
          }
 
          if (command_choice == "EDIT"){
-            edit(company_ptr, number_records);
+
+           string edit_attribute;
+           string edit_id;
+
+           cout << "***ID could NOT be changed***" << endl;
+           cout << "Input the ID" << endl;
+
+           cin >> edit_id;
+
+           cout << "What do you want to edit?" << endl;
+           cout << "Name" << endl;
+           cout << "Age" << endl;
+           cout << "Role" << endl;
+           cout << "Salary" << endl;
+
+           cin >> edit_attribute;
+
+           edit(edit_attribute, edit_id, company_ptr, number_records);
          }
 
         if (command_choice == "SHOW"){
@@ -879,7 +892,7 @@ int main(){
 
             sort_record(sort_attribute, sort_order, company_ptr, number_records, ori_num);
 
-            //refresh(company_ptr, number_records);
+            refresh(company_ptr, number_records);
 
         }
 
