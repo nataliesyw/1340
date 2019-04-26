@@ -577,13 +577,20 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
 
   }
   for ( int k = 0; k < num; k++){
+
+    if (attribute == "Late" || "Early Leave" || "Attendence"){
+      if (stoi(sys[k].id) < ori_num){
+        cout << "***No such record for this employee***" << endl;
+      }
+    }    
+
     cout << "Name:\t" << sys[k].name << endl;
     cout << "ID:\t" << sys[k].id << endl;
     cout << "Age:\t" << sys[k].age << endl;
     cout << "Role:\t" << sys[k].role << endl;
     cout << "Salary:\t" << sys[k].salary << endl;
     cout << endl;
-    }
+  }
 
 }
 
