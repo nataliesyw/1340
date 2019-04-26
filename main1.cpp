@@ -136,6 +136,7 @@ int add_record(company_struct sys[], int current_num_record){
     cout << "Please enter the employee salary" << endl;
     getline(cin, sys[current_num_record].salary);
 
+
     cout << endl;
     cout << "Name:\t" << sys[current_num_record].name << endl;
     cout << "ID:\t" << sys[current_num_record].id << endl;
@@ -288,7 +289,7 @@ int search(string attribute, company_struct sys[], int n){
 // SORT command
 // print out all records which are sorted
 // selectively print out the records *******if we have time*******
-void sort_record(string attribute, string order, company_struct sys[], int num){
+void sort_record(string attribute, string order, company_struct sys[], int num, int ori_num){
   int i, j ,idx;
   string min;
   string max;
@@ -742,6 +743,7 @@ int main(){
     int system_size = 5;
     company_struct * company_ptr = new company_struct[system_size];
     int number_records = 0;
+    int ori_num;
     string raw_textfile;
     string command_choice;
     string save_as_filename;
@@ -770,6 +772,7 @@ int main(){
             cin >> raw_textfile;
             cout << endl;
             number_records = load(raw_textfile, company_ptr, system_size);
+            ori_num = number_records + 1000;
             cout << number_records << " number of records loaded." << endl;
         }
 
@@ -818,7 +821,7 @@ int main(){
 
             cin >> sort_order;
 
-            sort_record(sort_attribute, sort_order, company_ptr, number_records);
+            sort_record(sort_attribute, sort_order, company_ptr, number_records, ori_num);
 
         }
 
