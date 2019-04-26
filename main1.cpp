@@ -161,15 +161,12 @@ void edit(string attribute, string id_to_edit, company_struct sys[], int n){
   string new_info;
 
   for (int i = 0; i < n; i++){
-    string id_in_array = sys[i].id;
-    transform(id_in_array.begin(), id_in_array.end(), id_in_array.begin(), ::toupper);
-    transform(id_to_edit.begin(), id_to_edit.end(), id_to_edit.begin(), ::toupper);
-    if(id_in_array.find(id_to_edit) != string::npos){
+    if(sys[i].id == id_to_edit){
 
       if (attribute == "1"){
         cout << "Original name of employee " << id_to_edit << ":  " << sys[i].name << endl;
         cout << "New name:  ";
-        cin >> new_info;
+        getline(cin, new_info);
         sys[i].name = new_info;
         cout << sys[i].name << endl;
       }
