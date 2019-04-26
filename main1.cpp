@@ -168,8 +168,8 @@ void edit(string attribute, string id_to_edit, company_struct sys[], int n){
 
       if (attribute == "1"){
         cout << "Original name of employee " << id_to_edit << ":  " << sys[i].name << endl;
-        cout << "New name:  ";
-        getline(cin, sys[i].name);
+        sys[i].name = "hi";
+        cout << sys[i].name << endl;
       }
       //name id age role salary
       cout << endl;
@@ -577,7 +577,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
   }
-  if (attribute == "3" || "4" || "5"){
+  if (attribute == "3" || attribute == "4" || attribute == "5"){
     for ( int k = 0; k < num; k++){
 
       if (stoi(sys[k].id) > ori_num){
