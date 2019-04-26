@@ -473,9 +473,9 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
           max = sys[i].salary;
           idx = i;
 
-          for (j = i + 1; j > num; j++)
+          for (j = i + 1; j < num; j++)
           {
-              if (sys[j].salary < max)
+              if (sys[j].salary > max)
               {
                   max = sys[j].salary;
                   idx = j;
@@ -501,9 +501,9 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
           max_int = sys[i].late_count;
           idx = i;
 
-          for (j = i + 1; j > num; j++)
+          for (j = i + 1; j < num; j++)
           {
-              if (sys[j].late_count < max_int)
+              if (sys[j].late_count > max_int)
               {
                   max_int = sys[j].late_count;
                   idx = j;
@@ -528,9 +528,9 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
           max_int = sys[i].early_leave_count;
           idx = i;
 
-          for (j = i + 1; j > num; j++)
+          for (j = i + 1; j < num; j++)
           {
-              if (sys[j].early_leave_count < max_int)
+              if (sys[j].early_leave_count > max_int)
               {
                   max_int = sys[j].early_leave_count;
                   idx = j;
@@ -555,9 +555,9 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
           max = sys[i].attendance_count;
           idx = i;
 
-          for (j = i + 1; j > num; j++)
+          for (j = i + 1; j < num; j++)
           {
-              if (sys[j].attendance_count < max_int)
+              if (sys[j].attendance_count > max_int)
               {
                   max_int = sys[j].attendance_count;
                   idx = j;
