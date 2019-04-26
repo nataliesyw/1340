@@ -604,6 +604,36 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
 
 }
 
+// Refresh command
+// To sort all the infomation according to their ID
+
+void refresh(company_struct sys[], int num){
+
+  int i, j ,idx;
+  int min;
+
+  for (i = 0; i < num - 1; i++){
+    min = sys[i].attendance_count;
+    idx = i;
+
+    for (j = i + 1; j < num; j++){
+      if (sys[j].attendance_count < min){
+          min = sys[j].attendance_count;
+          idx = j;
+      }
+    }
+
+    if (idx != i){
+      company_struct temp;
+      // swap pb[i] & pb[idx]
+      temp    = sys[i];
+      sys[i]   = sys[idx];
+      sys[idx] = temp;
+    }
+  }
+  
+}
+
 
 // DELETE command
 // delete a record of ONE employee in the company_ptr array
@@ -837,6 +867,8 @@ int main(){
             cin >> sort_order;
 
             sort_record(sort_attribute, sort_order, company_ptr, number_records, ori_num);
+
+            refresh(company_ptr, number_records);
 
         }
 
