@@ -310,6 +310,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
               if (sys[j].age < min)
               {
                   min = sys[j].age;
+                  cout << "min:" << min << endl;
                   idx = j;
               }
           }
