@@ -41,6 +41,7 @@ string print_command(){
     cout << "\"CAL\": Calulate the the attendence of employees." << endl;
     cout << "\"ADD\": Add a new record of a new employee " << endl;
     cout << "\"DELETE\": Fire an employee." << endl;
+    cout << "\"EDIT\" : Edit the information of employee." << endl;
     cout << "\"SHOW\": Show all attribute by the employee by the name." << endl;
     cout << "\"SEARCH\": Search for the employees according to that attribute." << endl;
     cout << "\"SORT\": Sort the employess according to that attribute" << endl;
@@ -153,7 +154,10 @@ int add_record(company_struct sys[], int current_num_record){
     return current_num_record;
 }
 
+// Edit command
+void edit(company_struct sys[], int current_num_record){
 
+}
 // SHOW command
 // print out all records of the current system
 // current_num_record: number of records current stored in the system
@@ -284,8 +288,301 @@ int search(string attribute, company_struct sys[], int n){
 // SORT command
 // print out all records which are sorted
 // selectively print out the records *******if we have time*******
-void sort_record(string attribute, company_struct sys[], int num){
-  cout << "HI" << endl;
+void sort_record(string attribute, string order, company_struct sys[], int num){
+  int i, j ,idx;
+  string min;
+  string max;
+  // selection sort
+
+  // sort by ascending order
+  if (order == "a"){
+
+    // sort by age
+    if (attribute == "Age"){
+      for (i = 0; i < num - 1; i++)
+      {
+          min = sys[i].age;
+          idx = i;
+          
+          for (j = i + 1; j < num; j++)
+          {
+              if (sys[j].age < min)
+              {
+                  min = sys[j].age;
+                  idx = j;
+              }
+          }
+          
+          if (idx != i)
+          {
+              company_struct temp;
+              // swap pb[i] & pb[idx]
+              temp    = sys[i];
+              sys[i]   = sys[idx];
+              sys[idx] = temp;           
+          }
+      }
+    }
+
+    // sort by salary
+    if (attribute == "Salary"){
+      for (i = 0; i < num - 1; i++)
+      {
+          min = sys[i].salary;
+          idx = i;
+          
+          for (j = i + 1; j < num; j++)
+          {
+              if (sys[j].salary < min)
+              {
+                  min = sys[j].salary;
+                  idx = j;
+              }
+          }
+          
+          if (idx != i)
+          {
+              company_struct temp;
+              // swap pb[i] & pb[idx]
+              temp    = sys[i];
+              sys[i]   = sys[idx];
+              sys[idx] = temp;           
+          }
+      }
+    }
+
+    int min_int;          // minimum for interger
+    // sort by times for being late
+    if (attribute == "Late"){
+      for (i = 0; i < num - 1; i++)
+      {
+          min_int = sys[i].late_count;
+          idx = i;
+          
+          for (j = i + 1; j < num; j++)
+          {
+              if (sys[j].late_count < min_int)
+              {
+                  min_int = sys[j].late_count;
+                  idx = j;
+              }
+          }
+          
+          if (idx != i)
+          {
+              company_struct temp;
+              // swap pb[i] & pb[idx]
+              temp    = sys[i];
+              sys[i]   = sys[idx];
+              sys[idx] = temp;           
+          }
+      }
+    }
+
+    // sort by times for left early
+    if (attribute == "Early leave"){
+      for (i = 0; i < num - 1; i++)
+      {
+          min_int = sys[i].early_leave_count;
+          idx = i;
+          
+          for (j = i + 1; j < num; j++)
+          {
+              if (sys[j].early_leave_count < min_int)
+              {
+                  min_int = sys[j].early_leave_count;
+                  idx = j;
+              }
+          }
+          
+          if (idx != i)
+          {
+              company_struct temp;
+              // swap pb[i] & pb[idx]
+              temp    = sys[i];
+              sys[i]   = sys[idx];
+              sys[idx] = temp;           
+          }
+      }
+    }
+
+    //sort by attdence
+    if (attribute == "Attendence"){
+      for (i = 0; i < num - 1; i++)
+      {
+          min_int = sys[i].attendance_count;
+          idx = i;
+          
+          for (j = i + 1; j < num; j++)
+          {
+              if (sys[j].attendance_count < min_int)
+              {
+                  min_int = sys[j].attendance_count;
+                  idx = j;
+              }
+          }
+          
+          if (idx != i)
+          {
+              company_struct temp;
+              // swap pb[i] & pb[idx]
+              temp    = sys[i];
+              sys[i]   = sys[idx];
+              sys[idx] = temp;           
+          }
+      }
+    }
+    
+  }
+
+  // sort by descending order
+  if (order == "d"){
+
+    // sort by age
+    if (attribute == "Age"){
+      for (i = 0; i < num - 1; i++)
+      {
+          max = sys[i].age;
+          idx = i;
+          
+          for (j = i + 1; j < num; j++)
+          {
+              if (sys[j].age < max)
+              {
+                  max = sys[j].age;
+                  idx = j;
+              }
+          }
+          
+          if (idx != i)
+          {
+              company_struct temp;
+              // swap pb[i] & pb[idx]
+              temp    = sys[i];
+              sys[i]   = sys[idx];
+              sys[idx] = temp;           
+          }
+      }
+    }
+
+    // sort by salary
+    if (attribute == "Salary"){
+      for (i = 0; i < num - 1; i++)
+      {
+          max = sys[i].salary;
+          idx = i;
+          
+          for (j = i + 1; j < num; j++)
+          {
+              if (sys[j].salary < max)
+              {
+                  max = sys[j].salary;
+                  idx = j;
+              }
+          }
+          
+          if (idx != i)
+          {
+              company_struct temp;
+              // swap pb[i] & pb[idx]
+              temp    = sys[i];
+              sys[i]   = sys[idx];
+              sys[idx] = temp;           
+          }
+      }
+    }
+
+    int max_int;          // minimum for interger
+    // sort by times for being late
+    if (attribute == "Late"){
+      for (i = 0; i < num - 1; i++)
+      {
+          max_int = sys[i].late_count;
+          idx = i;
+          
+          for (j = i + 1; j < num; j++)
+          {
+              if (sys[j].late_count < max_int)
+              {
+                  max_int = sys[j].late_count;
+                  idx = j;
+              }
+          }
+          
+          if (idx != i)
+          {
+              company_struct temp;
+              // swap pb[i] & pb[idx]
+              temp    = sys[i];
+              sys[i]   = sys[idx];
+              sys[idx] = temp;           
+          }
+      }
+    }
+
+    // sort by times for left early
+    if (attribute == "Early leave"){
+      for (i = 0; i < num - 1; i++)
+      {
+          max_int = sys[i].early_leave_count;
+          idx = i;
+          
+          for (j = i + 1; j < num; j++)
+          {
+              if (sys[j].early_leave_count < max_int)
+              {
+                  max_int = sys[j].early_leave_count;
+                  idx = j;
+              }
+          }
+          
+          if (idx != i)
+          {
+              company_struct temp;
+              // swap pb[i] & pb[idx]
+              temp    = sys[i];
+              sys[i]   = sys[idx];
+              sys[idx] = temp;           
+          }
+      }
+    }
+
+    //sort by attdence
+    if (attribute == "Attendence"){
+      for (i = 0; i < num - 1; i++)
+      {
+          max = sys[i].attendance_count;
+          idx = i;
+          
+          for (j = i + 1; j < num; j++)
+          {
+              if (sys[j].attendance_count < max_int)
+              {
+                  max_int = sys[j].attendance_count;
+                  idx = j;
+              }
+          }
+          
+          if (idx != i)
+          {
+              company_struct temp;
+              // swap pb[i] & pb[idx]
+              temp    = sys[i];
+              sys[i]   = sys[idx];
+              sys[idx] = temp;           
+          }
+      }
+    }
+    
+  }       
+  for ( int k = 0; k < num; k++){
+    cout << "Name:\t" << sys[k].name << endl;
+    cout << "ID:\t" << sys[k].id << endl;
+    cout << "Age:\t" << sys[k].age << endl;
+    cout << "Role:\t" << sys[k].role << endl;
+    cout << "Salary:\t" << sys[k].salary << endl;
+    cout << endl;
+    }
 
 }
 
@@ -490,6 +787,10 @@ int main(){
     	    number_records = delete_record(employee_id_delete, company_ptr, system_size);
          }
 
+         if (command_choice == "EDIT"){
+            edit(company_ptr, number_records);
+         }
+
         if (command_choice == "SHOW"){
             show(company_ptr, number_records);
         }
@@ -517,7 +818,7 @@ int main(){
 
             cin >> sort_order;
 
-            sort_record(sort_attribute, company_ptr, number_records);
+            sort_record(sort_attribute, sort_order, company_ptr, number_records);
 
         }
 
