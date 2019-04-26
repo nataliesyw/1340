@@ -291,7 +291,7 @@ int search(string attribute, company_struct sys[], int n){
 // selectively print out the records *******if we have time*******
 void sort_record(string attribute, string order, company_struct sys[], int num, int ori_num){
   int i, j ,idx;
-  string min;
+  int min;
   string max;
   // selection sort
   cout << "Num:" << num << endl;
@@ -302,15 +302,16 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     if (attribute == "Age"){
       for (i = 0; i < num - 1; i++)
       {
-          min = sys[i].age;
+          min = stoi(sys[i].age);
+          cout << "min:" << min << endl;
           idx = i;
 
           for (j = i + 1; j < num; j++)
           {
-              if (sys[j].age < min)
+              if (stoi(sys[j].age) < min)
               {
-                  min = sys[j].age;
-                  cout << "min:" << min << endl;
+                  min = stoi(sys[j].age);
+                  cout << "new min:" << min << endl;
                   idx = j;
               }
           }
@@ -330,14 +331,14 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     if (attribute == "Salary"){
       for (i = 0; i < num - 1; i++)
       {
-          min = sys[i].salary;
+          min = stoi(sys[i].salary);
           idx = i;
 
           for (j = i + 1; j < num; j++)
           {
-              if (sys[j].salary < min)
+              if (stoi(sys[j].salary) < min)
               {
-                  min = sys[j].salary;
+                  min = stoi(sys[j].salary);
                   idx = j;
               }
           }
