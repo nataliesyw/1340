@@ -159,8 +159,9 @@ int add_record(company_struct sys[], int current_num_record){
 void edit(string attribute, string id_to_edit, company_struct sys[], int n){
 
   string new_info;
-  cout << id_to_edit;
+  cout << id_to_edit << endl;
   for (int i = 0; i < n; i++){
+    cout << sys[i].id << endl;
     if(sys[i].id == id_to_edit){
 
       if (attribute == "1"){
