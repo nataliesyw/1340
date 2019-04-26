@@ -164,7 +164,7 @@ void edit(string attribute, string id_to_edit, company_struct sys[], int n){
     string id_in_array = sys[i].id;
     transform(id_in_array.begin(), id_in_array.end(), id_in_array.begin(), ::toupper);
     transform(id_to_edit.begin(), id_to_edit.end(), id_to_edit.begin(), ::toupper);
-    if(sys[i].id == id_to_edit){
+    if(id_in_array.find(id_to_edit) != string::npos){
 
       if (attribute == "1"){
         cout << "Original name of employee " << id_to_edit << ":  " << sys[i].name << endl;
@@ -866,16 +866,15 @@ int main(){
           
           string edit_id;
 
-          cout << "***ID could NOT be changed***" << endl;
+          cout << "***ID and NAME could NOT be changed***" << endl;
           cout << "Input the ID of the employee: ";
 
           cin >> edit_id;
 
-          cout << "Name-----(1)" << endl;
-          cout << "Age------(2)" << endl;
-          cout << "Role-----(3)" << endl;
-          cout << "Salary---(4)" << endl;
-          cout << "Please enter the attribute to be edited (1/2/3/4):  ";
+          cout << "Age------(1)" << endl;
+          cout << "Role-----(2)" << endl;
+          cout << "Salary---(3)" << endl;
+          cout << "Please enter the attribute to be edited (1/2/3):  ";
 
           cin >> edit_attribute;
 
