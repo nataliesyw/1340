@@ -606,6 +606,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
       cout << "Age:\t" << sys[k].age << endl;
       cout << "Role:\t" << sys[k].role << endl;
       cout << "Salary:\t" << sys[k].salary << endl; 
+      cout << endl;
     }
   }
 
