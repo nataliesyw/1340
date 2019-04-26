@@ -143,7 +143,7 @@ int add_record(company_struct sys[], int current_num_record){
     cout << "Role:\t" << sys[current_num_record].role << endl;
     cout << "Salary:\t" << sys[current_num_record].salary << endl;
     cout << endl;
-    cout << "Add to the system (y/n)? ";
+    cout << "Add to the system (y/n)? " << endl;
     cin >> ans;
     if (ans == 'y')
     {
@@ -155,8 +155,26 @@ int add_record(company_struct sys[], int current_num_record){
 }
 
 // Edit command
-void edit(string attribute, string id_to_edit, company_struct sys[], int current_num_record){
+void edit(string attribute, string id_to_edit, company_struct sys[], int n){
 
+  string new_info;
+
+  for (int i = 0; i < n; i++){
+    string id_in_array = sys[i].id;
+    transform(id_in_array.begin(), id_in_array.end(), id_in_array.begin(), ::toupper);
+    transform(id_to_edit.begin(), id_to_edit.end(), id_to_edit.begin(), ::toupper);
+    if(id_in_array.find(id_to_edit) != string::npos){
+
+      if (attribute == "1"){
+        cout << "Original name of employee " << id_to_edit << ":  " << sys[i].name << endl;
+        cout << "New name:  ";
+        getline(cin, new_info);
+        sys[i].name = new_info;
+      }
+      //name id age role salary
+      cout << endl;
+    }
+  }
 }
 // SHOW command
 // print out all records of the current system
@@ -200,14 +218,11 @@ int search(string attribute, string detail, company_struct sys[], int n){
       }
 
       if (attribute == "2"){
-          cout << "Please enter employees id to search:  ";
-          string id_to_search;
-          cin >> id_to_search;
           for (i = 0; i < n; i++){
             string id_in_array = sys[i].id;
             transform(id_in_array.begin(), id_in_array.end(), id_in_array.begin(), ::toupper);
-            transform(id_to_search.begin(), id_to_search.end(), id_to_search.begin(), ::toupper);
-            if(id_in_array.find(id_to_search) != string::npos){
+            transform(detail.begin(), detail.end(), detail.begin(), ::toupper);
+            if(id_in_array.find(detail) != string::npos){
               cout << "Name:\t" << sys[i].name << endl;
               cout << "ID:\t" << sys[i].id << endl;
               cout << "Age:\t" << sys[i].age << endl;
@@ -220,14 +235,11 @@ int search(string attribute, string detail, company_struct sys[], int n){
       }
 
       if (attribute == "3"){
-          cout << "Please enter employees age to search:  ";
-          string age_to_search;
-          cin >> age_to_search;
           for (i = 0; i < n; i++){
             string age_in_array = sys[i].age;
             transform(age_in_array.begin(), age_in_array.end(), age_in_array.begin(), ::toupper);
-            transform(age_to_search.begin(), age_to_search.end(), age_to_search.begin(), ::toupper);
-            if(age_in_array.find(age_to_search) != string::npos){
+            transform(detail.begin(), detail.end(), detail.begin(), ::toupper);
+            if(age_in_array.find(detail) != string::npos){
               cout << "Name:\t" << sys[i].name << endl;
               cout << "ID:\t" << sys[i].id << endl;
               cout << "Age:\t" << sys[i].age << endl;
@@ -240,14 +252,11 @@ int search(string attribute, string detail, company_struct sys[], int n){
       }
 
       if (attribute == "4"){
-          cout << "Please enter employees role to search:  ";
-          string role_to_search;
-          cin >> role_to_search;
           for (i = 0; i < n; i++){
             string role_in_array = sys[i].role;
             transform(role_in_array.begin(), role_in_array.end(), role_in_array.begin(), ::toupper);
-            transform(role_to_search.begin(), role_to_search.end(), role_to_search.begin(), ::toupper);
-            if(role_in_array.find(role_to_search) != string::npos){
+            transform(detail.begin(), detail.end(), detail.begin(), ::toupper);
+            if(role_in_array.find(detail) != string::npos){
               cout << "Name:\t" << sys[i].name << endl;
               cout << "ID:\t" << sys[i].id << endl;
               cout << "Age:\t" << sys[i].age << endl;
@@ -259,14 +268,11 @@ int search(string attribute, string detail, company_struct sys[], int n){
           }
       }
       if (attribute == "5"){
-          cout << "Please enter employees salary to search:  ";
-          string salary_to_search;
-          cin >> salary_to_search;
           for (i = 0; i < n; i++){
             string salary_in_array = sys[i].salary;
             transform(salary_in_array.begin(), salary_in_array.end(), salary_in_array.begin(), ::toupper);
-            transform(salary_to_search.begin(), salary_to_search.end(), salary_to_search.begin(), ::toupper);
-            if(salary_in_array.find(salary_to_search) != string::npos){
+            transform(detail.begin(), detail.end(), detail.begin(), ::toupper);
+            if(salary_in_array.find(detail) != string::npos){
               cout << "Name:\t" << sys[i].name << endl;
               cout << "ID:\t" << sys[i].id << endl;
               cout << "Age:\t" << sys[i].age << endl;
@@ -807,6 +813,7 @@ int main(){
     string command_choice;
     string save_as_filename;
     string search_attribute;
+    string edit_attribute;
     string sort_attribute;
     string sort_order;
     string clock_filename;
@@ -851,26 +858,25 @@ int main(){
     	    number_records = delete_record(employee_id_delete, company_ptr, system_size);
          }
 
-         if (command_choice == "EDIT"){
+        if (command_choice == "EDIT"){
+          
+          string edit_id;
 
-           string edit_attribute;
-           string edit_id;
+          cout << "***ID could NOT be changed***" << endl;
+          cout << "Input the ID of the employee: ";
 
-           cout << "***ID could NOT be changed***" << endl;
-           cout << "Input the ID" << endl;
+          cin >> edit_id;
 
-           cin >> edit_id;
+          cout << "Name-----(1)" << endl;
+          cout << "Age------(2)" << endl;
+          cout << "Role-----(3)" << endl;
+          cout << "Salary---(4)" << endl;
+          cout << "Please enter the attribute to be edited (1/2/3/4):  ";
 
-           cout << "What do you want to edit?" << endl;
-           cout << "Name" << endl;
-           cout << "Age" << endl;
-           cout << "Role" << endl;
-           cout << "Salary" << endl;
+          cin >> edit_attribute;
 
-           cin >> edit_attribute;
-
-           edit(edit_attribute, edit_id, company_ptr, number_records);
-         }
+          edit(edit_attribute, edit_id, company_ptr, number_records);
+        }
 
         if (command_choice == "SHOW"){
             show(company_ptr, number_records);
@@ -880,12 +886,13 @@ int main(){
 
             string search_input;
 
-            cout << "Please enter the attribute to search for employees:  "<< endl;
             cout << "Name-----(1)" << endl;
             cout << "ID-------(2)" << endl;
             cout << "Age------(3)" << endl;
             cout << "Role-----(4)" << endl;
             cout << "Salary---(5)" << endl;
+            cout << "Please enter the attribute to search for employees (1/2/3/4/5):  ";
+
 
             cin >> search_attribute;
 
@@ -895,19 +902,23 @@ int main(){
             }
 
             if (search_attribute == "2"){
-
+              cout << "Please enter employees id to search:  ";
+              cin >> search_input;
             }
 
             if (search_attribute == "3"){
-
+              cout << "Please enter employees age to search:  ";
+              cin >> search_input;
             }
 
             if (search_attribute == "4"){
-
+              cout << "Please enter employees role to search:  ";
+              cin >> search_input;
             }
 
             if (search_attribute == "5"){
-
+              cout << "Please enter employees salary to search:  ";
+              cin >> search_input;
             }
             count = search(search_attribute, search_input, company_ptr, number_records);
             cout << endl << count << " record(s) found." << endl;
@@ -915,12 +926,13 @@ int main(){
         }
 
         if (command_choice == "SORT"){
-            cout << "Please enter the attribute to sort on: " << endl;
+
             cout << "Age----------(1)" << endl;
             cout << "Salary-------(2)" << endl;
             cout << "Early-leave--(3)" << endl;
             cout << "Late---------(4)" << endl;
             cout << "Attendance---(5)" << endl;
+            cout << "Please enter the attribute to sort on (1/2/3/45):  ";
 
             cin >> sort_attribute;
 
@@ -952,10 +964,10 @@ int main(){
         if (command_choice == "CHECK"){
           string check_attribute;
 
-          cout << "Please enter the attribute to be checked:";
           cout << "Check employees with perfect ATTENDANCE---(1)" << endl;
           cout << "Check employees who have been LATE--------(2)" << endl;
           cout << "Check employees who have LEFT EARLY-------(3)" << endl;
+          cout << "Please enter the attribute to be checked (1/2/3):  ";
 
           cin >> check_attribute;
           check(check_attribute, company_ptr, system_size);
