@@ -579,11 +579,10 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
   for ( int k = 0; k < num; k++){
 
     if (attribute == "Late" || "Early Leave" || "Attendence"){
-      if (stoi(sys[k].id) < ori_num){
+      if (stoi(sys[k].id) > ori_num){
         cout << "***No such record for this employee***" << endl;
       }
-    }    
-
+    }
     cout << "Name:\t" << sys[k].name << endl;
     cout << "ID:\t" << sys[k].id << endl;
     cout << "Age:\t" << sys[k].age << endl;
@@ -780,6 +779,7 @@ int main(){
             cout << endl;
             number_records = load(raw_textfile, company_ptr, system_size);
             ori_num = number_records + 1000;
+            cout << "ori_num :" << ori_num << endl;
             cout << number_records << " number of records loaded." << endl;
         }
 
