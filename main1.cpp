@@ -877,7 +877,7 @@ int main(){
 
             sort_record(sort_attribute, sort_order, company_ptr, number_records, ori_num);
 
-            refresh(company_ptr, number_records);
+            //refresh(company_ptr, number_records);
 
         }
 
