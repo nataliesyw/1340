@@ -168,7 +168,9 @@ void edit(string attribute, string id_to_edit, company_struct sys[], int n){
 
       if (attribute == "1"){
         cout << "Original name of employee " << id_to_edit << ":  " << sys[i].name << endl;
-        sys[i].name = "hi";
+        cout << "New name:  ";
+        cin >> new_info;
+        sys[i].name = new_info;
         cout << sys[i].name << endl;
       }
       //name id age role salary
