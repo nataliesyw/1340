@@ -158,15 +158,18 @@ int add_record(company_struct sys[], int current_num_record){
 // Edit command
 void edit(string attribute, string id_to_edit, company_struct sys[], int n){
 
-  string new_info;
+
   cout << id_to_edit << endl;
   for (int i = 0; i < n; i++){
-    cout << sys[i].id << endl;
+    string id_in_array = sys[i].id;
+    transform(id_in_array.begin(), id_in_array.end(), id_in_array.begin(), ::toupper);
+    transform(id_to_edit.begin(), id_to_edit.end(), id_to_edit.begin(), ::toupper);
     if(sys[i].id == id_to_edit){
 
       if (attribute == "1"){
         cout << "Original name of employee " << id_to_edit << ":  " << sys[i].name << endl;
         cout << "New name:  " << endl;
+        string new_info;        
         getline(cin, new_info);
         sys[i].name = new_info;
         cout << sys[i].name << endl;
