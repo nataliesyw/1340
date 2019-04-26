@@ -356,9 +356,29 @@ int save_as(string filename, company_struct sys[], int n){
 // early leave
 // late
 
-void check(){
+void check(string attribute, company_struct sys[], int n){
+  if (attribute == "P"){
+    for (int i = 0; i < n; i++){
+      if (sys[i].attendance_count == 20)
+        cout << setw(25) << sys[i].name << setw(7) << sys[i].id << endl;
+    }
+  }
 
- }
+  if (attribute == "L"){
+    for (int j = 0; j < n; j++){
+      if (sys[j].late_count > 0)
+        cout << setw(25) << sys[j].name << setw(7) << sys[j].id << setw(3) << sys[j].late_count << endl;
+    }
+  }
+
+  if (attribute == "E"){
+    for (int k = 0; k < n; k++){
+      if (sys[k].early_leave_count > 0)
+        cout << setw(25) << sys[k].name << setw(7) << sys[k].id << setw(3) << sys[k].early_leave_count << endl;
+    }
+  }
+
+}
 
 
 // not yet refined!!!
@@ -516,8 +536,20 @@ int main(){
           cal(clock_filename, company_ptr, system_size);
         }
 
+        if (command_choice == "CHECK"){
+          string check_attribute;
+          cout << "Check perfect attendence---P" << endl;
+          cout << "Check late employee---L" << endl;
+          cout << "Check early left employee---E" << endl;
+          cout << "What would you want to check?";
+
+          cin >> check_attribute;
+          check(check_attribute, company_ptr, system_size);
+        }
+        
         command_choice = print_command();
       }
+
 
 
 
