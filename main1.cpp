@@ -35,7 +35,6 @@ struct company_struct{
 string print_command(){
     // print content page and show all commands
     string command;
-    cout << setw(25)<< "Welcome to the staff management system.  Here are the commands in this system." << endl;
     cout << "Please enter the commands according to the following format." << endl;
     cout << "\"LOAD\": Load a file that contains record of employees." << endl;
     cout << "\"CAL\": Calulate the the attendance of employees." << endl;
@@ -156,7 +155,7 @@ int add_record(company_struct sys[], int current_num_record){
 }
 
 // Edit command
-void edit(string attribute, string id, company_struct sys[], int current_num_record){
+void edit(string attribute, string id_to_edit, company_struct sys[], int current_num_record){
 
 }
 // SHOW command
@@ -183,7 +182,7 @@ void show(company_struct sys[], int current_num_record){
 int search(string attribute, company_struct sys[], int n){
     int i, count = 0;
 
-      if (attribute == "Name"){
+      if (attribute == "1"){
           cout << "Please enter employees name to search:  ";
           string name_to_search;
           getline(cin >> ws, name_to_search);          // cin >> name_to_search;
@@ -203,7 +202,7 @@ int search(string attribute, company_struct sys[], int n){
           }
       }
 
-      if (attribute == "ID"){
+      if (attribute == "2"){
           cout << "Please enter employees id to search:  ";
           string id_to_search;
           cin >> id_to_search;
@@ -223,7 +222,7 @@ int search(string attribute, company_struct sys[], int n){
           }
       }
 
-      if (attribute == "Age"){
+      if (attribute == "3"){
           cout << "Please enter employees age to search:  ";
           string age_to_search;
           cin >> age_to_search;
@@ -243,7 +242,7 @@ int search(string attribute, company_struct sys[], int n){
           }
       }
 
-      if (attribute == "Role"){
+      if (attribute == "4"){
           cout << "Please enter employees role to search:  ";
           string role_to_search;
           cin >> role_to_search;
@@ -262,7 +261,7 @@ int search(string attribute, company_struct sys[], int n){
             }
           }
       }
-      if (attribute == "Salary"){
+      if (attribute == "5"){
           cout << "Please enter employees salary to search:  ";
           string salary_to_search;
           cin >> salary_to_search;
@@ -299,7 +298,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
   if (order == "a"){
 
     // sort by age
-    if (attribute == "Age"){
+    if (attribute == "1"){
       for (i = 0; i < num - 1; i++)
       {
           min = stoi(sys[i].age);
@@ -326,7 +325,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
     // sort by salary
-    if (attribute == "Salary"){
+    if (attribute == "2"){
       for (i = 0; i < num - 1; i++)
       {
           min = stoi(sys[i].salary);
@@ -353,7 +352,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
     // sort by times for being late
-    if (attribute == "Late"){
+    if (attribute == "3"){
       for (i = 0; i < num - 1; i++)
       {
           min = sys[i].late_count;
@@ -380,7 +379,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
     // sort by times for left early
-    if (attribute == "Early leave"){
+    if (attribute == "4"){
       for (i = 0; i < num - 1; i++)
       {
           min = sys[i].early_leave_count;
@@ -407,7 +406,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
     //sort by attdence
-    if (attribute == "Attendence"){
+    if (attribute == "5"){
       for (i = 0; i < num - 1; i++)
       {
           min = sys[i].attendance_count;
@@ -439,7 +438,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
   if (order == "d"){
 
     // sort by age
-    if (attribute == "Age"){
+    if (attribute == "1"){
       for (i = 0; i < num - 1; i++)
       {
           max = stoi(sys[i].age);
@@ -466,7 +465,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
     // sort by salary
-    if (attribute == "Salary"){
+    if (attribute == "2"){
       for (i = 0; i < num - 1; i++)
       {
           max = stoi(sys[i].salary);
@@ -493,7 +492,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
     // sort by times for being late
-    if (attribute == "Late"){
+    if (attribute == "3"){
       for (i = 0; i < num - 1; i++)
       {
           max = sys[i].late_count;
@@ -520,7 +519,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
     // sort by times for left early
-    if (attribute == "Early leave"){
+    if (attribute == "4"){
       for (i = 0; i < num - 1; i++)
       {
           max = sys[i].early_leave_count;
@@ -547,7 +546,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
     //sort by attdence
-    if (attribute == "Attendence"){
+    if (attribute == "5"){
       for (i = 0; i < num - 1; i++)
       {
           max = sys[i].attendance_count;
@@ -648,34 +647,33 @@ void refresh(company_struct sys[], int num){
 // id_to_search: id of employee to be deleted
 // return the number of record (n-1)
 int delete_record(string id_to_search, company_struct sys[], int n){
-     char ans;
-     int ii;
-          for (int i = 0; i < n; i++){
-            string id_in_array = sys[i].id;
+  char ans;
+  for (int i = 0; i < n; i++){
+    string id_in_array = sys[i].id;
 
-            if(id_in_array.find(id_to_search) != string::npos){
-              cout << "Name:\t" << sys[i].name << endl;
-              cout << "ID:\t" << sys[i].id << endl;
-              cout << "Age:\t" << sys[i].age << endl;
-              cout << "Role:\t" << sys[i].role << endl;
-              cout << "Salary:\t" << sys[i].salary << endl;
-              cout << endl;
+    if(id_in_array.find(id_to_search) != string::npos){
+      cout << "Name:\t" << sys[i].name << endl;
+      cout << "ID:\t" << sys[i].id << endl;
+      cout << "Age:\t" << sys[i].age << endl;
+      cout << "Role:\t" << sys[i].role << endl;
+      cout << "Salary:\t" << sys[i].salary << endl;
+      cout << endl;
 
-			  cout << "Delete from system (y/n)? ";
-              cin >> ans;
-              if (ans == 'y')
-                {
-                  // skip current record and copy all rest records to sys
-                  for (int j = i+1; j < n; j++){
-                       sys[j-1] = sys[j];
-                   }
-                  n--;
-         	      cout << "Number of records have been changed to " << n << "." << endl;
-				  return n;
-				  break;
-               }
-            }
-          }
+			cout << "Delete from system (y/n)? ";
+      cin >> ans;
+      if (ans == 'y')
+      {
+        // skip current record and copy all rest records to sys
+        for (int j = i+1; j < n; j++){
+          sys[j-1] = sys[j];
+        }
+      n--;
+      cout << "Number of records have been changed to " << n << "." << endl;
+			return n;
+			break;
+      }
+    }
+  }
 		return n;
 }
 
@@ -710,6 +708,7 @@ int save_as(string filename, company_struct sys[], int n){
 // late
 
 void check(string attribute, company_struct sys[], int n){
+
   if (attribute == "P"){
     for (int i = 0; i < n; i++){
       if (sys[i].attendance_count == 20)
@@ -816,7 +815,7 @@ int main(){
 //        exit(1);
 //    }
 
-
+    cout << "Welcome to the staff management system.  Here are the commands in this system." << endl;
     while(command_choice != "EXIT"){
 
         if (command_choice == "LOAD"){
@@ -825,7 +824,6 @@ int main(){
             cout << endl;
             number_records = load(raw_textfile, company_ptr, system_size);
             ori_num = number_records + 1000;
-            cout << "ori_num :" << ori_num << endl;
             cout << number_records << " number of records loaded." << endl;
         }
 
@@ -869,8 +867,14 @@ int main(){
         }
 
         if (command_choice == "SEARCH"){
+
             cout << "Please enter the attribute to search for employees:  "<< endl;
-            cout << "(Name/ Age/ ID/ Role/ Salary) ";
+            cout << "Name-----(1)" << endl;
+            cout << "ID-------(2)" << endl;
+            cout << "Age------(3)" << endl;
+            cout << "Role-----(4)" << endl;
+            cout << "Salary---(5)" << endl;
+
             cin >> search_attribute;
             count = search(search_attribute, company_ptr, number_records);
             cout << endl << count << " record(s) found." << endl;
@@ -878,16 +882,16 @@ int main(){
         }
 
         if (command_choice == "SORT"){
-            cout << "Sort accroding to:" << endl;
-            cout << "Age" << endl;
-            cout << "Salary" << endl;
-            cout << "Early-leave" << endl;
-            cout << "Late" << endl;
-            cout << "Attendence" << endl;
+            cout << "Please enter the attribute to sort on: " << endl;
+            cout << "Age----------(1)" << endl;
+            cout << "Salary-------(2)" << endl;
+            cout << "Early-leave--(3)" << endl;
+            cout << "Late---------(4)" << endl;
+            cout << "Attendance---(5)" << endl;
 
             cin >> sort_attribute;
 
-            cout << "Would you like to sort in ascending order or descending order? (a/d)";
+            cout << "Sorting in ascending or descending order? (a/d)";
 
             cin >> sort_order;
 
