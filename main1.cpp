@@ -143,8 +143,9 @@ int add_record(company_struct sys[], int current_num_record){
     cout << "Role:\t" << sys[current_num_record].role << endl;
     cout << "Salary:\t" << sys[current_num_record].salary << endl;
     cout << endl;
-    cout << "Add to the system (y/n)? " << endl;
+    cout << "Add to the system (y/n)?:  ";
     cin >> ans;
+    cout << endl;
     if (ans == 'y')
     {
         cout << "***1 record added.***" << endl;
@@ -168,13 +169,13 @@ void edit(string attribute, string id_to_edit, company_struct sys[], int n){
       if (attribute == "1"){
         cout << "Original name of employee " << id_to_edit << ":  " << sys[i].name << endl;
         cout << "New name:  ";
-        getline(cin, new_info);
-        sys[i].name = new_info;
+        getline(cin, sys[i].name);
       }
       //name id age role salary
       cout << endl;
     }
   }
+
 }
 // SHOW command
 // print out all records of the current system
