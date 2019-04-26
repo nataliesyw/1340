@@ -167,12 +167,12 @@ void edit(string attribute, string id_to_edit, company_struct sys[], int n){
     if(id_in_array.find(id_to_edit) != string::npos){
 
       if (attribute == "1"){
-        cout << "Original name of employee " << id_to_edit << ":  " << sys[i].name << endl;
-        cout << "New name:  " << endl;
+        cout << "Original age of employee " << id_to_edit << ":  " << sys[i].age << endl;
+        cout << "New age:  " << endl;
         string new_info;        
         getline(cin, new_info);
-        sys[i].name = new_info;
-        cout << sys[i].name << endl;
+        sys[i].age = new_info;
+        cout << sys[i].age << endl;
       }
       //name id age role salary
       cout << endl;
