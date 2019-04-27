@@ -23,14 +23,14 @@ string print_command(){
     string command;
     cout << "Please enter the commands according to the following format." << endl;
     cout << "\"LOAD\": Load a file that contains record of employees." << endl;
-    cout << "\"CAL\": Calulate the the attendance of employees." << endl;
+    cout << "\"CAL\": Calculate the the attendance of employees." << endl;
     cout << "\"ADD\": Add a new record of a new employee " << endl;
     cout << "\"DELETE\": Fire an employee." << endl;
     cout << "\"EDIT\" : Edit the record of employee." << endl;
     cout << "\"SHOW\": Show all attributes by the employee by the name." << endl;
     cout << "\"SEARCH\": Search for the employees according to that attribute." << endl;
-    cout << "\"SORT\": Sort the employess according to that attribute" << endl;
-    cout << "\"CHECK\": Check the late, eary leave record and atttendance of employees." << endl;
+    cout << "\"SORT\": Sort the employees according to that attribute" << endl;
+    cout << "\"CHECK\": Check the late, early leave record and attendance of employees." << endl;
     cout << "\"SAVE\": Save the current system into a new textfile. " << endl;
     cout << "\"OUTPUT\": Output the monthly report in current program" << endl;
     cout << "\"EXIT\" : Exit the system." << endl;
