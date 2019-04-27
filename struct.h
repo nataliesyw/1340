@@ -12,7 +12,7 @@ struct company_struct{
     std::string perfect_attendance_output; // for printing the output report file
     double monthly_revenue;
     int revenue = 0;
-    int attendance_count = 20;
+    int attendance_count = 0;
     int early_leave_count = 0;
     int late_count = 0;
 };
