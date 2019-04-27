@@ -23,7 +23,7 @@ using namespace std;
   // n: number of records in the system
   // sys: the company array
   // ori_num: the last id of the original input company text file
-void output_record(string filename, company_struct sys[], int n, int ori_num){
+void output_record(string filename, company_struct sys[], int n, int ori_num, int days, int target){
     ofstream fout;
     fout.open(filename.c_str());
     if (fout.fail())
@@ -31,8 +31,8 @@ void output_record(string filename, company_struct sys[], int n, int ori_num){
         cout << "Error in file opening." << endl;
     }
     // calculate the perfect attendance
-    for (int i = 0; i < ori_num; i++){
-      if (sys[i].attendance_count == 20) {
+    for (int i = 0; i < n; i++){
+      if (sys[i].attendance_count == days) {
         sys[i].perfect_attendance = true;
       }
       else{
@@ -40,7 +40,7 @@ void output_record(string filename, company_struct sys[], int n, int ori_num){
       }
     }
     //original record
-    for (int i = 0; i < ori_num-1000; i++) {
+    for (int i = 0; i < n; i++) {
       if (sys[i].perfect_attendance == true){
         sys[i].perfect_attendance_output = "True";
       }
@@ -48,26 +48,36 @@ void output_record(string filename, company_struct sys[], int n, int ori_num){
         sys[i].perfect_attendance_output = "False";
       }
     }
-    // newly added record
-    for (int i = ori_num-1000; i < n; i++){
-      sys[i].perfect_attendance_output = "No Records";
-      sys[i].perfect_attendance_output = "No Records";
-    }
 
     // printing format
     const int name_width = 25;
     const int id_width = 7;
     const int role_width = 13;
     const int age_width = 6;
+    const int revenue_width = 12;    
     const int salary_width = 9;
     const int attendance_width = 15;
     const int perfect_width = 25;
     const int el_count_width = 20;
     const int l_count_width = 15;
 
-    fout << setw(name_width)<< "Name"<< setw(id_width) << "ID" << setw(age_width) << "Age" << setw(role_width) << "Role" << setw(salary_width) << "Salary"<< setw(perfect_width)<< "Perfect Attendance"  << endl;
+    int reach_target = 0;  // number of employees who DID NOT reach the monthly target
+    fout << setw(name_width)<< "Name"<< setw(id_width) << "ID" << setw(age_width) << "Age" << setw(role_width) << "Role" << setw(revenue_width) << "Revenue" << setw(salary_width) << "Salary"<< setw(perfect_width) << "Perfect Attendance"  << endl;
     for (int i = 0; i < n; i++){
-      fout << setw(name_width) << sys[i].name << setw(id_width) << sys[i].id << setw(age_width) << sys[i].age << setw(role_width) << sys[i].role << setw(salary_width) << sys[i].salary << setw(perfect_width) << sys[i].perfect_attendance_output <<endl;
+      if (sys[i].revenue < target){
+        fout << "*" << setw(name_width) << sys[i].name << setw(id_width) << sys[i].id << setw(age_width) << sys[i].age << setw(role_width) << sys[i].role << setw(revenue_width) << sys[i].revenue << setw(salary_width) << sys[i].salary << setw(perfect_width) << sys[i].perfect_attendance_output << endl;     
+        reach_target++;
+      }
+      else{
+        fout << setw(name_width) << sys[i].name << setw(id_width) << sys[i].id << setw(age_width) << sys[i].age << setw(role_width) << sys[i].role << setw(revenue_width) << sys[i].revenue << setw(salary_width) << sys[i].salary << setw(perfect_width) << sys[i].perfect_attendance_output <<endl;
+      }
+    if (reach_target = 0){
+      fout << endl;
+      fout << "All employees reach the monthly target---" << target << "." << endl;
+    }
+    else{
+      fout << endl;
+      fout << "Employees with * before their name did not reach the monthly target---" << target << "." << endl;
     }
     fout.close();
   }

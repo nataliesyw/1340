@@ -58,6 +58,7 @@ int main(){
    int working_days;
    int count;
    string edit_id;
+   int target_revenue;
    cout << "Welcome to the staff management system.  Here are the commands in this system." << endl;
 
     cout << "Please enter the month to be recorded (1-12):  ";
@@ -213,12 +214,12 @@ int main(){
 
            cin >> check_attribute;
            cout << endl;
-           check(check_attribute, working_days, company_ptr, system_size);
+           target_revenue = check(check_attribute, working_days, company_ptr, system_size, number_records);
          }
          if (command_choice == "OUTPUT"){
              cout << "Please enter the filename to output to: ";
              cin >> output_filename;
-             output_record(output_filename, company_ptr, number_records, ori_num);
+             output_record(output_filename, company_ptr, number_records, ori_num, working_days, target_revenue);
              cout << "The system is saved into "<< output_filename<< endl;
              cout << endl;
          }
