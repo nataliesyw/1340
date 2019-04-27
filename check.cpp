@@ -29,6 +29,7 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
 
   int num;
   int sal_ded = 0; //number of employees who had absent for 3 days or above (salary_deducted)
+  int target = 0;
 
   if (attribute == "1"){
     int i;
@@ -82,7 +83,7 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
 
       }
     }
-    return 0;
+    return target;
   } 
     
 
@@ -96,7 +97,7 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
       }
     }
     cout << "***There are total " << num << " employee(s) being late in this month.***" << endl << endl;
-    return 0;
+    return target;
   }
 
   if (attribute == "3"){
@@ -108,13 +109,14 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
       }
     }
     cout << "***There are total " << num << " employee(s) leaving early in this month.***" << endl << endl;
-    return 0;
+    return target;
   }
 
   if (attribute == "4"){
-    int target;
+    int temp;
     cout << "Please input the monthly target for an employee:  ";
-    cin >> target;
+    cin >> temp;
+    target = temp;
     cout << endl;
     cout << setw(25) << "Name" << setw(7) << "ID" << setw(25) << "Sales performance" << endl;
     for (int q = 0; q < n; q++){
@@ -124,7 +126,7 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
       }
     }
     cout << "***There are total " << num << " employee(s) reached the target in this month.***" << endl << endl;
-    return target;
+  return target;
   }
 
 }
