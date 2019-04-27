@@ -1,0 +1,7 @@
+Peter Chan,  1001,  30,  Director,  30000
+Cherry Wong,  1002,  29,  Manager,  27000
+Tracy Wong,  1003,  24,  Clerk,  17000
+Erica Tsang,  1004,  23,  Clerk, 14500
+Jessica Tse,  1005,  22,  Clerk,  11500
+Natalie, 1016, 18, Clerk, 10000
+Scarlett, 1017, 19, CLerk, 11000
