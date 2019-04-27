@@ -82,7 +82,7 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
 
       }
     }
-
+    return 0;
   } 
     
 
@@ -96,6 +96,7 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
       }
     }
     cout << "***There are total " << num << " employee(s) being late in this month.***" << endl << endl;
+    return 0;
   }
 
   if (attribute == "3"){
@@ -107,6 +108,7 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
       }
     }
     cout << "***There are total " << num << " employee(s) leaving early in this month.***" << endl << endl;
+    return 0;
   }
 
   if (attribute == "4"){
@@ -122,6 +124,7 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
       }
     }
     cout << "***There are total " << num << " employee(s) reached the target in this month.***" << endl << endl;
+    return target;
   }
 
 }

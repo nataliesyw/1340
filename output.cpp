@@ -62,6 +62,12 @@ void output_record(string filename, company_struct sys[], int n, int ori_num, in
     const int l_count_width = 15;
 
     int reach_target = 0;  // number of employees who DID NOT reach the monthly target
+    int temp;
+    if (target == 0){
+      cout << "Please input the monthly target:  ";
+      cin >> temp;
+      target = temp;
+    }
     fout << setw(name_width)<< "Name"<< setw(id_width) << "ID" << setw(age_width) << "Age" << setw(role_width) << "Role" << setw(revenue_width) << "Revenue" << setw(salary_width) << "Salary"<< setw(perfect_width) << "Perfect Attendance"  << endl;
     for (int i = 0; i < n; i++){
       if (sys[i].revenue < target){
@@ -72,7 +78,7 @@ void output_record(string filename, company_struct sys[], int n, int ori_num, in
         fout << setw(name_width) << sys[i].name << setw(id_width) << sys[i].id << setw(age_width) << sys[i].age << setw(role_width) << sys[i].role << setw(revenue_width) << sys[i].revenue << setw(salary_width) << sys[i].salary << setw(perfect_width) << sys[i].perfect_attendance_output <<endl;
       }
     }
-    if (reach_target = 0){
+    if (reach_target == 0){
       fout << endl;
       fout << "All employees reach the monthly target---" << target << "." << endl;
     }
