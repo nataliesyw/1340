@@ -25,15 +25,15 @@ int add_record(company_struct sys[], int current_num_record){
     string line;
     // extract user input
     getline(cin, line);
-    cout << "Please enter the employee name" << endl;
+    cout << "Please enter the employee name: " << endl;
     getline(cin, sys[current_num_record].name);
-    cout << "Please enter the employee ID" << endl;
+    cout << "Please enter the employee ID: " << endl;
     getline(cin, sys[current_num_record].id);
-    cout << "Please enter the employee age" << endl;
+    cout << "Please enter the employee age: " << endl;
     getline(cin, sys[current_num_record].age);
-    cout << "Please enter the employee role" << endl;
+    cout << "Please enter the employee role: " << endl;
     getline(cin, sys[current_num_record].role);
-    cout << "Please enter the employee salary" << endl;
+    cout << "Please enter the employee salary: " << endl;
     getline(cin, sys[current_num_record].salary);
 
 
