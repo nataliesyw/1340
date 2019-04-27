@@ -1058,6 +1058,7 @@ int main(){
     cout << "Please enter the month to be recorded (1-12):  ";
     cin >> month;
     working_days = decide_month(month);
+    cout << "Working days:  " << working_days << endl;
 
     while(command_choice != "EXIT"){
 
