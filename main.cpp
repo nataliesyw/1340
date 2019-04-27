@@ -58,7 +58,7 @@ int main(){
    int count;
    string edit_id;
    int target_revenue;
-   
+
    cout << "***** Welcome to the staff management system.  Here are the commands in this system *****" << endl;
 
     cout << "Please enter the month to be recorded (1-12):  ";
@@ -106,6 +106,7 @@ int main(){
            cout << "Please input employee's id to delete: ";
            cin >> employee_id_delete;
      	    number_records = delete_record(employee_id_delete, company_ptr, system_size);
+          cout << "number_records: " << number_records << endl;
           }
 
          if (command_choice == "EDIT"){
@@ -115,7 +116,7 @@ int main(){
            cout << "Input the ID of the employee: ";
            cin >> edit_id;
            cout << endl;
-           
+
           edit(edit_id, company_ptr, number_records);
          }
 
