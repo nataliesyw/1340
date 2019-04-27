@@ -30,8 +30,9 @@ void check(string attribute, int days, int target, company_struct sys[], int n, 
   int num;
   int sal_ded = 0; //number of employees who had absent for 3 days or above (salary_deducted)
 
-  cout << "Days: " << days << endl;
+
   if (attribute == "1"){
+    cout << "Working days: " << days << endl;
     int i;
     cout << setw(25) << "Name" << setw(7) << "ID" << endl;
     for (i = 0; i < n; i++){
@@ -79,6 +80,7 @@ void check(string attribute, int days, int target, company_struct sys[], int n, 
               }
             }
           }
+          cout << "***The salary of required employee(s) has been deducted.***" << endl << endl;
         }
 
       }
@@ -88,6 +90,7 @@ void check(string attribute, int days, int target, company_struct sys[], int n, 
 
 
   else if (attribute == "2"){
+    cout << "Working days: " << days << endl;
     cout << setw(25) << "Name" << setw(7) << "ID" << setw(20) << "Late arrivals" << endl;
     for (int j = 0; j < n; j++){
       if (sys[j].late_count > 0){
@@ -99,6 +102,7 @@ void check(string attribute, int days, int target, company_struct sys[], int n, 
   }
 
   else if (attribute == "3"){
+    cout << "Working days: " << days << endl;
     cout << setw(25) << "Name" << setw(7) << "ID" << setw(20) << "Early Leave" << endl;
     for (int k = 0; k < n; k++){
       if (sys[k].early_leave_count > 0){

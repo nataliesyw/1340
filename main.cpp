@@ -59,9 +59,11 @@ int main(){
    string edit_id;
    int target_revenue;
 
-   cout << "***** Welcome to the staff management system.  Here are the commands in this system *****" << endl;
+   cout << "***** Welcome to the staff management system.*****" << endl;
 
-    cout << "Please enter the month to be recorded (1-12):  ";
+   cout << "Please input the following information." << endl;
+
+    cout << "The month to be recorded (1-12):  ";
     cin >> month;
     if (month == 1 || month == 7 || month == 8)
         working_days = 22;
@@ -78,9 +80,10 @@ int main(){
         working_days = 17;
     }
     cout << "Working days:  " << working_days << endl;
-    cout << "Please input the target revenue of an employee in this month:  ";
+    cout << "The target revenue of an employee in this month:  ";
     cin >> target_revenue;
     cout << endl;
+    cout << "Here are the commands in this system" << endl;
 
     while(command_choice != "EXIT"){
 
