@@ -804,7 +804,7 @@ void check(string attribute, company_struct sys[], int n){
   }
 
   if (attribute == "2"){
-    cout << setw(25) << "Name" << setw(7) << "ID" << setw(10) << "Late times" << endl;
+    cout << setw(25) << "Name" << setw(7) << "ID" << setw(15) << "Late arrivals" << endl;
     for (int j = 0; j < n; j++){
       if (sys[j].late_count > 0){
         num++;
