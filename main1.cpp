@@ -1000,24 +1000,24 @@ void output_record(string filename, company_struct sys[], int n, int ori_num){
     fout.close();
   }
 
-int decide_month(char month){
-    if (month == 'Jan' || month == 'Jul' || month == 'Aug'){
+int decide_month(int month){
+    if (month == '1' || month == '7' || month == '8'){
       return 22;
     }
 
-    if (month == 'Mar' || month == 'May' || month == 'Sep' || month == 'Oct' || month == 'Nov'){
+    if (month == '3'|| month == '5' || month == '9' || month == '10' || month == '11'){
       return 21;
     }
 
-    if (month == 'Dec'){
+    if (month == '12'){
       return 20;
     }
 
-    if (month == 'Apr' || month == 'Jun'){
+    if (month == '4' || month == '6'){
       return 19;
     }
 
-    if (month == 'Feb'){
+    if (month == '2'){
       return 17;
     }
 }
@@ -1048,14 +1048,14 @@ int main(){
     string output_filename;
     string current_month;
     int count;
-    char month;
+    int month;
     int working_days;
 
 
 
     cout << "Welcome to the staff management system.  Here are the commands in this system." << endl;
 
-    cout << "Please enter the month to be recorded (Jan/Feb/Mar/Apr/May/Jun/Jul/Aug/Sep/Oct/Nov/Dec):  ";
+    cout << "Please enter the month to be recorded (1-12):  ";
     cin >> month;
     working_days = decide_month(month);
 
