@@ -27,10 +27,11 @@ We would like to add the following functions in the system:
 
 11. Load an external file.
 
+12. Show the entire list of information of employee in the program.
 
 Coding style of our system:
 
 Sorting, File I/O, Class function, Calculation and For loop would be used in our project.
 Dynamic mangement will be utilized. In-code documentation  and other coding documents mentioned in the project description will also be added.
 
-It is hoped that the management system could be more use-friendly after our correction.
+It is hoped that the management system could be more user-friendly after our correction.
