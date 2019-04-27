@@ -107,11 +107,9 @@ int main(){
          }
 
          if (command_choice == "DELETE"){
-           cout << "Please input employee's id to delete: ";
-           cin >> employee_id_delete;
-     	    number_records = delete_record(employee_id_delete, company_ptr, system_size);
-          cout << "number_records: " << number_records << endl;
-          }
+  			      number_records = delete_record(company_ptr, number_records);
+			          cout << "There are now " << number_records << " record(s) in the system." << endl << endl;
+         }
 
          if (command_choice == "EDIT"){
 

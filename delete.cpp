@@ -22,13 +22,20 @@ using namespace std;
 // return the number of record (n-1)
 //sys: company ptr array
 //n : num of records in the system
-int delete_record(string id_to_search, company_struct sys[], int n){
+// DELETE command
+// delete a record of ONE employee
+int delete_record(company_struct sys[], int n){
      char ans;
+     int ii;
+		 cout << "Please enter employees id to delete:  ";
+          string id_to_search;
+          cin >> id_to_search;
           for (int i = 0; i < n; i++){
             string id_in_array = sys[i].id;
+            transform(id_in_array.begin(), id_in_array.end(), id_in_array.begin(), ::toupper);
+            transform(id_to_search.begin(), id_to_search.end(), id_to_search.begin(), ::toupper);
 
-            if(id_in_array.find(id_to_search) != string::npos)
-            {
+            if(id_in_array.find(id_to_search) != string::npos){
               cout << "Name:\t" << sys[i].name << endl;
               cout << "ID:\t" << sys[i].id << endl;
               cout << "Age:\t" << sys[i].age << endl;
@@ -36,33 +43,20 @@ int delete_record(string id_to_search, company_struct sys[], int n){
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
 
-			       cout << "Delete from system (y/n)? ";
+			  cout << "Delete from system (y/n)? ";
               cin >> ans;
               if (ans == 'y')
-               {
-                  if ( i == n ){
-                    n--;
-                    cout << endl;
-                    cout << "Number of records have been changed to " << n << "." << endl;
-                    cout << endl;
-                    return n;
-                    break;
-                  }
-                  else
-                   {
-                    // skip current record and copy all rest records to sys
-                    for (int j = i+1; j < n; j++){
-                         sys[j-1] = sys[j];
-                     }
-                    n--;
-                    cout << endl;
-           	        cout << "***Number of records have been changed to " << n << ".***" << endl;
-                    cout << endl;
-  				          return n;
-  				          break;
-                 }
-              }
+                {
+                  // skip current record and copy all rest records to sys
+                  for (int j = i+1; j < n; j++){
+                       sys[j-1] = sys[j];
+                   }
+                  n--;
+         	      cout << "***Number of records have been changed to " << n << "." << endl;
+				  return n;
+				  break;
+               }
+            }
           }
-       }
 		return n;
 }
