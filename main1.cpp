@@ -789,15 +789,15 @@ int save_as(string filename, company_struct sys[], int n){
 // late
 //sys: company ptr array
 //n: num of records in the system
-void check(string attribute, int days, company_struct sys[], int n){
+void check(string attribute, float days, company_struct sys[], int n){
 
   int num;
 
   if (attribute == "1"){
-    int attendance_percent;
+    float attendance_percent;
     int i;
 
-    attendance_percent = (sys[i].attendance_count / days)*100;
+    attendance_percent = ((float)sys[i].attendance_count / days)*100;
     
     for (i = 0; i < n; i++){
 
@@ -1000,7 +1000,7 @@ void output_record(string filename, company_struct sys[], int n, int ori_num){
     fout.close();
   }
 
-int decide_month(int month){
+float decide_month(int month){
     if (month == 1 || month == 7 || month == 8){
       return 22;
     }
@@ -1049,7 +1049,7 @@ int main(){
     string current_month;
     int count;
     int month;
-    int working_days;
+    float working_days;
 
 
 
