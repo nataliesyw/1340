@@ -110,21 +110,14 @@ int main(){
 
          if (command_choice == "EDIT"){
 
-
+           cout << endl;
            cout << "***ID could NOT be changed***" << endl;
            cout << "Input the ID of the employee: ";
-
            cin >> edit_id;
+           cout << endl;
 
-           cout << "Name-----(1)" << endl;
-           cout << "Age------(2)" << endl;
-           cout << "Role-----(3)" << endl;
-           cout << "Salary---(4)" << endl;
-           cout << "Please enter the attribute to be edited (1/2/3):  ";
 
-           cin >> edit_attribute;
-
-           edit(edit_attribute, edit_id, company_ptr, number_records);
+           edit(edit_id, company_ptr, number_records);
          }
 
          if (command_choice == "SHOW"){
