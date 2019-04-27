@@ -795,25 +795,32 @@ void check(string attribute, int days, company_struct sys[], int n){
 
   if (attribute == "1"){
     int attendance_percent;
+    int i;
 
-    for (int i = 0; i < n; i++){
-      attendance_percent = (sys[i].attendance_count / days)*100;
+    attendance_percent = (sys[i].attendance_count / days)*100;
+    
+    for (i = 0; i < n; i++){
+
       if (sys[i].attendance_count == days){
         num++;
         cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(7) << attendance_percent << endl << endl;
       }
-
-      else{
-        char ans;
-        cout << "Show the attendacne performace of rest of the employees (y/n)?  ";
-        cin >> ans;
-        if (ans = 'y'){
-          cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(7) << attendance_percent << endl << endl;
-        }
-      }  
     }
     cout << "***There are total " << num << " employee(s) with perfect attendance.***" << endl << endl;
-  }
+
+    char ans;
+    cout << "Show the attendacne performace of rest of the employees (y/n)?  ";
+    cin >> ans;
+      if (ans = 'y'){
+        for (int i = 0; i < n; i++){
+          if (sys[i].attendance_count != days){
+          cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(7) << attendance_percent << endl << endl;
+        }
+      }
+    }
+  }  
+    
+
 
   if (attribute == "2"){
     cout << setw(25) << "Name" << setw(7) << "ID" << setw(20) << "Late arrivals" << endl;
@@ -993,24 +1000,24 @@ void output_record(string filename, company_struct sys[], int n, int ori_num){
     fout.close();
   }
 
-int decide_month(string month){
-    if (month == "Jan" || month == "Jul" || month == "Aug"){
+int decide_month(char month){
+    if (month == 'Jan' || month == 'Jul' || month == 'Aug'){
       return 22;
     }
 
-    if (month == "Mar" || month == "May" || month == "Sep" || month == "Oct" || month == "Nov"){
+    if (month == 'Mar' || month == 'May' || month == 'Sep' || month == 'Oct' || month == 'Nov'){
       return 21;
     }
 
-    if (month == "20"){
+    if (month == 'Dec'){
       return 20;
     }
 
-    if (month == "Apr" || month == "Jun"){
+    if (month == 'Apr' || month == 'Jun'){
       return 19;
     }
 
-    if (month == "Feb"){
+    if (month == 'Feb'){
       return 17;
     }
 }
@@ -1041,18 +1048,15 @@ int main(){
     string output_filename;
     string current_month;
     int count;
-    string month;
+    char month;
     int working_days;
 
 
 
     cout << "Welcome to the staff management system.  Here are the commands in this system." << endl;
 
-    string line;  
-    getline(cin, line)  ;
     cout << "Please enter the month to be recorded (Jan/Feb/Mar/Apr/May/Jun/Jul/Aug/Sep/Oct/Nov/Dec):  ";
-    getline(cin, month);
-
+    cin >> month;
     working_days = decide_month(month);
 
     while(command_choice != "EXIT"){
