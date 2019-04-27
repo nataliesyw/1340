@@ -1,6 +1,6 @@
 #ifndef CHECK
 #define CHECK
 
-int check(std::string attribute, int days, company_struct sys[], int n);
+void check(std::string attribute, int days, int target, company_struct sys[], int n, int num_records);
 
 #endif
