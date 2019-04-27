@@ -80,7 +80,8 @@ int main(){
     cout << "Working days:  " << working_days << endl;
     cout << "Please input the target revenue of an employee in this month:  ";
     cin >> target_revenue;
-
+    cout << endl;
+    
     while(command_choice != "EXIT"){
 
          if (command_choice == "LOAD"){
