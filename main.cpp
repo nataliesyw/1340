@@ -216,6 +216,7 @@ int main(){
            cout << endl;
            target_revenue = check(check_attribute, working_days, company_ptr, system_size, number_records);
          }
+         
          if (command_choice == "OUTPUT"){
              cout << "Please enter the filename to output to: ";
              cin >> output_filename;

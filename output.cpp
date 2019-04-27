@@ -71,6 +71,7 @@ void output_record(string filename, company_struct sys[], int n, int ori_num, in
       else{
         fout << setw(name_width) << sys[i].name << setw(id_width) << sys[i].id << setw(age_width) << sys[i].age << setw(role_width) << sys[i].role << setw(revenue_width) << sys[i].revenue << setw(salary_width) << sys[i].salary << setw(perfect_width) << sys[i].perfect_attendance_output <<endl;
       }
+    }
     if (reach_target = 0){
       fout << endl;
       fout << "All employees reach the monthly target---" << target << "." << endl;
@@ -80,4 +81,4 @@ void output_record(string filename, company_struct sys[], int n, int ori_num, in
       fout << "Employees with * before their name did not reach the monthly target---" << target << "." << endl;
     }
     fout.close();
-  }
+}
