@@ -32,7 +32,7 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
 
   if (attribute == "1"){
     int i;
-    cout << setw(25) << "Name" << setw(7) << "ID" << endl;  
+    cout << setw(25) << "Name" << setw(7) << "ID" << endl;
     for (i = 0; i < n; i++){
 
       if (sys[i].attendance_count == days){
@@ -47,13 +47,13 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
 
     if (num != num_records){
       char ans_show;
-      cout << "***There are total " << num << " employee(s) with perfect attendance.***" << endl << endl;      
+      cout << "***There are total " << num << " employee(s) with perfect attendance.***" << endl << endl;
       cout << "Show the attendacne performace of rest of the employees (y/n)?  ";
       cin >> ans_show;
-        if (ans_show = 'y'){
+        if (ans_show == 'y'){
         cout << setw(25) << "Name" << setw(7) << "ID" << setw(20) << "Absence days" << endl;
           for (int i = 0; i < n; i++){
-            if (sys[i].attendance_count != days){ 
+            if (sys[i].attendance_count != days){
               int abs_days = days - sys[i].attendance_count;
               if (abs_days >= 3){
                 sal_ded++;
@@ -67,16 +67,16 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
         cout << "***Employee who had absent for 3 days or above would be punished by deducting salary with $500.***" << endl;
         cout << "Processing deduction (y/n)?  ";
         cin >> abs_ded;
-        if (abs_ded = 'y'){
+        if (abs_ded == 'y'){
           for (int i = 0; i < n; i++){
-            if (sys[i].attendance_count != days){ 
+            if (sys[i].attendance_count != days){
               int abs_days = days - sys[i].attendance_count;
               if (abs_days >= 3){
                 int temp;
                 temp = stoi(sys[i].salary) - 500;
                 sys[i].salary = to_string(temp);
               }
-            } 
+            }
           }
         }
 

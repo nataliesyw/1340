@@ -54,7 +54,7 @@ void output_record(string filename, company_struct sys[], int n, int ori_num, in
     const int id_width = 7;
     const int role_width = 13;
     const int age_width = 6;
-    const int revenue_width = 12;    
+    const int revenue_width = 12;
     const int salary_width = 9;
     const int attendance_width = 15;
     const int perfect_width = 25;
@@ -71,7 +71,7 @@ void output_record(string filename, company_struct sys[], int n, int ori_num, in
     fout << setw(name_width)<< "Name"<< setw(id_width) << "ID" << setw(age_width) << "Age" << setw(role_width) << "Role" << setw(revenue_width) << "Revenue" << setw(salary_width) << "Salary"<< setw(perfect_width) << "Perfect Attendance"  << endl;
     for (int i = 0; i < n; i++){
       if (sys[i].revenue < target){
-        fout << "*" << setw(name_width) << sys[i].name << setw(id_width) << sys[i].id << setw(age_width) << sys[i].age << setw(role_width) << sys[i].role << setw(revenue_width) << sys[i].revenue << setw(salary_width) << sys[i].salary << setw(perfect_width) << sys[i].perfect_attendance_output << endl;     
+        fout << "*" << setw(name_width) << sys[i].name << setw(id_width) << sys[i].id << setw(age_width) << sys[i].age << setw(role_width) << sys[i].role << setw(revenue_width) << sys[i].revenue << setw(salary_width) << sys[i].salary << setw(perfect_width) << sys[i].perfect_attendance_output << endl;
         reach_target++;
       }
       else{
