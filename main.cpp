@@ -59,7 +59,7 @@ int main(){
    string edit_id;
    int target_revenue;
    
-   cout << "*****Welcome to the staff management system.  Here are the commands in this system.*****" << endl;
+   cout << "***** Welcome to the staff management system.  Here are the commands in this system *****" << endl;
 
     cout << "Please enter the month to be recorded (1-12):  ";
     cin >> month;
@@ -177,10 +177,11 @@ int main(){
 
              cout << "Age----------(1)" << endl;
              cout << "Salary-------(2)" << endl;
-             cout << "Early-leave--(3)" << endl;
-             cout << "Late---------(4)" << endl;
-             cout << "Attendance---(5)" << endl;
-             cout << "Please enter the attribute to sort on (1/2/3/4/5):  ";
+             cout << "Revenue------(3)" << endl;
+             cout << "Early-leave--(4)" << endl;
+             cout << "Late---------(5)" << endl;
+             cout << "Attendance---(6)" << endl;
+             cout << "Please enter the attribute to sort on (1/2/3/4/5/6):  ";
 
              cin >> sort_attribute;
 

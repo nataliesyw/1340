@@ -85,8 +85,34 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
       }
     }
 
-    // sort by times for being late
+    // sort by revenue
     if (attribute == "3"){
+      for (i = 0; i < num - 1; i++)
+      {
+          min = sys[i].revenue;
+          idx = i;
+
+          for (j = i + 1; j < num; j++)
+          {
+              if (sys[j].revenue < min)
+              {
+                  min = sys[j].revenue;
+                  idx = j;
+              }
+          }
+
+          if (idx != i)
+          {
+              company_struct temp;
+              // swap pb[i] & pb[idx]
+              temp    = sys[i];
+              sys[i]   = sys[idx];
+              sys[idx] = temp;
+          }
+      }
+    }
+    // sort by times for being late
+    if (attribute == "4"){
       for (i = 0; i < num - 1; i++)
       {
           min = sys[i].late_count;
@@ -113,7 +139,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
     // sort by times for left early
-    if (attribute == "4"){
+    if (attribute == "5"){
       for (i = 0; i < num - 1; i++)
       {
           min = sys[i].early_leave_count;
@@ -140,7 +166,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
     //sort by attdence
-    if (attribute == "5"){
+    if (attribute == "6"){
       for (i = 0; i < num - 1; i++)
       {
           min = sys[i].attendance_count;
@@ -225,8 +251,34 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
       }
     }
 
-    // sort by times for being late
+    // sort by revenue
     if (attribute == "3"){
+      for (i = 0; i < num - 1; i++)
+      {
+          max = sys[i].revenue;
+          idx = i;
+
+          for (j = i + 1; j < num; j++)
+          {
+              if (sys[j].revenue > max)
+              {
+                  max = sys[j].revenue;
+                  idx = j;
+              }
+          }
+
+          if (idx != i)
+          {
+              company_struct temp;
+              // swap pb[i] & pb[idx]
+              temp    = sys[i];
+              sys[i]   = sys[idx];
+              sys[idx] = temp;
+          }
+      }
+    }
+    // sort by times for being late
+    if (attribute == "4"){
       for (i = 0; i < num - 1; i++)
       {
           max = sys[i].late_count;
@@ -253,7 +305,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
     // sort by times for left early
-    if (attribute == "4"){
+    if (attribute == "5"){
       for (i = 0; i < num - 1; i++)
       {
           max = sys[i].early_leave_count;
@@ -280,7 +332,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
     //sort by attdence
-    if (attribute == "5"){
+    if (attribute == "6"){
       for (i = 0; i < num - 1; i++)
       {
           max = sys[i].attendance_count;
