@@ -1,0 +1,259 @@
+***** Welcome to the staff management system.  Here are the commands in this system *****
+Please enter the month to be recorded (1-12):  8
+Working days:  22
+Please input the target revenue of an employee in this month:  100000
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CLOCK": Calculate the attendance of employees.
+"CAL": Calculate the sales revenue of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: LOAD
+Please enter the filename: company_data2.txt
+
+***Size of the employee management system has been enlarged to hold 6 records.***
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CLOCK": Calculate the attendance of employees.
+"CAL": Calculate the sales revenue of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: CLOCK
+Please enter the clock.io filename: clock_io2.txt
+
+***Attendance, late and early leave of each employee has been calculated.***
+***Enter "CHECK" command to see the result.***
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CLOCK": Calculate the attendance of employees.
+"CAL": Calculate the sales revenue of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: CHECK
+Check employees with perfect ATTENDANCE--------(1)
+Check employees who have been LATE-------------(2)
+Check employees who have LEFT EARLY------------(3)
+Check employees who reach the monthly target---(4)
+Please enter the attribute to be checked (1/2/3/4):  1
+
+Days: 22
+                     Name     ID
+               Peter Chan   1001
+
+              Cherry Wong   1002
+
+               Tracy Wong   1003
+
+              Jessica Tse   1005
+
+***There are total 4 employee(s) with perfect attendance.***
+
+Show the attendacne performace of rest of the employees (y/n)?  y
+
+                     Name     ID        Absence days
+              Erica Tsang   1004              5
+
+                 Peter Ng   1006              1
+
+***Employee who had absent for 3 days or above would be punished by deducting salary with $500.***
+Processing deduction (y/n)?  y
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CLOCK": Calculate the attendance of employees.
+"CAL": Calculate the sales revenue of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: DELETE
+Please enter employees id to delete:  1008
+There are now 5 record(s) in the system.
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CLOCK": Calculate the attendance of employees.
+"CAL": Calculate the sales revenue of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: SHOW
+Name:	Peter Chan
+ID:	 1001
+Age:	 30
+Role:	 Director
+Salary:	 30000
+
+Name:	Cherry Wong
+ID:	 1002
+Age:	 29
+Role:	 Manager
+Salary:	 27000
+
+Name:	Tracy Wong
+ID:	 1003
+Age:	 24
+Role:	 Clerk
+Salary:	 17000
+
+Name:	Erica Tsang
+ID:	 1004
+Age:	 23
+Role:	 Clerk
+Salary:	14500
+
+Name:	Jessica Tse
+ID:	 1005
+Age:	 22
+Role:	 Clerk
+Salary:	 11500
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CLOCK": Calculate the attendance of employees.
+"CAL": Calculate the sales revenue of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: ADD
+Please enter the employee name:
+Natalie
+Please enter the employee ID:
+1016
+Please enter the employee age:
+18
+Please enter the employee role:
+Clerk
+Please enter the employee salary:
+10000
+
+Name:	Natalie
+ID:	1016
+Age:	18
+Role:	Clerk
+Salary:	10000
+
+Add to the system (y/n)?:  y
+
+***1 record added.***
+***There are now 6 record(s) in the system.***
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CLOCK": Calculate the attendance of employees.
+"CAL": Calculate the sales revenue of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: ADD
+Please enter the employee name:
+Scarlett
+Please enter the employee ID:
+1017
+Please enter the employee age:
+19
+Please enter the employee role:
+CLerk
+Please enter the employee salary:
+11000
+
+Name:	Scarlett
+ID:	1017
+Age:	19
+Role:	CLerk
+Salary:	11000
+
+Add to the system (y/n)?:  y
+
+***1 record added.***
+***There are now 7 record(s) in the system.***
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CLOCK": Calculate the attendance of employees.
+"CAL": Calculate the sales revenue of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: SAVE
+Please enter the filename to save as:  save_as1.txt
+7 record(s) found.
+The system is saved into save_as1.txt
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CLOCK": Calculate the attendance of employees.
+"CAL": Calculate the sales revenue of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: EXIT
+Exit the system.
+Press any key to continue...
