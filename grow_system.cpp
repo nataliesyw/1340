@@ -24,7 +24,6 @@ using namespace std;
 //sys: is the company ptr array
 // sys_size: number of size of system currently
 void grow_system(company_struct * &sys, int &sys_size, int n){
-    cout << "Success" << endl;
     // create a new dynamic array with a new size = max_size + n
     company_struct * sys_new = new company_struct[sys_size + n];
 
