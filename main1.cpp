@@ -235,7 +235,6 @@ void show(company_struct sys[], int current_num_record){
       cout << "Age:\t" << sys[i].age << endl;
       cout << "Role:\t" << sys[i].role << endl;
       cout << "Salary:\t" << sys[i].salary << endl;
-      cout << "Revenue:\t" << sys[i].revenue << endl;
       cout << endl;
     }
 }
@@ -824,6 +823,20 @@ void check(string attribute, company_struct sys[], int n){
     cout << "***There are total " << num << "employee(s) leaving early in this month.***" << endl << endl;
   }
 
+  if (attribute == "4"){
+    int target;
+    cout << "Please input the monthly target for an employee:  ";
+    cin >> target;
+
+    for (int q = 0; q < n; q++){
+      if (sys[q].revenue >= target){
+        num++;
+        cout << setw(25) << sys[q].name << setw(7) << sys[q].id << setw(3) << sys[q].revenue << endl << endl;
+      }
+    }
+    cout << "***There are total " << num << "employee(s) being late in this month.***" << endl << endl;
+  }
+
 }
 
 
@@ -1132,9 +1145,10 @@ int main(){
         if (command_choice == "CHECK"){
           string check_attribute;
 
-          cout << "Check employees with perfect ATTENDANCE---(1)" << endl;
-          cout << "Check employees who have been LATE--------(2)" << endl;
-          cout << "Check employees who have LEFT EARLY-------(3)" << endl;
+          cout << "Check employees with perfect ATTENDANCE--------(1)" << endl;
+          cout << "Check employees who have been LATE-------------(2)" << endl;
+          cout << "Check employees who have LEFT EARLY------------(3)" << endl;
+          cout << "Check employees who reach the monthly target---(4)" << endl;
           cout << "Please enter the attribute to be checked (1/2/3):  ";
 
           cin >> check_attribute;
