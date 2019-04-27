@@ -1,0 +1,368 @@
+***** Welcome to the staff management system.  Here are the commands in this system *****
+Please enter the month to be recorded (1-12):  4
+Working days:  19
+Please input the target revenue of an employee in this month:  100000
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CAL": Calculate the the attendance of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: LOAD
+Please enter the filename: company_data1.txt
+
+***Size of the employee management system has been enlarged to hold 15 records.***
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CAL": Calculate the the attendance of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: ADD
+Please enter the employee name
+Janis
+Please enter the employee ID
+1016
+Please enter the employee age
+25
+Please enter the employee role
+Clerk
+Please enter the employee salary
+12000
+
+Name:	Janis
+ID:	1016
+Age:	25
+Role:	Clerk
+Salary:	12000
+
+Add to the system (y/n)?:  y
+
+***1 record added.***
+***There are now 16 record(s) in the system.***
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CAL": Calculate the the attendance of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: SHOW
+Name:	Natalie Wong Seung Yee
+ID:	 1001
+Age:	 17
+Role:	 Director
+Salary:	 13000
+
+Name:	Scarlett So Yuk Sze
+ID:	 1002
+Age:	 19
+Role:	 Manager
+Salary:	 15000
+
+Name:	Ingrid Chu Yee Lam
+ID:	 1003
+Age:	 17
+Role:	 Secretary
+Salary:	 12000
+
+Name:	Cathy Lee Hiu Man
+ID:	 1004
+Age:	 18
+Role:	 Clerk
+Salary:	 12000
+
+Name:	Philip Choi Wang Hei
+ID:	 1005
+Age:	 20
+Role:	 Clerk
+Salary:	 11500
+
+Name:	Alvin Wong Chi Ming
+ID:	 1006
+Age:	 21
+Role:	 Clerk
+Salary:	 11500
+
+Name:	Louie Yan
+ID:	 1007
+Age:	 21
+Role:	 Janitor
+Salary:	 9000
+
+Name:	Draco Fluffy
+ID:	 1008
+Age:	 20
+Role:	 Marketing Manager
+Salary:	 20000
+
+Name:	Myron Eng Man Him
+ID:	 1009
+Age:	 17
+Role:	 Clerk
+Salary:	 12500
+
+Name:	Jellal Fernandes
+ID:	 1010
+Age:	 27
+Role:	 Boss
+Salary:	 50000
+
+Name:	Wilson Chan Wing Hang
+ID:	 1011
+Age:	 18
+Role:	 Director
+Salary:	 13000
+
+Name:	Ken Ip Kin Wang
+ID:	 1012
+Age:	 30
+Role:	 Clerk
+Salary:	 11500
+
+Name:	Ivan Lam Hei Lung
+ID:	 1013
+Age:	 18
+Role:	 Clerk
+Salary:	 12500
+
+Name:	Mahima Goel
+ID:	 1014
+Age:	 50
+Role:	 Janitor
+Salary:	 9000
+
+Name:	Dennis Lo Sai Huen
+ID:	 1015
+Age:	 50
+Role:	 Security
+Salary:	 9000
+
+Name:	Janis
+ID:	1016
+Age:	25
+Role:	Clerk
+Salary:	12000
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CAL": Calculate the the attendance of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: SORT
+Age----------(1)
+Salary-------(2)
+Revenue------(3)
+Early-leave--(4)
+Late---------(5)
+Attendance---(6)
+Please enter the attribute to sort on (1/2/3/4/5/6):  1
+Sorting in ascending or descending order? (a/d): a
+Name:	Natalie Wong Seung Yee
+ID:	 1001
+Age:	 17
+Role:	 Director
+Salary:	 13000
+
+Name:	Ingrid Chu Yee Lam
+ID:	 1003
+Age:	 17
+Role:	 Secretary
+Salary:	 12000
+
+Name:	Myron Eng Man Him
+ID:	 1009
+Age:	 17
+Role:	 Clerk
+Salary:	 12500
+
+Name:	Cathy Lee Hiu Man
+ID:	 1004
+Age:	 18
+Role:	 Clerk
+Salary:	 12000
+
+Name:	Wilson Chan Wing Hang
+ID:	 1011
+Age:	 18
+Role:	 Director
+Salary:	 13000
+
+Name:	Ivan Lam Hei Lung
+ID:	 1013
+Age:	 18
+Role:	 Clerk
+Salary:	 12500
+
+Name:	Scarlett So Yuk Sze
+ID:	 1002
+Age:	 19
+Role:	 Manager
+Salary:	 15000
+
+Name:	Draco Fluffy
+ID:	 1008
+Age:	 20
+Role:	 Marketing Manager
+Salary:	 20000
+
+Name:	Philip Choi Wang Hei
+ID:	 1005
+Age:	 20
+Role:	 Clerk
+Salary:	 11500
+
+Name:	Louie Yan
+ID:	 1007
+Age:	 21
+Role:	 Janitor
+Salary:	 9000
+
+Name:	Alvin Wong Chi Ming
+ID:	 1006
+Age:	 21
+Role:	 Clerk
+Salary:	 11500
+
+Name:	Janis
+ID:	1016
+Age:	25
+Role:	Clerk
+Salary:	12000
+
+Name:	Jellal Fernandes
+ID:	 1010
+Age:	 27
+Role:	 Boss
+Salary:	 50000
+
+Name:	Ken Ip Kin Wang
+ID:	 1012
+Age:	 30
+Role:	 Clerk
+Salary:	 11500
+
+Name:	Dennis Lo Sai Huen
+ID:	 1015
+Age:	 50
+Role:	 Security
+Salary:	 9000
+
+Name:	Mahima Goel
+ID:	 1014
+Age:	 50
+Role:	 Janitor
+Salary:	 9000
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CAL": Calculate the the attendance of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: SEARCH
+Name-----(1)
+ID-------(2)
+Age------(3)
+Role-----(4)
+Salary---(5)
+Please enter the attribute to search for employees (1/2/3/4/5):  4
+Please enter employees role to search:  Clerk
+Name:	Cathy Lee Hiu Man
+ID:	 1004
+Age:	 18
+Role:	 Clerk
+Salary:	 12000
+
+Name:	Philip Choi Wang Hei
+ID:	 1005
+Age:	 20
+Role:	 Clerk
+Salary:	 11500
+
+Name:	Alvin Wong Chi Ming
+ID:	 1006
+Age:	 21
+Role:	 Clerk
+Salary:	 11500
+
+Name:	Myron Eng Man Him
+ID:	 1009
+Age:	 17
+Role:	 Clerk
+Salary:	 12500
+
+Name:	Ken Ip Kin Wang
+ID:	 1012
+Age:	 30
+Role:	 Clerk
+Salary:	 11500
+
+Name:	Ivan Lam Hei Lung
+ID:	 1013
+Age:	 18
+Role:	 Clerk
+Salary:	 12500
+
+Name:	Janis
+ID:	1016
+Age:	25
+Role:	Clerk
+Salary:	12000
+
+
+7 record(s) found.
+
+Please enter the commands according to the following format.
+"LOAD": Load a file that contains record of employees.
+"CAL": Calculate the the attendance of employees.
+"ADD": Add a new record of a new employee
+"DELETE": Fire an employee.
+"EDIT" : Edit the record of employee.
+"SHOW": Show all attributes by the employee by the name.
+"SEARCH": Search for the employees according to that attribute.
+"SORT": Sort the employees according to that attribute
+"CHECK": Check the late, early leave record and attendance of employees.
+"SAVE": Save the current system into a new textfile.
+"OUTPUT": Output the monthly report in current program
+"EXIT" : Exit the system.
+Please Enter your command: EXIT
+Exit the system.
+Press any key to continue...
