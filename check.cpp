@@ -25,11 +25,10 @@ using namespace std;
 // late
 //sys: company ptr array
 //n: num of records in the system
-int check(string attribute, int days, company_struct sys[], int n, int num_records){
+void check(string attribute, int days, int target, company_struct sys[], int n, int num_records){
 
   int num;
   int sal_ded = 0; //number of employees who had absent for 3 days or above (salary_deducted)
-  int target = 0;
 
   if (attribute == "1"){
     int i;
@@ -45,8 +44,7 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
     if (num == num_records){
       cout << "***All employees had perfect attendance performance in this month.***" << endl;
     }
-
-    if (num != num_records){
+    else {
       char ans_show;
       cout << "***There are total " << num << " employee(s) with perfect attendance.***" << endl << endl;
       cout << "Show the attendacne performace of rest of the employees (y/n)?  ";
@@ -83,12 +81,11 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
 
       }
     }
-    return target;
   } 
     
 
 
-  if (attribute == "2"){
+  else if (attribute == "2"){
     cout << setw(25) << "Name" << setw(7) << "ID" << setw(20) << "Late arrivals" << endl;
     for (int j = 0; j < n; j++){
       if (sys[j].late_count > 0){
@@ -97,10 +94,9 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
       }
     }
     cout << "***There are total " << num << " employee(s) being late in this month.***" << endl << endl;
-    return target;
   }
 
-  if (attribute == "3"){
+  else if (attribute == "3"){
     cout << setw(25) << "Name" << setw(7) << "ID" << setw(20) << "Early Leave" << endl;
     for (int k = 0; k < n; k++){
       if (sys[k].early_leave_count > 0){
@@ -109,15 +105,9 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
       }
     }
     cout << "***There are total " << num << " employee(s) leaving early in this month.***" << endl << endl;
-    return target;
   }
 
-  if (attribute == "4"){
-    int temp;
-    cout << "Please input the monthly target for an employee:  ";
-    cin >> temp;
-    target = temp;
-    cout << endl;
+  else if (attribute == "4"){
     cout << setw(25) << "Name" << setw(7) << "ID" << setw(25) << "Sales performance" << endl;
     for (int q = 0; q < n; q++){
       if (sys[q].revenue >= target){
@@ -126,7 +116,6 @@ int check(string attribute, int days, company_struct sys[], int n, int num_recor
       }
     }
     cout << "***There are total " << num << " employee(s) reached the target in this month.***" << endl << endl;
-  return target;
   }
 
 }
