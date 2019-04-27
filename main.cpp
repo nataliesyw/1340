@@ -77,6 +77,8 @@ int main(){
         working_days = 17;
     }
     cout << "Working days:  " << working_days << endl;
+    cout << "Please input the target revenue of an employee in this month:  ";
+    cin >> target_revenue;
 
     while(command_choice != "EXIT"){
 
@@ -217,7 +219,6 @@ int main(){
 
          if (command_choice == "CHECK"){
 
-
            cout << "Check employees with perfect ATTENDANCE--------(1)" << endl;
            cout << "Check employees who have been LATE-------------(2)" << endl;
            cout << "Check employees who have LEFT EARLY------------(3)" << endl;
@@ -226,7 +227,7 @@ int main(){
 
            cin >> check_attribute;
            cout << endl;
-           target_revenue = check(check_attribute, working_days, company_ptr, system_size, number_records);
+           check(check_attribute, working_days, target_revenue, company_ptr, system_size, number_records);
          }
 
          if (command_choice == "OUTPUT"){
