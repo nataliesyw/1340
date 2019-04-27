@@ -36,14 +36,13 @@ void check(string attribute, int days, int target, company_struct sys[], int n, 
     cout << setw(25) << "Name" << setw(7) << "ID" << endl;
     for (i = 0; i < n; i++){
 
-      cout << sys[i].attendance_count << " and " << days << endl;
       if (sys[i].attendance_count == days){
         num++;
         cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(7) << endl << endl;
       }
     }
 
-    cout << n << "," << num_records << "," << num << endl;    if (num == num_records){
+    if (num == num_records){
       cout << "***All employees had perfect attendance performance in this month.***" << endl;
     }
     else {
