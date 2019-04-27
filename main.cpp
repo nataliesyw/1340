@@ -63,7 +63,20 @@ int main(){
 
     cout << "Please enter the month to be recorded (1-12):  ";
     cin >> month;
-    working_days = decide_month(month);
+    if (month == 1 || month == 7 || month == 8)
+        working_days = 22;
+    else if (month == 3|| month == 5 || month == 9 || month == 10 || month == 11){
+        working_days = 21;
+    }
+    else if (month == 12){
+        working_days = 20;
+    }
+    else if (month == 4 || month == 6){
+        working_days = 19;
+    }
+    else if (month == 2){
+        working_days = 17;
+    }
     cout << "Working days:  " << working_days << endl;
 
     while(command_choice != "EXIT"){
@@ -216,7 +229,7 @@ int main(){
            cout << endl;
            target_revenue = check(check_attribute, working_days, company_ptr, system_size, number_records);
          }
-         
+
          if (command_choice == "OUTPUT"){
              cout << "Please enter the filename to output to: ";
              cin >> output_filename;
