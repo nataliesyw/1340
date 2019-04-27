@@ -29,7 +29,6 @@
 #include "clock.cpp"
 #include "cal.cpp"
 #include "output.cpp"
-#include "decide_month.cpp"
 #include "initialize_attendance.cpp"
 
 using namespace std;
