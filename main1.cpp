@@ -1123,7 +1123,7 @@ int main(){
             cout << "Please enter the filename: ";
             cin >> revenue_file;
             cout << endl;
-            cal(revenue_file, company_ptr, number_records);
+            cal(revenue_file, company_ptr, system_size);
             cout << "***" << number_records << " number of records loaded.***" << endl;
             cout << endl;
 
