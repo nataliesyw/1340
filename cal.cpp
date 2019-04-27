@@ -16,6 +16,10 @@
 #include "cal.h"
 
 using namespace std;
+//cal revenue
+// filename: revenue filename
+// sys: company ptr array
+//n :system size
 void cal(string filename, company_struct * &sys, int n){
     ifstream fin;
     fin.open(filename.c_str());
