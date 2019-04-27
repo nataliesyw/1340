@@ -804,6 +804,7 @@ void check(string attribute, company_struct sys[], int n){
   }
 
   if (attribute == "2"){
+    cout << setw(25) << "Name" << setw(7) << "ID" << setw(3) << "Late times" << endl;
     for (int j = 0; j < n; j++){
       if (sys[j].late_count > 0){
         num++;
@@ -1155,6 +1156,7 @@ int main(){
           cout << "Please enter the attribute to be checked (1/2/3/4):  ";
 
           cin >> check_attribute;
+          cout << endl;
           check(check_attribute, company_ptr, system_size);
         }
         if (command_choice == "OUTPUT"){
