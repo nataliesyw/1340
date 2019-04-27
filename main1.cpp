@@ -28,7 +28,7 @@ struct company_struct{
     string perfect_attendance_output; // for printing the output report file
     double monthly_revenue;
     int revenue = 0;
-    int attendance_count = 20;
+    int attendance_count = 0;
     int early_leave_count = 0;
     int late_count = 0;
 };
@@ -789,32 +789,45 @@ int save_as(string filename, company_struct sys[], int n){
 // late
 //sys: company ptr array
 //n: num of records in the system
-void check(string attribute, company_struct sys[], int n){
+void check(string attribute, int days, company_struct sys[], int n){
 
   int num;
 
   if (attribute == "1"){
+    int attendance_percent;
+
     for (int i = 0; i < n; i++){
-      if (sys[i].attendance_count == 20){
+      attendance_percent = (sys[i].attendance_count / days)*100;
+      if (sys[i].attendance_count == days){
         num++;
-        cout << setw(25) << sys[i].name << setw(7) << sys[i].id << endl << endl;
+        cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(7) << attendance_percent << endl << endl;
       }
+
+      else{
+        char ans;
+        cout << "Show the attendacne performace of rest of the employees (y/n)?  ";
+        cin >> ans;
+        if (ans = 'y'){
+          cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(7) << attendance_percent << endl << endl;
+        }
+      }  
     }
     cout << "***There are total " << num << " employee(s) with perfect attendance.***" << endl << endl;
   }
 
   if (attribute == "2"){
-    cout << setw(25) << "Name" << setw(7) << "ID" << setw(15) << "Late arrivals" << endl;
+    cout << setw(25) << "Name" << setw(7) << "ID" << setw(20) << "Late arrivals" << endl;
     for (int j = 0; j < n; j++){
       if (sys[j].late_count > 0){
         num++;
-        cout << setw(25) << sys[j].name << setw(7) << sys[j].id << setw(10) << sys[j].late_count << endl << endl;
+        cout << setw(25) << sys[j].name << setw(7) << sys[j].id << setw(20) << sys[j].late_count << endl << endl;
       }
     }
     cout << "***There are total " << num << " employee(s) being late in this month.***" << endl << endl;
   }
 
   if (attribute == "3"){
+    cout << setw(25) << "Name" << setw(7) << "ID" << setw(20) << "Early Leave" << endl;
     for (int k = 0; k < n; k++){
       if (sys[k].early_leave_count > 0){
         num++;
@@ -829,11 +842,11 @@ void check(string attribute, company_struct sys[], int n){
     cout << "Please input the monthly target for an employee:  ";
     cin >> target;
     cout << endl;
-
+    cout << setw(25) << "Name" << setw(7) << "ID" << setw(25) << "Sales performance" << endl;
     for (int q = 0; q < n; q++){
       if (sys[q].revenue >= target){
         num++;
-        cout << setw(25) << sys[q].name << setw(7) << sys[q].id << setw(3) << sys[q].revenue << endl << endl;
+        cout << setw(25) << sys[q].name << setw(7) << sys[q].id << setw(25) << sys[q].revenue << endl << endl;
       }
     }
     cout << "***There are total " << num << " employee(s) reached the target in this month.***" << endl << endl;
@@ -980,9 +993,34 @@ void output_record(string filename, company_struct sys[], int n, int ori_num){
     fout.close();
   }
 
+int decide_month(string month){
+    if (month == "Jan" || month == "Jul" || month == "Aug"){
+      return 22;
+    }
 
+    if (month == "Mar" || month == "May" || month == "Sep" || month == "Oct" || month == "Nov"){
+      return 21;
+    }
 
+    if (month == "20"){
+      return 20;
+    }
 
+    if (month == "Apr" || month == "Jun"){
+      return 19;
+    }
+
+    if (month == "Feb"){
+      return 17;
+    }
+}
+
+void initialize_attendance(int days, company_struct * &sys, int n){
+  
+  for (int i = 0; i < n; i++){
+    sys[i].attendance_count += days;
+  }
+}
 
 int main(){
      // attribute: the parameter that the user would like to search for
@@ -1003,10 +1041,19 @@ int main(){
     string output_filename;
     string current_month;
     int count;
+    string month;
+    int working_days;
 
 
 
     cout << "Welcome to the staff management system.  Here are the commands in this system." << endl;
+
+    string line;  
+    getline(cin, line)  ;
+    cout << "Please enter the month to be recorded (Jan/Feb/Mar/Apr/May/Jun/Jul/Aug/Sep/Oct/Nov/Dec):  ";
+    getline(cin, month);
+
+    working_days = decide_month(month);
 
     while(command_choice != "EXIT"){
 
@@ -1015,6 +1062,7 @@ int main(){
             cin >> raw_textfile;
             cout << endl;
             number_records = load(raw_textfile, company_ptr, system_size);
+            initialize_attendance(working_days, company_ptr, system_size);
             ori_num = number_records + 1000;
             cout << "***" << number_records << " number of records loaded.***" << endl;
             cout << endl;
@@ -1157,7 +1205,7 @@ int main(){
 
           cin >> check_attribute;
           cout << endl;
-          check(check_attribute, company_ptr, system_size);
+          check(check_attribute, working_days, company_ptr, system_size);
         }
         if (command_choice == "OUTPUT"){
             cout << "Please enter the filename to output to: ";
