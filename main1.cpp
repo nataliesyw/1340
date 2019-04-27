@@ -800,7 +800,7 @@ void check(string attribute, company_struct sys[], int n){
         cout << setw(25) << sys[i].name << setw(7) << sys[i].id << endl << endl;
       }
     }
-    cout << "***There are total " << num << "employee(s) with perfect attendance.***" << endl << endl;
+    cout << "***There are total " << num << " employee(s) with perfect attendance.***" << endl << endl;
   }
 
   if (attribute == "2"){
@@ -810,17 +810,17 @@ void check(string attribute, company_struct sys[], int n){
         cout << setw(25) << sys[j].name << setw(7) << sys[j].id << setw(3) << sys[j].late_count << endl << endl;
       }
     }
-    cout << "***There are total " << num << "employee(s) being late in this month.***" << endl << endl;
+    cout << "***There are total " << num << " employee(s) being late in this month.***" << endl << endl;
   }
 
   if (attribute == "3"){
     for (int k = 0; k < n; k++){
       if (sys[k].early_leave_count > 0){
         num++;
-        cout << setw(25) << sys[k].name << setw(7) << sys[k].id << setw(10) << sys[k].early_leave_count << endl << endl;
+        cout << setw(25) << sys[k].name << setw(7) << sys[k].id << setw(20) << sys[k].early_leave_count << endl << endl;
       }
     }
-    cout << "***There are total " << num << "employee(s) leaving early in this month.***" << endl << endl;
+    cout << "***There are total " << num << " employee(s) leaving early in this month.***" << endl << endl;
   }
 
   if (attribute == "4"){
@@ -835,7 +835,7 @@ void check(string attribute, company_struct sys[], int n){
         cout << setw(25) << sys[q].name << setw(7) << sys[q].id << setw(3) << sys[q].revenue << endl << endl;
       }
     }
-    cout << "***There are total " << num << "employee(s) being late in this month.***" << endl << endl;
+    cout << "***There are total " << num << " employee(s) reached the target in this month.***" << endl << endl;
   }
 
 }
@@ -918,6 +918,10 @@ void cal(string filename, company_struct * &sys, int n){
         }
       }
     }
+
+    cout << "***The revenue of each employee in this month has been inputed***" << endl;
+    cout << "***Enter \"CHECK\" command to see the result.***" << endl;
+    cout << endl;
 } 
   // OUTPUT command
   // output the monthly report of the company
@@ -1138,8 +1142,6 @@ int main(){
             cin >> revenue_file;
             cout << endl;
             cal(revenue_file, company_ptr, system_size);
-            cout << "***" << number_records << " number of records loaded.***" << endl;
-            cout << endl;
 
         }
 
@@ -1150,7 +1152,7 @@ int main(){
           cout << "Check employees who have been LATE-------------(2)" << endl;
           cout << "Check employees who have LEFT EARLY------------(3)" << endl;
           cout << "Check employees who reach the monthly target---(4)" << endl;
-          cout << "Please enter the attribute to be checked (1/2/3):  ";
+          cout << "Please enter the attribute to be checked (1/2/3/4):  ";
 
           cin >> check_attribute;
           check(check_attribute, company_ptr, system_size);
