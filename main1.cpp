@@ -789,9 +789,10 @@ int save_as(string filename, company_struct sys[], int n){
 // late
 //sys: company ptr array
 //n: num of records in the system
-void check(string attribute, int days, company_struct sys[], int n){
+void check(string attribute, int days, company_struct sys[], int n, int num_records){
 
   int num;
+  int sal_ded = 0; //number of employees who had absent for 3 days or above (salary_deducted)
 
   if (attribute == "1"){
     int i;
@@ -803,21 +804,51 @@ void check(string attribute, int days, company_struct sys[], int n){
         cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(7) << endl << endl;
       }
     }
-    cout << "***There are total " << num << " employee(s) with perfect attendance.***" << endl << endl;
 
-    char ans;
-    cout << "Show the attendacne performace of rest of the employees (y/n)?  ";
-    cin >> ans;
-      if (ans = 'y'){
-      cout << setw(25) << "Name" << setw(7) << "ID" << setw(20) << "Absence days" << endl;
-        for (int i = 0; i < n; i++){
-          if (sys[i].attendance_count != days){ 
-            int abs_days = days - sys[i].attendance_count;
-            cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(20) << abs_days << endl << endl;
+    if (num == num_records){
+      cout << "***All employees had perfect attendance performance in this month.***" << endl;
+    }
+
+    if (num != num_records){
+      char ans_show;
+      cout << "***There are total " << num << " employee(s) with perfect attendance.***" << endl << endl;      
+      cout << "Show the attendacne performace of rest of the employees (y/n)?  ";
+      cin >> ans_show;
+        if (ans_show = 'y'){
+        cout << setw(25) << "Name" << setw(7) << "ID" << setw(20) << "Absence days" << endl;
+          for (int i = 0; i < n; i++){
+            if (sys[i].attendance_count != days){ 
+              int abs_days = days - sys[i].attendance_count;
+              if (abs_days >= 3){
+                sal_ded++;
+              }
+              cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(15) << abs_days << endl << endl;
+          }
         }
       }
+      if (sal_ded > 0){     // there is employee who has to be punished
+        char abs_ded;
+        cout << "***Employee who had absent for 3 days or above would be punished by deducting salary with $500.***" << endl;
+        cout << "Processing deduction (y/n)?  ";
+        cin >> abs_ded;
+        if (abs_ded = 'y'){
+          for (int i = 0; i < n; i++){
+            if (sys[i].attendance_count != days){ 
+              int abs_days = days - sys[i].attendance_count;
+              if (abs_days >= 3){
+                int temp;
+                temp = stoi(sys[i].salary) - 500;
+                sys[i].salary = to_string(temp);
+              }
+              cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(15) << abs_days << endl << endl;
+            } 
+          }
+        }
+
+      }
     }
-  }  
+
+  } 
     
 
 
@@ -859,7 +890,6 @@ void check(string attribute, int days, company_struct sys[], int n){
   }
 
 }
-
 
 
 // calculate the late record according to clock in and clock out time
@@ -999,7 +1029,7 @@ void output_record(string filename, company_struct sys[], int n, int ori_num){
     fout.close();
   }
 
-float decide_month(int month){
+int decide_month(int month){
     if (month == 1 || month == 7 || month == 8)
       return 22;
 
@@ -1204,7 +1234,7 @@ int main(){
 
           cin >> check_attribute;
           cout << endl;
-          check(check_attribute, working_days, company_ptr, system_size);
+          check(check_attribute, working_days, company_ptr, system_size, number_records);
         }
         if (command_choice == "OUTPUT"){
             cout << "Please enter the filename to output to: ";
