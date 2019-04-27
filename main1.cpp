@@ -878,7 +878,7 @@ void clock(string filename, company_struct * &sys, int n){
     cout << endl;
   }
 
-void cal(string filename, company_struct sys[], int n){
+void cal(string filename, company_struct * &sys, int n){
 
     ifstream fin;
     fin.open(filename.c_str());
