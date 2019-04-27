@@ -817,7 +817,7 @@ void check(string attribute, company_struct sys[], int n){
     for (int k = 0; k < n; k++){
       if (sys[k].early_leave_count > 0){
         num++;
-        cout << setw(25) << sys[k].name << setw(7) << sys[k].id << setw(3) << sys[k].early_leave_count << endl << endl;
+        cout << setw(25) << sys[k].name << setw(7) << sys[k].id << setw(10) << sys[k].early_leave_count << endl << endl;
       }
     }
     cout << "***There are total " << num << "employee(s) leaving early in this month.***" << endl << endl;
@@ -827,6 +827,7 @@ void check(string attribute, company_struct sys[], int n){
     int target;
     cout << "Please input the monthly target for an employee:  ";
     cin >> target;
+    cout << endl;
 
     for (int q = 0; q < n; q++){
       if (sys[q].revenue >= target){
