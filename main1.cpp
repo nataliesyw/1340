@@ -25,6 +25,7 @@ struct company_struct{
     string role;
     string salary;
     bool perfect_attendance;
+    string perfect_attendance_output;
     double monthly_revenue;
     int attendance_count = 20;
     int early_leave_count = 0;
@@ -169,7 +170,7 @@ void edit(string attribute, string id_to_edit, company_struct sys[], int n){
 
       if (attribute == "1"){
         cout << "Original name of employee " << id_to_edit << ":  " << sys[i].name << endl;
-        getline(cin, line);        
+        getline(cin, line);
         cout << "New name:  ";
         getline(cin, new_info);
         sys[i].name = new_info;
@@ -178,7 +179,7 @@ void edit(string attribute, string id_to_edit, company_struct sys[], int n){
 
       if (attribute == "2"){
         cout << "Original age of employee " << id_to_edit << ":  " << sys[i].age << endl;
-        getline(cin, line);        
+        getline(cin, line);
         cout << "New age:  ";
         getline(cin, new_info);
         sys[i].age = new_info;
@@ -187,7 +188,7 @@ void edit(string attribute, string id_to_edit, company_struct sys[], int n){
 
       if (attribute == "3"){
         cout << "Original role of employee " << id_to_edit << ":  " << sys[i].role << endl;
-        getline(cin, line);        
+        getline(cin, line);
         cout << "New role:  ";
         getline(cin, new_info);
         sys[i].role = new_info;
@@ -196,7 +197,7 @@ void edit(string attribute, string id_to_edit, company_struct sys[], int n){
 
       if (attribute == "4"){
         cout << "Original salary of employee " << id_to_edit << ":  " << sys[i].salary << endl;
-        getline(cin, line);        
+        getline(cin, line);
         cout << "New salary:  ";
         getline(cin, new_info);
         sys[i].salary = new_info;
@@ -631,7 +632,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
       }
     }
   }
-  
+
   else{
     for ( int k = 0; k < num; k++){
 
@@ -639,7 +640,7 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
       cout << "ID:\t" << sys[k].id << endl;
       cout << "Age:\t" << sys[k].age << endl;
       cout << "Role:\t" << sys[k].role << endl;
-      cout << "Salary:\t" << sys[k].salary << endl; 
+      cout << "Salary:\t" << sys[k].salary << endl;
       cout << endl;
     }
   }
@@ -673,7 +674,7 @@ void refresh(company_struct sys[], int num){
       sys[idx] = temp;
     }
   }
-  
+
 }
 
 
@@ -801,14 +802,8 @@ void cal(string filename, company_struct * &sys, int n){
       int new_start, new_end;
       new_start = stoi(start_time);
       new_end = stoi(end_time);
-      cout << "ID:" << stoi(id) << endl;
-      cout << "id in sys:" << stoi(sys[0].id)<< endl;
-      cout << "start_time: " << new_start << endl;
-      cout << "end_time: " << new_end << endl;
-      // int diff_hrs = new_int2 / 100 - new_int1 / 100;
-      // int diff_minutes = new_int2 % 100 - new_int1 % 100;
-      // cout << "diff_hrs: " << diff_hrs << endl;
-      // cout << "diff_minutes: " << diff_minutes << endl;
+
+
       for (int i = 0; i < n; i++){
         if (stoi(id) == stoi(sys[i].id)){
           if (new_start == 9999 && new_end == 9999){
@@ -825,12 +820,60 @@ void cal(string filename, company_struct * &sys, int n){
         }
       }
     }
-    for (int i = 0; i < n; i++){
-      cout << "attendance_count of" << i << ":" << sys[i].attendance_count << endl;
-      cout << "late_count of" << i << ":" << sys[i].late_count << endl;
-      cout << "early_leave_count of" << i << ":" << sys[i].early_leave_count << endl;
-    }
+
+    cout << endl;
+    cout << "***Attendance, late and early leave of each employee has been calculated.***" << endl;
+    cout << "***Enter \"CHECK\" command to see the result.***" << endl;
+    cout << endl;
   }
+
+  // OUTPUT command
+  // output the monthly report of the company
+  // print the name, id, age, role, salary, monthly_revenue, late count, attendance, early leave count
+  void output_record(string filename, company_struct sys[], int n, int ori_num){
+    ofstream fout;
+    fout.open(filename.c_str());
+    if (fout.fail())
+    {
+        cout << "Error in file opening." << endl;
+    }
+    for (int i = 0; i < ori_num; i++){
+      if (sys[i].attendance_count == 20) {
+        sys[i].perfect_attendance = true;
+      }
+      else{
+        sys[i].perfect_attendance = false;
+      }
+    }
+    for (int i = 0; i < ori_num-1000; i++) {
+      if (sys[i].perfect_attendance == true){
+        sys[i].perfect_attendance_output = "True";
+      }
+      else{
+        sys[i].perfect_attendance_output = "False";
+      }
+    }
+    for (int i = ori_num-1000; i < n; i++){
+      sys[i].perfect_attendance_output = "No Records";
+      sys[i].perfect_attendance_output = "No Records";
+    }
+    const int name_width = 25;
+    const int id_width = 7;
+    const int role_width = 13;
+    const int age_width = 6;
+    const int salary_width = 9;
+    const int attendance_width = 15;
+    const int perfect_width = 25;
+    const int el_count_width = 20;
+    const int l_count_width = 15;
+
+    fout << setw(name_width)<< "Name"<< setw(id_width) << "ID" << setw(age_width) << "Age" << setw(role_width) << "Role" << setw(salary_width) << "Salary"<< setw(perfect_width)<< "Perfect Attendance"  << endl;
+    for (int i = 0; i < n; i++){
+      fout << setw(name_width) << sys[i].name << setw(id_width) << sys[i].id << setw(age_width) << sys[i].age << setw(role_width) << sys[i].role << setw(salary_width) << sys[i].salary << setw(perfect_width) << sys[i].perfect_attendance_output <<endl;
+    }
+    fout.close();
+  }
+
 
 
 
@@ -850,19 +893,14 @@ int main(){
     string sort_order;
     string clock_filename;
     string employee_id_delete;
+    string output_filename;
+    string current_month;
     int count;
 
-    // output text file
-//    ofstream monthly_report;
-//    monthly_report.open("monthly_report.txt");
 
-    // check if the file can be opened
-//    if (! monthly_report){
-//        cout << "Failed to open monthly_report.txt" << endl;
-//        exit(1);
-//    }
 
     cout << "Welcome to the staff management system.  Here are the commands in this system." << endl;
+
     while(command_choice != "EXIT"){
 
         if (command_choice == "LOAD"){
@@ -891,7 +929,7 @@ int main(){
          }
 
         if (command_choice == "EDIT"){
-          
+
           string edit_id;
 
           cout << "***ID could NOT be changed***" << endl;
@@ -930,7 +968,7 @@ int main(){
 
             if (search_attribute == "1"){
               cout << "Please enter employees name to search:  ";
-              getline(cin >> ws, search_input);                
+              getline(cin >> ws, search_input);
             }
 
             if (search_attribute == "2"){
@@ -964,11 +1002,11 @@ int main(){
             cout << "Early-leave--(3)" << endl;
             cout << "Late---------(4)" << endl;
             cout << "Attendance---(5)" << endl;
-            cout << "Please enter the attribute to sort on (1/2/3/45):  ";
+            cout << "Please enter the attribute to sort on (1/2/3/4/5):  ";
 
             cin >> sort_attribute;
 
-            cout << "Sorting in ascending or descending order? (a/d)";
+            cout << "Sorting in ascending or descending order? (a/d): ";
 
             cin >> sort_order;
 
@@ -978,7 +1016,7 @@ int main(){
 
         }
 
-        if (command_choice == "OUTPUT"){
+        if (command_choice == "SAVE"){
             cout << "Please enter the filename to save as:  ";
             cin >> save_as_filename;
             count = save_as(save_as_filename, company_ptr, number_records);
@@ -1003,6 +1041,13 @@ int main(){
 
           cin >> check_attribute;
           check(check_attribute, company_ptr, system_size);
+        }
+        if (command_choice == "OUTPUT"){
+            cout << "Please enter the filename to output to: ";
+            cin >> output_filename;
+            output_record(output_filename, company_ptr, number_records, ori_num);
+            cout << "The system is saved into "<< output_filename<< endl;
+            cout << endl;
         }
 
         command_choice = print_command();
