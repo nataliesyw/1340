@@ -5,24 +5,27 @@ We notice that current companies may have difficulties in tracking and collectin
 
 
 We would like to add the following functions in the system:
-
-1.	Calculate the working hours of each employee based on their clock-in and clock-out time from the input text file.  Determine whether they are late or on time. 
+1.  Determine whether employees are late or on time. 
 
 2.	Make a monthly record of attendance.  Show a list of employees with perfect attendance.
 
-3.  Make a monthly record of late arrival or early leave. Alert when the employees late or early leave for 5 times.
+3.  Make a monthly record of late arrival or early leave.
 
-4.  Employees who have been late or left early for more than 5 times, 10% of salary would be deducted.	
+4.  Employees who have been absent for more than 3 times, $500 of salary would be deducted.	
 
-5.  Set a monthly target.  Sort employees based on their targets achieved. Show that which employees reach the target and   those who don’t.
+5.  Set a monthly target.  Sort employees based on their targets achieved. Show that which employees reach the target and  those who don’t.
 
-6.  Create a new employee record by adding the employee's ID, name, age, role and salary during program running time
+6.  Create a new employee record by adding the employee's ID, name, age, role and salary during program running time.
 
 7.  Search for an employee by inputting their ID, name, age, role.
 
-8.  Edit or delete a the record of a current employee
+8.  Edit or delete a the record of a current employee.
 
-9.  Export the monthly record to an external file
+9.  Export the monthly record to an external file.
+
+10. Sort for an employee by ID, age, salary, revenue, attendance, late arrivals, early leave.
+
+11. Load an external file.
 
 
 Coding style of our system:
