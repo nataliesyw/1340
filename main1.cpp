@@ -25,7 +25,7 @@ struct company_struct{
     string role;
     string salary;
     bool perfect_attendance;
-    string perfect_attendance_output;
+    string perfect_attendance_output; // for printing the output report file
     double monthly_revenue;
     int attendance_count = 20;
     int early_leave_count = 0;
@@ -57,7 +57,10 @@ string print_command(){
     return command;
 }
 // grow the size of the employee system
-// n is the size to be growed
+// n: the size to be growed
+//sys: is the company ptr array
+// sys_size: number of size of system currently
+
 void grow_system(company_struct * &sys, int &sys_size, int n){
 
     // create a new dynamic array with a new size = max_size + n
@@ -75,11 +78,13 @@ void grow_system(company_struct * &sys, int &sys_size, int n){
     // update the size of the array
     sys_size += n;
 
-    cout << "Size of the employee management system has been enlarged to hold " << sys_size << " records." << endl;
+    cout << "***Size of the employee management system has been enlarged to hold " << sys_size << " records.***" << endl;
 }
 
 //LOAD (Load employee data from a text file into the array parameter)
-// return the number of records loaded in the text file
+//return the number of records loaded in the text file
+//sys: is the company ptr array
+//sys_size: number of size of system currently
 int load(string raw_filename, company_struct * &sys, int & sys_size){
 
     ifstream raw_textfile;
@@ -121,9 +126,13 @@ int load(string raw_filename, company_struct * &sys, int & sys_size){
 
 
 // ADD command
+//sys: is the company ptr array
+//current num record: number of records in the system currently
+// return the number of records currently in the system
 int add_record(company_struct sys[], int current_num_record){
     char ans;
     string line;
+    // extract user input
     getline(cin, line);
     cout << "Please enter the employee name" << endl;
     getline(cin, sys[current_num_record].name);
@@ -138,6 +147,7 @@ int add_record(company_struct sys[], int current_num_record){
 
 
     cout << endl;
+    // confirm if user add this data
     cout << "Name:\t" << sys[current_num_record].name << endl;
     cout << "ID:\t" << sys[current_num_record].id << endl;
     cout << "Age:\t" << sys[current_num_record].age << endl;
@@ -153,10 +163,12 @@ int add_record(company_struct sys[], int current_num_record){
         current_num_record++;
     }
 
-    return current_num_record;
+    return current_num_record; // return the number of records currently in the system
 }
 
 // Edit command
+//sys: is the company ptr array
+//n: number of records in the system currently
 void edit(string attribute, string id_to_edit, company_struct sys[], int n){
 
   string new_info;
@@ -229,13 +241,18 @@ void show(company_struct sys[], int current_num_record){
 //SEARCH command
 // return the number of records found
 // attribute: the parameter that the user input to search for
-// n: numbr of records found
+// n: number of records found
+// detail: the string to be search
 int search(string attribute, string detail, company_struct sys[], int n){
     int i, count = 0;
+    //count: number of records matching the string found
 
+      //search by name
       if (attribute == "1"){
           for (i = 0; i < n; i++){
             string name_in_array = sys[i].name;
+            // turning the string and name in the array into upper case
+            // make the string into not case-sensitive
             transform(name_in_array.begin(), name_in_array.end(), name_in_array.begin(), ::toupper);
             transform(detail.begin(), detail.end(), detail.begin(), ::toupper);
             if(name_in_array.find(detail) != string::npos){
@@ -245,14 +262,17 @@ int search(string attribute, string detail, company_struct sys[], int n){
               cout << "Role:\t" << sys[i].role << endl;
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
+              //increase one if it mathces the string
               count ++;
             }
           }
       }
-
+      // search by id
       if (attribute == "2"){
           for (i = 0; i < n; i++){
             string id_in_array = sys[i].id;
+            // turning the string and name in the array into upper case
+            // make the string into not case-sensitive
             transform(id_in_array.begin(), id_in_array.end(), id_in_array.begin(), ::toupper);
             transform(detail.begin(), detail.end(), detail.begin(), ::toupper);
             if(id_in_array.find(detail) != string::npos){
@@ -262,14 +282,18 @@ int search(string attribute, string detail, company_struct sys[], int n){
               cout << "Role:\t" << sys[i].role << endl;
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
+              // increase one if it matches the string
               count ++;
             }
           }
       }
 
+      // search by age
       if (attribute == "3"){
           for (i = 0; i < n; i++){
             string age_in_array = sys[i].age;
+            // turning the string and name in the array into upper case
+            // make the string into not case-sensitive
             transform(age_in_array.begin(), age_in_array.end(), age_in_array.begin(), ::toupper);
             transform(detail.begin(), detail.end(), detail.begin(), ::toupper);
             if(age_in_array.find(detail) != string::npos){
@@ -279,14 +303,17 @@ int search(string attribute, string detail, company_struct sys[], int n){
               cout << "Role:\t" << sys[i].role << endl;
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
+              // increase one if it matches the string
               count ++;
             }
           }
       }
-
+      // search by role
       if (attribute == "4"){
           for (i = 0; i < n; i++){
             string role_in_array = sys[i].role;
+            // turning the string and name in the array into upper case
+            // make the string into not case-sensitive
             transform(role_in_array.begin(), role_in_array.end(), role_in_array.begin(), ::toupper);
             transform(detail.begin(), detail.end(), detail.begin(), ::toupper);
             if(role_in_array.find(detail) != string::npos){
@@ -296,13 +323,17 @@ int search(string attribute, string detail, company_struct sys[], int n){
               cout << "Role:\t" << sys[i].role << endl;
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
+              // increase one if it matches the string
               count ++;
             }
           }
       }
+      // search by salary
       if (attribute == "5"){
           for (i = 0; i < n; i++){
             string salary_in_array = sys[i].salary;
+            // turning the string and name in the array into upper case
+            // make the string into not case-sensitive
             transform(salary_in_array.begin(), salary_in_array.end(), salary_in_array.begin(), ::toupper);
             transform(detail.begin(), detail.end(), detail.begin(), ::toupper);
             if(salary_in_array.find(detail) != string::npos){
@@ -312,11 +343,13 @@ int search(string attribute, string detail, company_struct sys[], int n){
               cout << "Role:\t" << sys[i].role << endl;
               cout << "Salary:\t" << sys[i].salary << endl;
               cout << endl;
+              // increase one if it matches the string
               count ++;
             }
           }
       }
 
+    // return the number of records found
     return count;
 }
 
@@ -324,6 +357,9 @@ int search(string attribute, string detail, company_struct sys[], int n){
 // SORT command
 // print out all records which are sorted
 // selectively print out the records *******if we have time*******
+// num: number of records in the system
+// sys: the company array
+// ori_num: the last id of the original input company text file
 void sort_record(string attribute, string order, company_struct sys[], int num, int ori_num){
   int i, j ,idx;
   int min;
@@ -609,9 +645,10 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
     }
 
   }
+  // newly added record: no late, attendance, early leave record
   if (attribute == "3" || attribute == "4" || attribute == "5"){
     for ( int k = 0; k < num; k++){
-
+      // newly added record
       if (stoi(sys[k].id) > ori_num){
         cout << "***No such record for this employee***" << endl;
         cout << "Name:\t" << sys[k].name << endl;
@@ -649,7 +686,8 @@ void sort_record(string attribute, string order, company_struct sys[], int num, 
 
 // Refresh command
 // To sort all the infomation according to their ID
-
+//sys: company ptr array
+//num : num of records in the system
 void refresh(company_struct sys[], int num){
 
   int i, j ,idx;
@@ -682,6 +720,8 @@ void refresh(company_struct sys[], int num){
 // delete a record of ONE employee in the company_ptr array
 // id_to_search: id of employee to be deleted
 // return the number of record (n-1)
+//sys: company ptr array
+//n : num of records in the system
 int delete_record(string id_to_search, company_struct sys[], int n){
   char ans;
   for (int i = 0; i < n; i++){
@@ -716,6 +756,9 @@ int delete_record(string id_to_search, company_struct sys[], int n){
 // SAVE command
 // save all records of the system into a new text file
 // return 0 if an error occurs when opening the file
+//sys: company ptr array
+//n: num of records in the system
+// return the number of records
 int save_as(string filename, company_struct sys[], int n){
     ofstream fout;
     fout.open(filename.c_str());
@@ -742,7 +785,8 @@ int save_as(string filename, company_struct sys[], int n){
 // all attendance: show the percentage of attendance of each employee
 // early leave
 // late
-
+//sys: company ptr array
+//n: num of records in the system
 void check(string attribute, company_struct sys[], int n){
 
   int num;
@@ -780,10 +824,11 @@ void check(string attribute, company_struct sys[], int n){
 }
 
 
-// not yet refined!!!
+
 // calculate the late record according to clock in and clock out time
 // filename: the clock-in and clock-out raw text file filename
-// n: system_size
+//sys: company ptr array
+//n: num of records in the system
 void cal(string filename, company_struct * &sys, int n){
     ifstream fin;
     fin.open(filename.c_str());
@@ -806,13 +851,16 @@ void cal(string filename, company_struct * &sys, int n){
 
       for (int i = 0; i < n; i++){
         if (stoi(id) == stoi(sys[i].id)){
+          // absent
           if (new_start == 9999 && new_end == 9999){
             sys[i].attendance_count -= 1;
           }
           else{
+            //late
             if (new_start > 900){
                 sys[i].late_count += 1;
             }
+            // early leave
             if (new_end < 1700){
                 sys[i].early_leave_count += 1;
             }
@@ -829,14 +877,19 @@ void cal(string filename, company_struct * &sys, int n){
 
   // OUTPUT command
   // output the monthly report of the company
-  // print the name, id, age, role, salary, monthly_revenue, late count, attendance, early leave count
-  void output_record(string filename, company_struct sys[], int n, int ori_num){
+  // print the name, id, age, role, salary, monthly_revenue, perfect attendance
+  // filename: the filename of report to output to
+  // n: number of records in the system
+  // sys: the company array
+  // ori_num: the last id of the original input company text file
+void output_record(string filename, company_struct sys[], int n, int ori_num){
     ofstream fout;
     fout.open(filename.c_str());
     if (fout.fail())
     {
         cout << "Error in file opening." << endl;
     }
+    // calculate the perfect attendance
     for (int i = 0; i < ori_num; i++){
       if (sys[i].attendance_count == 20) {
         sys[i].perfect_attendance = true;
@@ -845,6 +898,7 @@ void cal(string filename, company_struct * &sys, int n){
         sys[i].perfect_attendance = false;
       }
     }
+    //original record
     for (int i = 0; i < ori_num-1000; i++) {
       if (sys[i].perfect_attendance == true){
         sys[i].perfect_attendance_output = "True";
@@ -853,10 +907,13 @@ void cal(string filename, company_struct * &sys, int n){
         sys[i].perfect_attendance_output = "False";
       }
     }
+    // newly added record
     for (int i = ori_num-1000; i < n; i++){
       sys[i].perfect_attendance_output = "No Records";
       sys[i].perfect_attendance_output = "No Records";
     }
+
+    // printing format
     const int name_width = 25;
     const int id_width = 7;
     const int role_width = 13;
