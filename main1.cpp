@@ -789,21 +789,18 @@ int save_as(string filename, company_struct sys[], int n){
 // late
 //sys: company ptr array
 //n: num of records in the system
-void check(string attribute, float days, company_struct sys[], int n){
+void check(string attribute, int days, company_struct sys[], int n){
 
   int num;
 
   if (attribute == "1"){
-    float attendance_percent;
     int i;
-
-    attendance_percent = ((float)sys[i].attendance_count / days)*100;
-    
+    cout << setw(25) << "Name" << setw(7) << "ID" << endl;  
     for (i = 0; i < n; i++){
 
       if (sys[i].attendance_count == days){
         num++;
-        cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(7) << attendance_percent << endl << endl;
+        cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(7) << endl << endl;
       }
     }
     cout << "***There are total " << num << " employee(s) with perfect attendance.***" << endl << endl;
@@ -812,9 +809,11 @@ void check(string attribute, float days, company_struct sys[], int n){
     cout << "Show the attendacne performace of rest of the employees (y/n)?  ";
     cin >> ans;
       if (ans = 'y'){
+      cout << setw(25) << "Name" << setw(7) << "ID" << setw(20) << "Absence days" << endl;
         for (int i = 0; i < n; i++){
-          if (sys[i].attendance_count != days){
-          cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(7) << attendance_percent << endl << endl;
+          if (sys[i].attendance_count != days){ 
+            int abs_days = days - sys[i].attendance_count;
+            cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(20) << abs_days << endl << endl;
         }
       }
     }
@@ -1001,25 +1000,20 @@ void output_record(string filename, company_struct sys[], int n, int ori_num){
   }
 
 float decide_month(int month){
-    if (month == 1 || month == 7 || month == 8){
+    if (month == 1 || month == 7 || month == 8)
       return 22;
-    }
 
-    if (month == 3|| month == 5 || month == 9 || month == 10 || month == 11){
+    if (month == 3|| month == 5 || month == 9 || month == 10 || month == 11)
       return 21;
-    }
-
-    if (month == 12){
+    
+    if (month == 12)
       return 20;
-    }
-
-    if (month == 4 || month == 6){
+    
+    if (month == 4 || month == 6)
       return 19;
-    }
-
-    if (month == 2){
+  
+    if (month == 2)
       return 17;
-    }
 }
 
 void initialize_attendance(int days, company_struct * &sys, int n){
@@ -1049,7 +1043,7 @@ int main(){
     string current_month;
     int count;
     int month;
-    float working_days;
+    int working_days;
 
 
 
