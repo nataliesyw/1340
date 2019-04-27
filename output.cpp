@@ -68,14 +68,14 @@ void output_record(string filename, company_struct sys[], int n, int ori_num, in
       cin >> temp;
       target = temp;
     }
-    fout << setw(name_width)<< "Name"<< setw(id_width) << "ID" << setw(age_width) << "Age" << setw(role_width) << "Role" << setw(revenue_width) << "Revenue" << setw(salary_width) << "Salary"<< setw(perfect_width) << "Perfect Attendance"  << endl;
+    fout << setw(name_width)<< "Name"<< setw(id_width) << "ID" << setw(age_width) << "Age" << setw(role_width) << "Role" << setw(revenue_width) << "Revenue" << setw(salary_width) << "Salary"<< setw(l_count_width) << "Late arrvivals" << setw(el_count_width) << "Early leave" << setw(perfect_width) << "Perfect Attendance"  << endl;
     for (int i = 0; i < n; i++){
       if (sys[i].revenue < target){
-        fout << "*" << setw(name_width) << sys[i].name << setw(id_width) << sys[i].id << setw(age_width) << sys[i].age << setw(role_width) << sys[i].role << setw(revenue_width) << sys[i].revenue << setw(salary_width) << sys[i].salary << setw(perfect_width) << sys[i].perfect_attendance_output << endl;
+        fout << "*" << setw(name_width) << sys[i].name << setw(id_width) << sys[i].id << setw(age_width) << sys[i].age << setw(role_width) << sys[i].role << setw(revenue_width) << sys[i].revenue << setw(salary_width) << sys[i].salary  << setw(l_count_width) << sys[i].late_count << setw(el_count_width) << sys[i].early_leave_count<< setw(perfect_width) << sys[i].perfect_attendance_output << endl;
         reach_target++;
       }
       else{
-        fout << setw(name_width) << sys[i].name << setw(id_width) << sys[i].id << setw(age_width) << sys[i].age << setw(role_width) << sys[i].role << setw(revenue_width) << sys[i].revenue << setw(salary_width) << sys[i].salary << setw(perfect_width) << sys[i].perfect_attendance_output <<endl;
+        fout << setw(name_width) << sys[i].name << setw(id_width) << sys[i].id << setw(age_width) << sys[i].age << setw(role_width) << sys[i].role << setw(revenue_width) << sys[i].revenue << setw(salary_width) << sys[i].salary  << setw(l_count_width) << sys[i].late_count << setw(el_count_width) << sys[i].early_leave_count<< setw(perfect_width) << sys[i].perfect_attendance_output << endl;
       }
     }
     if (reach_target == 0){

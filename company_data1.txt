@@ -5,7 +5,7 @@ Cathy Lee Hiu Man, 1004, 18, Clerk, 12000
 Philip Choi Wang Hei, 1005, 20, Clerk, 11500
 Alvin Wong Chi Ming, 1006, 21, Clerk, 11500
 Louie Yan, 1007, 21, Janitor, 9000
-Draco Fluffy, 1008, 20, Marketing Manager, 20000
+Draco Fluffy, 1008, 20, Manager, 20000
 Myron Eng Man Him, 1009, 17, Clerk, 12500
 Jellal Fernandes, 1010, 27, Boss, 50000
 Wilson Chan Wing Hang, 1011, 18, Director, 13000
