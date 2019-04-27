@@ -40,5 +40,4 @@ void grow_system(company_struct * &sys, int &sys_size, int n){
     // update the size of the array
     sys_size += n;
 
-    cout << "***Size of the employee management system has been enlarged to hold " << sys_size << " records.***" << endl;
 }
