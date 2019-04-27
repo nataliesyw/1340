@@ -25,8 +25,10 @@ using namespace std;
 // late
 //sys: company ptr array
 //n: num of records in the system
-void check(string attribute, int days, company_struct sys[], int n){
+int check(string attribute, int days, company_struct sys[], int n, int num_records){
+
   int num;
+  int sal_ded = 0; //number of employees who had absent for 3 days or above (salary_deducted)
 
   if (attribute == "1"){
     int i;
@@ -57,9 +59,9 @@ void check(string attribute, int days, company_struct sys[], int n){
                 sal_ded++;
               }
               cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(15) << abs_days << endl << endl;
-            }
           }
         }
+      }
       if (sal_ded > 0){     // there is employee who has to be punished
         char abs_ded;
         cout << "***Employee who had absent for 3 days or above would be punished by deducting salary with $500.***" << endl;
@@ -77,10 +79,12 @@ void check(string attribute, int days, company_struct sys[], int n){
             } 
           }
         }
+
       }
     }
-  } 
 
+  } 
+    
 
 
   if (attribute == "2"){

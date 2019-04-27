@@ -840,7 +840,6 @@ void check(string attribute, int days, company_struct sys[], int n, int num_reco
                 temp = stoi(sys[i].salary) - 500;
                 sys[i].salary = to_string(temp);
               }
-              cout << setw(25) << sys[i].name << setw(7) << sys[i].id << setw(15) << abs_days << endl << endl;
             } 
           }
         }
