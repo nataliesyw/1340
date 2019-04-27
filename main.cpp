@@ -58,6 +58,7 @@ int main(){
    int count;
    string edit_id;
    int target_revenue;
+   
    cout << "Welcome to the staff management system.  Here are the commands in this system." << endl;
 
     cout << "Please enter the month to be recorded (1-12):  ";
