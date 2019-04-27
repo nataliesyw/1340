@@ -30,6 +30,7 @@ void check(string attribute, int days, int target, company_struct sys[], int n, 
   int num;
   int sal_ded = 0; //number of employees who had absent for 3 days or above (salary_deducted)
 
+  cout << "Days: " << days << endl;
   if (attribute == "1"){
     int i;
     cout << setw(25) << "Name" << setw(7) << "ID" << endl;
@@ -49,6 +50,7 @@ void check(string attribute, int days, int target, company_struct sys[], int n, 
       cout << "***There are total " << num << " employee(s) with perfect attendance.***" << endl << endl;
       cout << "Show the attendacne performace of rest of the employees (y/n)?  ";
       cin >> ans_show;
+      cout << endl;
         if (ans_show == 'y'){
         cout << setw(25) << "Name" << setw(7) << "ID" << setw(20) << "Absence days" << endl;
           for (int i = 0; i < n; i++){
