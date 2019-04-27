@@ -889,7 +889,6 @@ void cal(string filename, company_struct * &sys, int n){
 
     string line, id, revenue;
     int new_revenue;
-    new_revenue = stoi(revenue);
 
     while(getline(fin,line)){
       istringstream iss(line);
@@ -897,6 +896,7 @@ void cal(string filename, company_struct * &sys, int n){
       getline(iss, id, ',');
       getline(iss, revenue, ',');
 
+      new_revenue = stoi(revenue);
 
       for (int i = 0; i < n; i++){
         if (stoi(id) == stoi(sys[i].id)){
