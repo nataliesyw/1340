@@ -42,7 +42,6 @@ void cal(string filename, company_struct * &sys, int n){
       for (int i = 0; i < n; i++){
         if (stoi(id) == stoi(sys[i].id)){
           sys[i].revenue += new_revenue;
-          cout << "revenue: "<<sys[i].revenue<<endl;
         }
       }
     }
