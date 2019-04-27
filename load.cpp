@@ -54,7 +54,6 @@ int load(string raw_filename, company_struct * &sys, int & sys_size){
             ++i;
         }
     }
-    cout << "Success" << endl;
     cout << "***Size of the employee management system has been enlarged to hold " << sys_size << " records.***" << endl;
     raw_textfile.close();
     return i; // return the number of records in the text file
