@@ -27,6 +27,7 @@ struct company_struct{
     bool perfect_attendance;
     string perfect_attendance_output; // for printing the output report file
     double monthly_revenue;
+    int revenue = 0;
     int attendance_count = 20;
     int early_leave_count = 0;
     int late_count = 0;
@@ -38,7 +39,8 @@ string print_command(){
     string command;
     cout << "Please enter the commands according to the following format." << endl;
     cout << "\"LOAD\": Load a file that contains record of employees." << endl;
-    cout << "\"CAL\": Calulate the the attendance of employees." << endl;
+    cout << "\"CLOCK\": Calulate the attendance of employees." << endl;
+    cout << "\"CAL\": Calculate the sales revenue of employees." << endl;
     cout << "\"ADD\": Add a new record of a new employee " << endl;
     cout << "\"DELETE\": Fire an employee." << endl;
     cout << "\"EDIT\" : Edit the record of employee." << endl;
@@ -233,6 +235,7 @@ void show(company_struct sys[], int current_num_record){
       cout << "Age:\t" << sys[i].age << endl;
       cout << "Role:\t" << sys[i].role << endl;
       cout << "Salary:\t" << sys[i].salary << endl;
+      cout << "Revenue:\t" << sys[i].revenue << endl;
       cout << endl;
     }
 }
@@ -829,7 +832,7 @@ void check(string attribute, company_struct sys[], int n){
 // filename: the clock-in and clock-out raw text file filename
 //sys: company ptr array
 //n: num of records in the system
-void cal(string filename, company_struct * &sys, int n){
+void clock(string filename, company_struct * &sys, int n){
     ifstream fin;
     fin.open(filename.c_str());
     // check if the file can be opened
@@ -875,6 +878,33 @@ void cal(string filename, company_struct * &sys, int n){
     cout << endl;
   }
 
+void cal(string filename, company_struct sys[], int n){
+
+    ifstream fin;
+    fin.open(filename.c_str());
+    // check if the file can be opened
+    if (fin.fail()){
+        cout << "Error in file opening." << endl;
+    }
+
+    string line, id, revenue;
+    int new_revenue;
+    new_revenue = stoi(revenue);
+
+    while(getline(fin,line)){
+      istringstream iss(line);
+
+      getline(iss, id, ',');
+      getline(iss, revenue, ',');
+
+
+      for (int i = 0; i < n; i++){
+        if (stoi(id) == stoi(sys[i].id)){
+          sys[i].revenue += new_revenue;
+        }
+      }
+    }
+} 
   // OUTPUT command
   // output the monthly report of the company
   // print the name, id, age, role, salary, monthly_revenue, perfect attendance
@@ -942,6 +972,7 @@ int main(){
     int number_records = 0;
     int ori_num;
     string raw_textfile;
+    string revenue_file;
     string command_choice;
     string save_as_filename;
     string search_attribute;
@@ -1082,10 +1113,20 @@ int main(){
             cout << endl;
         }
 
-        if (command_choice == "CAL"){
+        if (command_choice == "CLOCK"){
           cout << "Please enter the clock.io filename: ";
           cin >> clock_filename;
-          cal(clock_filename, company_ptr, system_size);
+          clock(clock_filename, company_ptr, system_size);
+        }
+
+        if (command_choice == "CAL"){
+            cout << "Please enter the filename: ";
+            cin >> revenue_file;
+            cout << endl;
+            cal(revenue_file, company_ptr, number_records);
+            cout << "***" << number_records << " number of records loaded.***" << endl;
+            cout << endl;
+
         }
 
         if (command_choice == "CHECK"){
