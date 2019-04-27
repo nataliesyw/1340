@@ -56,10 +56,11 @@ void edit(string id_to_edit, company_struct sys[], int n){
         getline(cin, line);
         cout << "New name:  ";
         getline(cin, new_info);
-        cout << "Are you sure to change name of employee (ID: " << sys[i].id << ")" << " from " << sys[i].name << " to " << new_info << "(y/n) ?";
+        cout << "Are you sure to change name of employee (ID: " << sys[i].id << ")" << " from " << sys[i].name << " to " << new_info << " (y/n) ?";
         cin >> ans;
         if (ans == 'y'){
           sys[i].name = new_info;
+          cout << endl;
           cout << "***The name of employee (ID: " << sys[i].id << ") has been edited.***" << endl;
         }
       }
@@ -70,10 +71,11 @@ void edit(string id_to_edit, company_struct sys[], int n){
         getline(cin, line);
         cout << "New age:  ";
         getline(cin, new_info);
-        cout << "Are you sure to change age of employee (ID: " << sys[i].id << ")" << " from " << sys[i].age << " to " << new_info << "(y/n) ?";
+        cout << "Are you sure to change age of employee (ID: " << sys[i].id << ")" << " from " << sys[i].age << " to " << new_info << " (y/n) ?";
         cin >> ans;
         if (ans == 'y'){
           sys[i].age = new_info;
+          cout << endl;
           cout << "***The age of employee (ID: " << sys[i].id << ") has been edited.***" << endl;
         }
       }
@@ -83,10 +85,11 @@ void edit(string id_to_edit, company_struct sys[], int n){
         getline(cin, line);
         cout << "New role:  ";
         getline(cin, new_info);
-        cout << "Are you sure to change role of employee (ID: " << sys[i].id << ")" << " from " << sys[i].role << " to " << new_info << "(y/n) ?";
+        cout << "Are you sure to change role of employee (ID: " << sys[i].id << ")" << " from " << sys[i].role << " to " << new_info << " (y/n) ?";
         cin >> ans;
         if (ans == 'y'){
           sys[i].role = new_info;
+          cout << endl;
           cout << "***The role of employee (ID: " << sys[i].id << ") has been edited.***" << endl;
         }
       }
@@ -96,10 +99,11 @@ void edit(string id_to_edit, company_struct sys[], int n){
         getline(cin, line);
         cout << "New salary:  ";
         getline(cin, new_info);
-        cout << "Are you sure to change salary of employee (ID: " << sys[i].id << ")" << " from " << sys[i].salary << " to " << new_info << "(y/n) ?";
+        cout << "Are you sure to change salary of employee (ID: " << sys[i].id << ")" << " from " << sys[i].salary << " to " << new_info << " (y/n) ?";
         cin >> ans;
         if (ans == 'y'){
           sys[i].salary = new_info;
+          cout << endl;
           cout << "***The salary of employee (ID: " << sys[i].id << ") has been edited.***" << endl;
         }
       }

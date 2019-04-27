@@ -230,7 +230,7 @@ int main(){
              cout << "Please enter the filename to output to: ";
              cin >> output_filename;
              output_record(output_filename, company_ptr, number_records, ori_num, working_days, target_revenue);
-             cout << "The system is saved into "<< output_filename<< endl;
+             cout << "***The system is saved into "<< output_filename<< "***" << endl;
              cout << endl;
          }
 
