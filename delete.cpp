@@ -43,7 +43,7 @@ int delete_record(string id_to_search, company_struct sys[], int n){
                   if ( i == n ){
                     n--;
                     cout << endl;
-                    cout << "***Number of records have been changed to " << n << ".***" << endl;
+                    cout << "Number of records have been changed to " << n << "." << endl;
                     cout << endl;
                     return n;
                     break;
