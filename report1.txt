@@ -1,0 +1,18 @@
+                     Name     ID   Age         Role     Revenue   Salary Late arrvivals         Early leave       Perfect Attendance
+   Natalie Wong Seung Yee   1001    17     Director   102678912    13000              1                   0                     True
+      Scarlett So Yuk Sze   1002    19      Manager   101365428    15000              1                   2                     True
+       Ingrid Chu Yee Lam   1003    17    Secretary    58123879    12000              0                   0                     True
+        Cathy Lee Hiu Man   1004    18        Clerk     7562564    12000              0                   0                    False
+*     Philip Choi Wang Hei   1005    20        Clerk      454438    11500              2                   1                    False
+      Alvin Wong Chi Ming   1006    21        Clerk     9395424    11500              0                   0                     True
+*                Louie Yan   1007    21      Janitor      721732     9000              0                   0                     True
+*             Draco Fluffy   1008    20      Manager      793211    20000              0                   0                     True
+        Myron Eng Man Him   1009    17        Clerk     8131298    12500              0                   0                     True
+*         Jellal Fernandes   1010    27         Boss      365274    50000              0                   0                     True
+    Wilson Chan Wing Hang   1011    18     Director     3635930    13000              0                   0                     True
+          Ken Ip Kin Wang   1012    30        Clerk     7457357    11500              0                   0                     True
+        Ivan Lam Hei Lung   1013    18        Clerk     4853784    12500              0                   0                     True
+              Mahima Goel   1014    50      Janitor     9001652     9000              0                   0                     True
+       Dennis Lo Sai Huen   1015    50     Security     4739763     9000              0                   0                     True
+
+Employees with * before their name did not reach the monthly target---800000.
