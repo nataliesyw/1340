@@ -115,9 +115,8 @@ int main(){
            cout << "Input the ID of the employee: ";
            cin >> edit_id;
            cout << endl;
-
-
-           edit(edit_id, company_ptr, number_records);
+           
+          edit(edit_id, company_ptr, number_records);
          }
 
          if (command_choice == "SHOW"){
