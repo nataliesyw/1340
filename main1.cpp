@@ -1001,23 +1001,23 @@ void output_record(string filename, company_struct sys[], int n, int ori_num){
   }
 
 int decide_month(int month){
-    if (month == '1' || month == '7' || month == '8'){
+    if (month == 1 || month == 7 || month == 8){
       return 22;
     }
 
-    if (month == '3'|| month == '5' || month == '9' || month == '10' || month == '11'){
+    if (month == 3|| month == 5 || month == 9 || month == 10 || month == 11){
       return 21;
     }
 
-    if (month == '12'){
+    if (month == 12){
       return 20;
     }
 
-    if (month == '4' || month == '6'){
+    if (month == 4 || month == 6){
       return 19;
     }
 
-    if (month == '2'){
+    if (month == 2){
       return 17;
     }
 }
