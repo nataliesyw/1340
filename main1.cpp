@@ -804,11 +804,11 @@ void check(string attribute, company_struct sys[], int n){
   }
 
   if (attribute == "2"){
-    cout << setw(25) << "Name" << setw(7) << "ID" << setw(3) << "Late times" << endl;
+    cout << setw(25) << "Name" << setw(7) << "ID" << setw(10) << "Late times" << endl;
     for (int j = 0; j < n; j++){
       if (sys[j].late_count > 0){
         num++;
-        cout << setw(25) << sys[j].name << setw(7) << sys[j].id << setw(3) << sys[j].late_count << endl << endl;
+        cout << setw(25) << sys[j].name << setw(7) << sys[j].id << setw(10) << sys[j].late_count << endl << endl;
       }
     }
     cout << "***There are total " << num << " employee(s) being late in this month.***" << endl << endl;
